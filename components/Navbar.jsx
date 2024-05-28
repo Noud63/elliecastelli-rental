@@ -2,7 +2,7 @@
 import React,{useState, useEffect} from 'react'
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import logo from "@/assets/images/logo-white.png";
+import logo from "@/assets/images/ellielogo3.png";
 import profileDefault from "@/assets/images/profile.png";
 import {FaGoogle} from 'react-icons/fa'
 import Link from 'next/link';
@@ -33,7 +33,7 @@ useEffect(() => {
 
 
 return (
-  <nav className="bg-slate-900 border-b border-blue-500">
+  <nav className="w-full absolute top-0 left-0 bg-gradient-to-r from-slate-900 via-blue-500 to-slate-900 border-b border-slate-950 shadow-[0px_2px_4px_rgba(0,0,0,1)] z-[999]">
     <div className="w-full flex justify-between px-2 sm:px-6 lg:px-8">
       <div className="w-full relative flex h-20 items-center justify-between">
         <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -66,61 +66,62 @@ return (
         </div>
 
         <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-
           {/* <!-- Logo --> */}
           <Link className="flex flex-shrink-0 items-center" href="/">
-            <Image className="h-10 w-auto" src={logo} alt="PropertyPulse" />
+            <Image className="h-12 w-auto" src={logo} alt="PropertyPulse" />
 
-            <span className="hidden md:block text-white text-2xl font-bold ml-2">
-              Ellie Castelli's Rental Division
-            </span>
-          </Link>
-
-          {/* <!-- Desktop Menu Hidden below md screens --> */}
-          <div className="hidden md:ml-6 md:block">
-            <div className="flex space-x-2">
-              <Link
-                href="/"
-                className={`${
-                  pathname === "/" ? "bg-blue-900" : ""
-                } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
-              >
-                Home
-              </Link>
-
-              <Link
-                href="/properties"
-                className={`${
-                  pathname === "/properties" ? "bg-black" : ""
-                } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
-              >
-                Properties
-              </Link>
-
-              {session && (
-                <Link
-                  href="/properties/add"
-                  className={`${
-                    pathname === "/properties/add" ? "bg-black" : ""
-                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
-                >
-                  Add Property
-                </Link>
-              )}
+            <div className="hidden md:flex text-white text-2xl font-bold ml-4 flex-col text-center">
+              <span>Ellie Castelli</span>
+              <span className="text-sm font-normal">Rental Division</span>
             </div>
+          </Link>
+        </div>
+
+        {/* <!-- Desktop Menu Hidden below md screens --> */}
+        <div className="hidden md:ml-6 md:flex items-center">
+          <div className="flex space-x-2">
+            <Link
+              href="/"
+              className={`${
+                pathname === "/" ? "border-b-2 border-blue-500" : ""
+              } text-white px-5 py-3`}
+            >
+              Home
+            </Link>
+
+            <Link
+              href="/properties"
+              className={`${
+                pathname === "/properties" ? "border-b-2 border-blue-500" : ""
+              } text-white px-5 py-3`}
+            >
+              Properties
+            </Link>
+
+            {session && (
+              <Link
+                href="/properties/add"
+                className={`${
+                  pathname === "/properties/add" ? "bg-black" : ""
+                } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+              >
+                Add Property
+              </Link>
+            )}
           </div>
         </div>
 
         {/* <!-- Right Side Menu (Logged Out) --> */}
         {!session && (
-          <div className="hidden md:block md:ml-6">
+          <div className="hidden md:block">
             <div className="flex items-center">
               {providers &&
                 Object.values(providers).map((provider, index) => (
                   <button
                     onClick={() => signIn(provider.id)}
                     key={index}
-                    className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                    className="flex items-center text-white  
+                    hover:bg-gray-900 hover:text-white rounded-md px-5 py-3"
                   >
                     <FaGoogle className="text-white mr-2" />
                     <span>Login or Register</span>
@@ -157,7 +158,6 @@ return (
               </button>
 
               <UnreadMessageCount session={session} />
-
             </Link>
             {/* <!-- Profile dropdown button --> */}
             <div className="relative ml-3">
@@ -261,7 +261,7 @@ return (
             <Link
               href="/properties/add"
               className={`${
-                pathname === "/properties/add" ? "bg-black" : ""
+                pathname === "/properties/add" ? "" : ""
               } text-white block rounded-md px-3 py-2 text-base font-medium`}
             >
               Add Property
@@ -273,9 +273,9 @@ return (
               <button
                 onClick={() => signIn(provider.id)}
                 key={index}
-                className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                className="flex items-center text-white rounded-md px-3 py-2"
               >
-                <FaGoogle className="text-white mr-2" />
+                <FaGoogle className="text-white" />
                 <span>Login or Register</span>
               </button>
             ))}

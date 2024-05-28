@@ -39,9 +39,10 @@ const Properties = () => {
           setPage(newPage)
     }
 
-  return (
-    loading ? (<Spinner loading={loading}/> ) : (
-        <section className="px-4 py-6">
+  return loading ? (
+    <Spinner loading={loading} />
+  ) : (
+    <section className="min-h-screen px-4 py-6">
       <div className="container-xl lg:container m-auto px-4 py-6">
         {properties.length === 0 ? (
           <p>No properties found</p>
@@ -52,9 +53,14 @@ const Properties = () => {
             ))}
           </div>
         )}
-        <Pagination page={page} pageSize={pageSize} totalItems={totalItems} onPageChange={handlePageChange}/>
+        <Pagination
+          page={page}
+          pageSize={pageSize}
+          totalItems={totalItems}
+          onPageChange={handlePageChange}
+        />
       </div>
-    </section>)
+    </section>
   );
 }
 
