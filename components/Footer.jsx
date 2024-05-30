@@ -1,20 +1,22 @@
 import React from 'react'
 import Image from 'next/image';
-import logo from "@/assets/images/logo.png"
+import logo from "@/assets/images/ellielogo3.png"
 
 const Footer = () => {
 
     const currentYear = new Date().getFullYear()
   return (
-    <footer className="bg-gray-200 py-4">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
-        <div className="mb-4 md:mb-0">
-          <Image src={logo} alt="Logo" className="h-8 w-auto" />
+    <footer className="relative flex bg-black h-[500px] py-4">
+      <div className="container mx-auto flex justify-center md:flex-row items-center px-4">
+        <div className="w-22 flex flex-col items-center text-white">
+          <Image src={logo} alt="Logo" className="h-12 w-auto" />
+          <span className="w-full mt-2">Ellie Castelli</span>
         </div>
-       
-        <div>
-          <p className="text-sm text-gray-500 mt-2 md:mt-0">
-            &copy;{currentYear} PropertyPulse. All rights reserved.
+
+        <div className="w-full flex justify-center absolute bottom-0 left-0">
+          <p className="p-4 text-sm text-gray-400 mt-2 md:mt-0">
+            &copy;{currentYear} Ellie Castelli Rental Division. All rights
+            reserved.
           </p>
         </div>
       </div>

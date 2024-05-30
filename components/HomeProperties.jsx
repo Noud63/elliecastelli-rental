@@ -27,10 +27,10 @@ const recentProperties = data.properties.sort(() => Math.random() - 0.5).slice(0
           </div>
         </div>
       </section>
-      <section className="m-auto max-w-lg my-10 px-6">
+      <section className="m-auto max-w-lg mt-10 mb-16 px-6">
         <a
           href="/properties"
-          className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
+          className="block border-2 border-blue-900 text-blue-900 text-center py-4 px-6 rounded-xl"
         >
           View All Properties
         </a>

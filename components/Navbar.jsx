@@ -33,7 +33,7 @@ useEffect(() => {
 
 
 return (
-  <nav className="w-full absolute top-0 left-0 bg-gradient-to-r from-slate-900 via-blue-500 to-slate-900 border-b border-slate-950 shadow-[0px_2px_4px_rgba(0,0,0,1)] z-[999]">
+  <nav className="w-full fixed top-0 left-0 bg-gradient-to-r from-slate-900 via-blue-500 to-slate-900 border-b border-slate-950 shadow-[0px_2px_4px_rgba(0,0,0,.6)] z-[999]">
     <div className="w-full flex justify-between px-2 sm:px-6 lg:px-8">
       <div className="w-full relative flex h-20 items-center justify-between">
         <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -102,8 +102,10 @@ return (
               <Link
                 href="/properties/add"
                 className={`${
-                  pathname === "/properties/add" ? "bg-black" : ""
-                } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                  pathname === "/properties/add"
+                    ? "border-b-2 border-blue-500"
+                    : ""
+                } text-white rounded-md px-5 py-3`}
               >
                 Add Property
               </Link>
