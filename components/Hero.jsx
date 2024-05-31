@@ -10,7 +10,7 @@ const Hero = () => {
             Find Your Dream Rental
           </h1>
           <p className="my-4 text-xl text-white">
-            Experience the property that suits your needs.
+            Experience joyful living.
           </p>
         </div>
         <PropertySearchForm />

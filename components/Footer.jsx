@@ -9,8 +9,8 @@ const Footer = () => {
     <footer className="relative flex bg-black h-[500px] py-4">
       <div className="container mx-auto flex justify-center md:flex-row items-center px-4">
         <div className="w-22 flex flex-col items-center text-white">
-          <Image src={logo} alt="Logo" className="h-12 w-auto" />
-          <span className="w-full mt-2">Ellie Castelli</span>
+          <Image src={logo} alt="Logo" className="h-20 w-auto" />
+          <span className="w-full mt-2 text-2xl font-ChopinScript">Ellie Castelli</span>
         </div>
 
         <div className="w-full flex justify-center absolute bottom-0 left-0">

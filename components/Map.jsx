@@ -49,7 +49,7 @@ useEffect(() => {
             shadowUrl: shadow.src,
             iconSize: [35, 50],
             shadowSize: [80, 54],
-            shadowAnchor: [25, 40],
+            shadowAnchor: [25, 30],
           });
 
           L.marker(

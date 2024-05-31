@@ -10,10 +10,14 @@ const Properties = () => {
     const [properties, setProperties] = useState([])
     const [loading, setLoading] = useState(true)
     const [page, setPage] = useState(1)
-    const [pageSize, setPageSize] = useState(3)
+    const [pageSize, setPageSize] = useState(null)
     const [totalItems, setTotalItems] = useState(0)
+    const [width, setWidth] = useState(
+      typeof window !== "undefined" && window.innerWidth
+    );
+
     
-    useEffect(() => {
+  useEffect(() => {
         const getProperties = async () => {
          try {
         const res = await fetch(`/api/properties?page=${page}&pageSize=${pageSize}`)
@@ -32,12 +36,38 @@ const Properties = () => {
        }
         }
         getProperties()
+
        
     },[page, pageSize])  // rerender when page changes!
 
     const handlePageChange = (newPage) => {
           setPage(newPage)
     }
+
+     useEffect(() => {
+       const handleResize = () => {
+         setWidth(window.innerWidth);
+       };
+       window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+       
+     }, [width]);
+
+useEffect(() => {
+console.log(width)
+  if (width >= 1024) {
+    setPageSize(3);
+  }else
+  if(width < 1024 && width > 768){
+    setPageSize(2)
+  }else
+  if (width <= 768) {
+    setPageSize(1);
+  }
+},[width])
+
+
+
 
   return loading ? (
     <Spinner loading={loading} />
@@ -47,7 +77,7 @@ const Properties = () => {
         {properties.length === 0 ? (
           <p>No properties found</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className={`grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6`}>
             {properties.map((property) => (
               <PropertyCard key={property._id} property={property} />
             ))}
