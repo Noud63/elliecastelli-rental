@@ -91,7 +91,7 @@ const FeaturedPropertyCard = ({property}) => {
             </div>
             <Link
               href={`/properties/${property._id}`}
-              className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm max-md:w-full"
+              className="h-[36px] bg-gradient-to-t from-blue-900 via-blue-500 to-blue-300 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm max-md:w-full"
             >
               Details
             </Link>

@@ -4,8 +4,8 @@ import { Gallery, Item } from "react-photoswipe-gallery"
 const PropertyImages = ({images}) => {
   return (
     <Gallery>
-      <section className="bg-blue-50 p-4">
-        <div className="container mx-auto">
+      <section className="bg-blue-50 pb-20">
+        <div className="container mx-auto px-6">
           {images.length === 1 ? (
             <Item
               original={images[0]}
@@ -19,7 +19,7 @@ const PropertyImages = ({images}) => {
                   onClick={open}
                   src={image}
                   alt=""
-                  className="object.cover w-full h-[400px] mx-auto rounded-xl"
+                  className="object.cover w-full h-[400px] mx-auto rounded-xl cursor-pointer"
                   width="0"
                   height="0"
                   sizes="100vw"
@@ -50,7 +50,7 @@ const PropertyImages = ({images}) => {
                         onClick={open}
                         src={image}
                         alt=""
-                        className="object.cover w-full h-[400px] mx-auto rounded-xl"
+                        className="object.cover w-full h-[400px] mx-auto rounded-xl cursor-pointer"
                         width="0"
                         height="0"
                         sizes="100vw"

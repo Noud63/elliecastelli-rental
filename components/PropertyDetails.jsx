@@ -1,5 +1,4 @@
 import React from "react";
-import PropertyMap from "./PropertyMap";
 import {
   FaBed,
   FaRulerCombined,
@@ -9,9 +8,16 @@ import {
   FaMapMarker,
 } from "react-icons/fa";
 
+import dynamic from "next/dynamic";
+
+const Map = dynamic(() => import("@/components/map"), {
+  ssr: false,
+});
+
 
 const PropertyDetails = ({ property }) => {
-  return (
+
+return (
     <main>
       <div className="bg-white p-6 rounded-lg shadow-md text-center md:text-left">
         <div className="text-gray-500 mb-4">{property.type}</div>
@@ -94,7 +100,7 @@ const PropertyDetails = ({ property }) => {
         </ul>
       </div>
       <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-        <PropertyMap property={property}/>
+        <Map property={property}/>
       </div>
     </main>
   );
