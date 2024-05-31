@@ -35,7 +35,7 @@ useEffect(() => {
               data.results[0].geometry.lat,
               data.results[0].geometry.lng
             ),
-            zoom: 12,
+            zoom: 10,
           });
 
           // Create a MapTiler Layer inside Leaflet

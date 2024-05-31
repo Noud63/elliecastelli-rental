@@ -70,9 +70,9 @@ return (
           <Link className="flex flex-shrink-0 items-center" href="/">
             <Image className="h-12 w-auto" src={logo} alt="PropertyPulse" />
 
-            <div className="hidden md:flex text-white text-2xl font-bold ml-4 flex-col text-center">
-              <span>Ellie Castelli</span>
-              <span className="text-sm font-normal">Rental Division</span>
+            <div className="hidden md:flex text-white ml-2 flex-col text-center">
+              <span className="font-ChopinScript text-4xl ">Ellie Castelli</span>
+              <span className="text-[12px]">- Rental Division -</span>
             </div>
           </Link>
         </div>

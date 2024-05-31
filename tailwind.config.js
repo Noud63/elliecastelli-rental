@@ -8,11 +8,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
+        ChopinScript: ["ChopinScript"],
       },
       gridTemplateColumns: {
-        '70/30': '70% 28%',
-      }
+        "70/30": "70% 28%",
+      },
     },
   },
   plugins: [],
