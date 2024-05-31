@@ -15,50 +15,50 @@ const map = useRef(null);
 useEffect(() => {
    const getCoords = () => {
       opencage
-         .geocode({
-           q: `${property.location.street}, ${property.location.city}, ${property.location.state}`,
-           key: "83acc005d5c541c1aa6a437c12a3e239",
-         })
-         .then((data) => {
-           if (data.results.length > 0) {
-             const place = data.results[0];
-             console.log(place)
-           } else {
-             console.log("status", data.status.message);
-             console.log("total_results", data.total_results);
-           }
+        .geocode({
+          q: `${property.location.street}, ${property.location.city}, ${property.location.state}`,
+          key: process.env.NEXT_PUBLIC_OPENCAGE_API_KEY,
+        })
+        .then((data) => {
+          if (data.results.length > 0) {
+            const place = data.results[0];
+            console.log(place);
+          } else {
+            console.log("status", data.status.message);
+            console.log("total_results", data.total_results);
+          }
 
-           if (map.current) return; // stops map from intializing more than once
+          if (map.current) return; // stops map from intializing more than once
 
-           map.current = new L.Map(mapContainer.current, {
-             center: L.latLng(
-               data.results[0].geometry.lat,
-               data.results[0].geometry.lng
-             ),
-             zoom: 12,
-           });
+          map.current = new L.Map(mapContainer.current, {
+            center: L.latLng(
+              data.results[0].geometry.lat,
+              data.results[0].geometry.lng
+            ),
+            zoom: 12,
+          });
 
-           // Create a MapTiler Layer inside Leaflet
-           const mtLayer = new MaptilerLayer({
-             // Get your free API key at https://cloud.maptiler.com
-             apiKey: "qBl6OoCiwZwgTFpGish5",
-           }).addTo(map.current);
+          // Create a MapTiler Layer inside Leaflet
+          const mtLayer = new MaptilerLayer({
+            // Get your free API key at https://cloud.maptiler.com
+            apiKey: process.env.NEXT_PUBLIC_MAPTILER_API_KEY,
+          }).addTo(map.current);
 
-           const icon = new L.Icon({
-             iconUrl: pin.src,
-             shadowUrl: shadow.src,
-             iconSize: [35, 50],
-             shadowSize: [80, 54],
-             shadowAnchor: [25, 40],
-           });
+          const icon = new L.Icon({
+            iconUrl: pin.src,
+            shadowUrl: shadow.src,
+            iconSize: [35, 50],
+            shadowSize: [80, 54],
+            shadowAnchor: [25, 40],
+          });
 
-           L.marker(
-             [data.results[0].geometry.lat, data.results[0].geometry.lng],
-             {
-               icon,
-             }
-           ).addTo(map.current);
-         });
+          L.marker(
+            [data.results[0].geometry.lat, data.results[0].geometry.lng],
+            {
+              icon,
+            }
+          ).addTo(map.current);
+        });
    
    }
    getCoords()
