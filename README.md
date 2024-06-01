@@ -2,7 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Ellie Castelli Rental Division
 
-<b>NextJs 14 App Router Application</b>
+<b>NextJs 14 App Router Application</b><br /><br />
+
+<b>Build with:</b><br /><br />
+Nextjs<br />
+Tailwind <br />
+MongoDB <br />
+
 
 
 ![ec-r](https://github.com/Noud63/elliecastelli-rental/assets/38325801/6516f549-878a-4a91-91fe-5239b6849628)
