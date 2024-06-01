@@ -2,9 +2,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Ellie Castelli Rental Division
 
-<b>NextJs 14 App Router Application</b><br /><br />
+<b>NextJs 14 App Router Application</b><br />
 
-<b>Build with:</b><br /><br />
+<b>Build with:</b><br />
 Nextjs<br />
 Tailwind <br />
 MongoDB <br />
