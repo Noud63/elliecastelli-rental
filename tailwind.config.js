@@ -13,6 +13,9 @@ module.exports = {
       gridTemplateColumns: {
         "70/30": "70% 28%",
       },
+      screens: {
+        xlg: "1050px",
+      },
     },
   },
   plugins: [],

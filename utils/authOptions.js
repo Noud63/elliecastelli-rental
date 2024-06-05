@@ -1,8 +1,9 @@
 import GoogleProvider from 'next-auth/providers/google'
 import connectDB from '@/config/database';
 import User from '@/models/User';
-//import Credentials from 'next-auth/providers/credentials';
-// import FacebookProvider from "next-auth/providers/facebook";
+import CredentialsProvider from "next-auth/providers/credentials";
+import FacebookProvider from "next-auth/providers/facebook";
+import GithubProvider from "next-auth/providers/github";
 
 export const authOptions = {
   providers: [
@@ -17,11 +18,65 @@ export const authOptions = {
         },
       },
     }),
-    // FacebookProvider({
-    //   clientId: process.env.FACEBOOK_CLIENT_ID,
-    //   clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    // }),
+
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    }),
+
+    GithubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    }),
+
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: {
+          label: "email:",
+          type: "text",
+          placeholder: "email",
+        },
+        password: {
+          label: "password:",
+          type: "password",
+          placeholder: "password",
+        },
+      },
+      async authorize(credentials, req) {
+        try {
+          const foundUser = await User.findOne({ email: credentials.email })
+            .lean()
+            .exec();
+
+          if (foundUser) {
+            console.log("User exist");
+            const match = await bcrypt.compare(
+              credentials.password,
+              foundUser.password
+            );
+
+            if (match) {
+              console.log("You are logged in");
+              delete foundUser.password;
+
+              if (foundUser.email === "noudvandun@gmail.com") {
+                foundUser["role"] = "admin";
+              } else {
+                foundUser["role"] = "Unverified Email";
+              }
+
+              return foundUser;
+            }
+          }
+        } catch (error) {
+          console.log(error);
+        }
+        return null;
+      },
+    }),
   ],
+
   callbacks: {
     // Invoked on successful signin
     async signIn({ profile }) {
@@ -53,6 +108,5 @@ export const authOptions = {
       // 3. Return session
       return session;
     },
-    
   },
 };

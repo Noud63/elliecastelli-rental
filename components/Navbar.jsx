@@ -71,7 +71,9 @@ return (
             <Image className="h-12 w-auto" src={logo} alt="PropertyPulse" />
 
             <div className="hidden md:flex text-white ml-2 flex-col text-center">
-              <span className="font-ChopinScript text-4xl ">Ellie Castelli</span>
+              <span className="font-ChopinScript text-4xl ">
+                Ellie Castelli
+              </span>
               <span className="text-[12px]">- Rental Division -</span>
             </div>
           </Link>
@@ -117,18 +119,14 @@ return (
         {!session && (
           <div className="hidden md:block">
             <div className="flex items-center">
-              {providers &&
-                Object.values(providers).map((provider, index) => (
-                  <button
-                    onClick={() => signIn(provider.id)}
-                    key={index}
-                    className="flex items-center text-white  
-                    hover:bg-gray-900 hover:text-white rounded-md px-5 py-3"
-                  >
-                    <FaGoogle className="text-white mr-2" />
-                    <span>Login or Register</span>
-                  </button>
-                ))}
+              <Link
+                href="/api/auth/signin?callbackUrl=/"
+                className="flex items-center text-white  
+                    hover:bg-blue-600 rounded-md px-5 py-3"
+              >
+                <FaGoogle className="text-white mr-2" />
+                <span className="text-white">Login or Register</span>
+              </Link>
             </div>
           </div>
         )}
@@ -269,7 +267,17 @@ return (
               Add Property
             </Link>
           )}
-          {!session &&
+
+          <Link
+            href="/api/auth/signin?callbackUrl=/"
+            className="flex items-center text-white  
+                    hover:bg-blue-600 rounded-md px-5 py-3"
+          >
+            <FaGoogle className="text-white mr-2" />
+            <span className="text-white">Login or Register</span>
+          </Link>
+          
+          {/* {!session &&
             providers &&
             Object.values(providers).map((provider, index) => (
               <button
@@ -280,7 +288,7 @@ return (
                 <FaGoogle className="text-white" />
                 <span>Login or Register</span>
               </button>
-            ))}
+            ))} */}
         </div>
       </div>
     )}
