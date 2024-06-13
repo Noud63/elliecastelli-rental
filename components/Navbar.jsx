@@ -1,7 +1,7 @@
 "use client"
 import React,{useState, useEffect} from 'react'
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
 import logo from "@/assets/images/ellielogo3.png";
 import profileDefault from "@/assets/images/profile.png";
 import Link from 'next/link';
@@ -28,7 +28,6 @@ useEffect(() => {
   }
     setAuthProviders()
 },[])
-
 
 
 return (

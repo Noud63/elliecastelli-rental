@@ -1,5 +1,6 @@
 import connectDB from "@/config/database";
 import Register from "@/models/Register";
+import User from "@/models/User";
 import bcrypt from "bcrypt"
 
 export const POST = async (request) => {
@@ -10,7 +11,7 @@ export const POST = async (request) => {
     const { name, email, username, password } = await request.json();
 
     //Find user in database
-    const user = await Register.findOne({ email: email });
+    const user = await User.findOne({ email: email });
 
     if (user) {
       return new Response("User already exist!", { status: 400 });
@@ -28,7 +29,7 @@ export const POST = async (request) => {
     //    });
     // }
 
-    const newUser = await Register.create({
+    const newUser = await User.create({
          email: email,
          name: name,
          username: username,

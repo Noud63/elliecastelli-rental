@@ -1,16 +1,14 @@
 "use client";
 import { useState } from "react";
-import { FaPaperPlane } from "react-icons/fa";
 import { toast } from "react-toastify";
-import {Button} from '@/components/ui/button'
-import {Input} from '@/components/ui/Input'
-import {Label} from '@/components/ui/label'
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { SendHorizontal } from "lucide-react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const RegistrationForm = () => {
-
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -24,7 +22,7 @@ const RegistrationForm = () => {
       name,
       username,
       email,
-      password
+      password,
     };
 
     try {
@@ -148,7 +146,6 @@ const RegistrationForm = () => {
           Already an account? <ArrowRight size={16} />
           <Link href="/signIn">Login</Link>
         </div>
-
       </form>
     </div>
   );

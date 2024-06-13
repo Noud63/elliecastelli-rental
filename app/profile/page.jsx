@@ -14,6 +14,8 @@ const profileImage = session?.user?.image
 const profileName = session?.user?.name
 const profileEmail = session?.user?.email
 
+console.log(session)
+
 const [properties, setProperties] = useState([])
 const [loading, setLoading] = useState(true)
 

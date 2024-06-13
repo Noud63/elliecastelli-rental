@@ -51,20 +51,23 @@ export const authOptions = {
 
           const foundUser = await User.findOne({ email: credentials.email });
 
-          console.log(credentials.password, foundUser);
+          console.log(foundUser)
 
-          if (foundUser) {
-            console.log("User exist");
-            const match = await bcrypt.compare(
-              credentials.password,
-              foundUser.password
-            );
-
-            if (match) {
-              console.log("You are logged in");
-              return foundUser;
-            }
+          if (!foundUser) {
+            throw new Error("Invalid email or password");
           }
+
+          const match = await bcrypt.compare(
+            credentials.password,
+            foundUser.password
+          );
+
+          if (!match) {
+            throw new Error("Password did not matched");
+          }
+          
+          return foundUser;
+
         } catch (error) {
           console.log(error);
         }
@@ -73,26 +76,44 @@ export const authOptions = {
     }),
   ],
 
+  pages: {
+    signOut: "/"
+  },
+
+  session: {
+    strategy: "jwt",
+  },
+
   callbacks: {
     // Invoked on successful signin
-    async signIn({ profile }) {
+    async signIn({ user, account }) {
+      
       // 1. Connect to database
       await connectDB();
       // 2. Check if user exists
-      const userExists = await User.findOne({ email: profile.email });
+      const userExists = await User.findOne({ email: user.email });
       // 3. If not, add user to database
       if (!userExists) {
         //Truncate username if too long
-        const username = profile.name.slice(0, 20);
+        const username = user.name.slice(0, 20);
         await User.create({
-          email: profile.email,
+          email: user.email,
           username: username,
-          image: profile.picture,
+          image: user.picture,
         });
+      
       }
 
       // 4. Return true to allow sign in
       return true;
+    },
+
+    async jwt({ token, user }) {
+      if (user) {
+        console.log(user, token)
+        token.name=user.name
+      }
+      return token;
     },
 
     //Modify the session object
