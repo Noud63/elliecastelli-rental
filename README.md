@@ -7,6 +7,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 <b>Build with:</b><br />
 Next.js<br />
 NextAuth.js <br />
+OAuth 2.0 <br />
 MongoDB <br />
 Tailwind <br />
 Shadcn/ui <br />
