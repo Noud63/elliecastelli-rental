@@ -5,11 +5,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 <b>NextJs 14 App Router Application</b><br />
 
 <b>Build with:</b><br />
-NextJs<br />
+Next.js<br />
+NextAuth.js <br />
+MongoDB <br />
 Tailwind <br />
+Shadcn/ui <br />
+Lucide-react <br />
+tabler/icons-react <br />
 Cloudinary <br />
 opencage-api-client (geocoding) <br />
-MongoDB <br />
 Leaflet OpenStreetMap <br /><br />
 
 ![ec-r](https://github.com/Noud63/elliecastelli-rental/assets/38325801/6516f549-878a-4a91-91fe-5239b6849628)<br /><br />

@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import logo from "@/assets/images/ellielogo3.png";
 import profileDefault from "@/assets/images/profile.png";
-import {FaGoogle} from 'react-icons/fa'
 import Link from 'next/link';
 import { signIn, signOut, useSession, getProviders} from 'next-auth/react'
 import UnreadMessageCount from './UnreadMessageCount';
@@ -74,7 +73,7 @@ return (
               <span className="font-ChopinScript text-4xl ">
                 Ellie Castelli
               </span>
-              <span className="text-[12px]">- Rental Division -</span>
+              <span className="text-[10px]">- Rental Division -</span>
             </div>
           </Link>
         </div>
@@ -120,12 +119,19 @@ return (
           <div className="hidden md:block">
             <div className="flex items-center">
               <Link
-                href="/api/auth/signin?callbackUrl=/"
+                href="/signIn"
                 className="flex items-center text-white  
-                    hover:bg-blue-600 rounded-md px-5 py-3"
+                     rounded-md px-5 py-3"
               >
-                <FaGoogle className="text-white mr-2" />
-                <span className="text-white">Login or Register</span>
+                <span className="text-white">Login</span>
+              </Link>
+
+              <Link
+                href="/register"
+                className="flex items-center text-white  
+                     rounded-md px-5 py-3 cursor-pointer"
+              >
+                <span className="text-white">Register</span>
               </Link>
             </div>
           </div>
@@ -269,14 +275,21 @@ return (
           )}
 
           <Link
-            href="/api/auth/signin?callbackUrl=/"
+            href="/signIn"
             className="flex items-center text-white  
-                    hover:bg-blue-600 rounded-md px-5 py-3"
+                   rounded-md pl-3 py-3"
           >
-            <FaGoogle className="text-white mr-2" />
-            <span className="text-white">Login or Register</span>
+            <span className="text-white">Login</span>
           </Link>
-          
+
+          <Link
+            href="/register"
+            className="flex items-center text-white  
+                     rounded-md pl-3 py-3 cursor-pointer"
+          >
+            <span className="text-white">Register</span>
+          </Link>
+
           {/* {!session &&
             providers &&
             Object.values(providers).map((provider, index) => (

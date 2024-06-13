@@ -1,9 +1,10 @@
-import GoogleProvider from 'next-auth/providers/google'
-import connectDB from '@/config/database';
-import User from '@/models/User';
+import GoogleProvider from "next-auth/providers/google";
+import connectDB from "@/config/database";
+import User from "@/models/User";
 import CredentialsProvider from "next-auth/providers/credentials";
 import FacebookProvider from "next-auth/providers/facebook";
 import GithubProvider from "next-auth/providers/github";
+import bcrypt from "bcrypt";
 
 export const authOptions = {
   providers: [
@@ -19,35 +20,38 @@ export const authOptions = {
       },
     }),
 
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_CLIENT_ID,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    }),
+    // FacebookProvider({
+    //   clientId: process.env.FACEBOOK_CLIENT_ID,
+    //   clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    // }),
 
-    GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    }),
+    // GithubProvider({
+    //   clientId: process.env.GITHUB_CLIENT_ID,
+    //   clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    // }),
 
     CredentialsProvider({
       name: "Credentials",
       credentials: {
         email: {
-          label: "email:",
-          type: "text",
+          label: "Email:",
+          type: "email",
           placeholder: "email",
         },
         password: {
-          label: "password:",
+          label: "Password:",
           type: "password",
           placeholder: "password",
         },
       },
+
       async authorize(credentials, req) {
         try {
-          const foundUser = await User.findOne({ email: credentials.email })
-            .lean()
-            .exec();
+          if (!credentials) return null;
+
+          const foundUser = await User.findOne({ email: credentials.email });
+
+          console.log(credentials.password, foundUser);
 
           if (foundUser) {
             console.log("User exist");
@@ -58,14 +62,6 @@ export const authOptions = {
 
             if (match) {
               console.log("You are logged in");
-              delete foundUser.password;
-
-              if (foundUser.email === "noudvandun@gmail.com") {
-                foundUser["role"] = "admin";
-              } else {
-                foundUser["role"] = "Unverified Email";
-              }
-
               return foundUser;
             }
           }
