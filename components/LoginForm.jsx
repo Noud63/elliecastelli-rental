@@ -57,7 +57,7 @@ const LoginForm = () => {
 
  return (
    <div className="signInBox mt-40 w-full flex justify-center flex-col max-w-[400px] mx-auto p-4 border-2 border-white rounded-lg">
-     <h3 className="w-full text-xl text-blue-900 font-bold mb-6 flex justify-center">
+     <h3 className="w-full text-xl text-blue-900 font-bold mb-4 flex justify-center">
        Login
      </h3>
 
@@ -69,7 +69,7 @@ const LoginForm = () => {
          type="email"
          placeholder="Email"
          value={email}
-         className="focus-visible:ring-0"
+         className="focus-visible:ring-0 mb-2 mt-2"
          onChange={(e) => setEmail(e.target.value)}
          required
        />
@@ -81,7 +81,7 @@ const LoginForm = () => {
            type={isView ? "text" : "password"}
            value={password}
            placeholder="**************"
-           className="mb-4 focus-visible:ring-0"
+           className="mb-4 focus-visible:ring-0 mt-2"
            onChange={(e) => setPassword(e.target.value)}
            required
          />
@@ -107,6 +107,14 @@ const LoginForm = () => {
          <LogIn size={20} className="mr-2" />
          Login
        </Button>
+       <div className="w-full mt-2 flex items-center gap-1">
+         Don't have an account? <ArrowRight size={16} />
+         <Link href="/register">Register</Link>
+       </div>
+
+       <div className="relative w-full h-[1px] bg-blue-900 mt-7 mb-8 flex justify-center items-center">
+             <div className="absolute w-[30px] h-[30px] rounded-full bg-white flex justify-center">or</div>
+       </div>
 
        <Button className="w-full text-md text-blue-950 bg-slate-200 py-6 mb-2 mt-4 flex justify-start hover:bg-slate-200">
          <IconBrandGithub className="text-blue-900 mr-2" /> Login with Github
@@ -117,11 +125,6 @@ const LoginForm = () => {
          Login with Google
        </Button>
      </form>
-
-     <div className="w-full mt-4 flex items-center gap-1">
-       Don't have an account? <ArrowRight size={16} />
-       <Link href="/register">Register</Link>
-     </div>
    </div>
  );
 }

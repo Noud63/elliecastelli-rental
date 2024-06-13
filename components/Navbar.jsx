@@ -257,8 +257,8 @@ return (
           <Link
             href="/properties"
             className={`${
-              pathname === "/properties" ? "bg-black" : ""
-            } text-white block rounded-md px-3 py-2 text-base font-medium`}
+              pathname === "/properties" ? "border-b-2 border-blue-400" : ""
+            } text-white block  px-3 py-2 text-base font-medium`}
           >
             Properties
           </Link>
@@ -266,8 +266,10 @@ return (
             <Link
               href="/properties/add"
               className={`${
-                pathname === "/properties/add" ? "" : ""
-              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+                pathname === "/properties/add"
+                  ? "border-b-2 border-blue-400"
+                  : ""
+              } text-white block px-3 py-2 text-base font-medium`}
             >
               Add Property
             </Link>
@@ -275,18 +277,20 @@ return (
 
           <Link
             href="/signIn"
-            className="flex items-center text-white  
-                   rounded-md pl-3 py-3"
+            className={`${
+              pathname === "/signIn" ? "border-b-2 border-blue-400" : ""
+            } text-white block px-3 py-2 text-base font-medium`}
           >
-            <span className="text-white">Login</span>
+            Login
           </Link>
 
           <Link
             href="/register"
-            className="flex items-center text-white  
-                     rounded-md pl-3 py-3 cursor-pointer"
+            className={`${
+              pathname === "/register" ? "border-b-2 border-blue-400" : ""
+            } text-white block px-3 py-2 text-base font-medium`}
           >
-            <span className="text-white">Register</span>
+           Register
           </Link>
 
           {/* {!session &&
