@@ -2,8 +2,9 @@ import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaBed, FaBath, FaRulerCombined, FaMoneyBill, FaMapMarker} from 'react-icons/fa'
+import Spinner from './Spinner';
 
-const PropertyCard = ({property}) => {
+const PropertyCard = ({property, loading}) => {
 
   const getRateDisplay = () => {
     const { rates } = property
@@ -21,7 +22,7 @@ const PropertyCard = ({property}) => {
   return (
     <div className="rounded-xl relative shadow-[0px_2px_4px_rgba(23,37,84,.4)] bg-white">
       
-        <Image
+        {loading ? <Spinner loading={loading} /> : <Image
           src={property.images[0]} 
           alt=""
           height={0}
@@ -29,7 +30,7 @@ const PropertyCard = ({property}) => {
           sizes="100vw"
           className="w-full h-auto rounded-t-xl"
           priority={true}
-        />
+        />}
       <div className="p-4">
         <div className="text-left md:text-center mb-6">
           <h3 className="text-xl font-bold">{property.name}</h3>

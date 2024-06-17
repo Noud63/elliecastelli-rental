@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
+import { IconBrandGithub, IconBrandGoogle, IconBrandFacebook } from "@tabler/icons-react";
 import Link from "next/link";
 import { LogIn, ArrowRight, Eye, EyeOff } from "lucide-react";
 import { toast } from 'react-toastify';
@@ -112,19 +112,34 @@ const LoginForm = () => {
          <Link href="/register">Register</Link>
        </div>
 
-       <div className="relative w-full h-[1px] bg-blue-900 mt-7 mb-8 flex justify-center items-center">
-             <div className="absolute w-[30px] h-[30px] rounded-full bg-white flex justify-center">or</div>
+       <div className="relative w-full h-[1px] bg-blue-900 mt-7 mb-4 flex justify-center items-center">
+         <div className="absolute w-[30px] h-[30px] rounded-full bg-white flex justify-center">
+           or
+         </div>
        </div>
-
-       <Button className="w-full text-md text-blue-950 bg-slate-200 py-6 mb-2 mt-4 flex justify-start hover:bg-slate-200">
-         <IconBrandGithub className="text-blue-900 mr-2" /> Login with Github
-       </Button>
-
-       <Button className="w-full text-md text-blue-950 bg-slate-200 py-6 flex justify-start hover:bg-slate-200 ">
-         <IconBrandGoogle className="text-blue-900 mr-2" />
-         Login with Google
-       </Button>
      </form>
+
+     <Button
+       className="w-full text-md text-blue-950 bg-slate-200 py-6 mt-4 flex justify-start hover:bg-slate-200"
+       onClick={() => signIn("facebook", { email, password })}
+     >
+       <IconBrandFacebook className="text-blue-900 mr-2" /> Login with Facebook
+     </Button>
+
+     <Button
+       className="w-full text-md text-blue-950 bg-slate-200 py-6 mb-2 mt-2 flex justify-start hover:bg-slate-200"
+       onClick={() => signIn("github", { email, password })}
+     >
+       <IconBrandGithub className="text-blue-900 mr-2" /> Login with Github
+     </Button>
+
+     <Button
+       className="w-full text-md text-blue-950 bg-slate-200 py-6 flex justify-start hover:bg-slate-200 "
+       onClick={() => signIn("google", { email, password })}
+     >
+       <IconBrandGoogle className="text-blue-900 mr-2" />
+       Login with Google
+     </Button>
    </div>
  );
 }

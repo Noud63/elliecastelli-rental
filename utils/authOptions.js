@@ -20,10 +20,10 @@ export const authOptions = {
       },
     }),
 
-    // FacebookProvider({
-    //   clientId: process.env.FACEBOOK_CLIENT_ID,
-    //   clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    // }),
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    }),
 
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
