@@ -107,9 +107,19 @@ const LoginForm = () => {
          <LogIn size={20} className="mr-2" />
          Login
        </Button>
+
        <div className="w-full mt-2 flex items-center gap-1">
          Don't have an account? <ArrowRight size={16} />
-         <Link href="/register">Register</Link>
+         <Link href="/register" className="text-red-700">
+           Register
+         </Link>
+       </div>
+
+       <div className="w-full mt-2 flex items-center gap-1">
+         Forgot your password? <ArrowRight size={16} className="ml-1" />
+         <Link href="/resetpassword" className="text-red-700">
+           Reset password
+         </Link>
        </div>
 
        <div className="relative w-full h-[1px] bg-blue-900 mt-7 mb-4 flex justify-center items-center">
@@ -134,7 +144,7 @@ const LoginForm = () => {
      </Button>
 
      <Button
-       className="w-full text-md text-blue-950 bg-slate-200 py-6 flex justify-start hover:bg-slate-200 "
+       className="w-full text-md text-blue-950 bg-slate-200 py-6 flex justify-start hover:bg-slate-200"
        onClick={() => signIn("google", { email, password })}
      >
        <IconBrandGoogle className="text-blue-900 mr-2" />
