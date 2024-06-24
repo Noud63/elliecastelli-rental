@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^3.2.0",
     "@hookform/resolvers": "^3.6.0",
     "@maptiler/leaflet-maptilersdk": "^2.0.0",
     "@radix-ui/react-label": "^2.0.2",
@@ -21,10 +22,11 @@
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "lucide-react": "^0.394.0",
-    "mongodb": "^6.5.0",
+    "mongodb": "^6.7.0",
     "mongoose": "^8.3.2",
     "next": "14.2.2",
     "next-auth": "^4.24.7",
+    "node-mailer": "^0.1.1",
     "opencage-api-client": "^1.0.5",
     "photoswipe": "^5.4.3",
     "react": "^18",
@@ -37,6 +39,7 @@
     "react-share": "^5.1.0",
     "react-spinners": "^0.13.8",
     "react-toastify": "^10.0.5",
+    "resend": "^3.3.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"

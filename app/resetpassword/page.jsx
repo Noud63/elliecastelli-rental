@@ -17,15 +17,16 @@ const [success, setSuccess] = useState(false)
 const [error, setError] = useState(false)
 
 useEffect(() => {
+    let timer;
    if(success === true || error === true ) {
-    const timer = setTimeout(() => {
+    timer = setTimeout(() => {
  setSuccess(false)
  setError(false)
     }, 5000)
+   }
     return () => {
       clearTimeout(timer);
     };
-   }
 },[success, error])
 
 const handleSubmit = async(e) => {

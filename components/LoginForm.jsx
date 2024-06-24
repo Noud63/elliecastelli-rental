@@ -3,9 +3,13 @@ import React,{useState} from 'react'
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { IconBrandGithub, IconBrandGoogle, IconBrandFacebook } from "@tabler/icons-react";
+import {
+  IconBrandGithub,
+  IconBrandGoogle,
+  IconBrandFacebook
+} from "@tabler/icons-react";
 import Link from "next/link";
-import { LogIn, ArrowRight, Eye, EyeOff } from "lucide-react";
+import { LogIn, ArrowRight, Eye, EyeOff, Mail } from "lucide-react";
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
@@ -24,7 +28,6 @@ const LoginForm = () => {
  const { data: session} = useSession()
 
  const user = session?.user;
- console.log(user)
  if (user) redirect("/");
 
  const handleSubmit = async(e) => {
@@ -108,29 +111,33 @@ const LoginForm = () => {
          Login
        </Button>
 
-       <div className="w-full mt-2 flex items-center gap-1">
+       <div className="w-full mt-2 flex items-center gap-1 text-gray-600">
          Don't have an account? <ArrowRight size={16} />
-         <Link href="/register" className="text-red-700">
-           Register
-         </Link>
+         <Link href="/register">Register</Link>
        </div>
 
-       <div className="w-full mt-2 flex items-center gap-1">
+       <div className="w-full mt-2 flex items-center gap-1 text-gray-600">
          Forgot your password? <ArrowRight size={16} className="ml-1" />
-         <Link href="/resetpassword" className="text-red-700">
-           Reset password
-         </Link>
+         <Link href="/resetpassword">Reset password</Link>
        </div>
 
-       <div className="relative w-full h-[1px] bg-blue-900 mt-7 mb-4 flex justify-center items-center">
+       <div className="relative w-full h-[1px] bg-blue-900 mt-8 mb-4 flex justify-center items-center">
          <div className="absolute w-[30px] h-[30px] rounded-full bg-white flex justify-center">
            or
          </div>
        </div>
      </form>
 
+     <Link href="/emailLogin">
+       <Button
+         className="w-full text-md text-blue-950 bg-slate-200 py-6 mt-4 mr-2 flex justify-start hover:bg-slate-200"
+       >
+         <Mail size={20} className="text-blue-900 mr-3" /> Login with Email
+       </Button>
+     </Link>
+
      <Button
-       className="w-full text-md text-blue-950 bg-slate-200 py-6 mt-4 flex justify-start hover:bg-slate-200"
+       className="w-full text-md text-blue-950 bg-slate-200 py-6 mt-2 flex justify-start hover:bg-slate-200"
        onClick={() => signIn("facebook", { email, password })}
      >
        <IconBrandFacebook className="text-blue-900 mr-2" /> Login with Facebook

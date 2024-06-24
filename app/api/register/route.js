@@ -20,15 +20,6 @@ export const POST = async (request) => {
      const salt = await bcrypt.genSalt(10);
      const hashedPassword = await bcrypt.hash(password, salt);
 
-    // if(!user){
-    //    await User.create({
-    //      email: email,
-    //      name: name,
-    //      username: username,
-    //      password: password,
-    //    });
-    // }
-
     const newUser = await User.create({
          email: email,
          name: name,

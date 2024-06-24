@@ -4,10 +4,26 @@ import User from "@/models/User";
 import CredentialsProvider from "next-auth/providers/credentials";
 import FacebookProvider from "next-auth/providers/facebook";
 import GithubProvider from "next-auth/providers/github";
+import EmailProvider from "next-auth/providers/email";
 import bcrypt from "bcrypt";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from "../lib/db"
 
 export const authOptions = {
+  adapter: MongoDBAdapter(clientPromise),
   providers: [
+    EmailProvider({
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
+      },
+      from: process.env.EMAIL_FROM,
+    }),
+
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -51,7 +67,7 @@ export const authOptions = {
 
           const foundUser = await User.findOne({ email: credentials.email });
 
-          console.log(foundUser)
+          console.log(foundUser);
 
           if (!foundUser) {
             throw new Error("Invalid email or password");
@@ -65,9 +81,8 @@ export const authOptions = {
           if (!match) {
             throw new Error("Password did not matched");
           }
-          
-          return foundUser;
 
+          return foundUser;
         } catch (error) {
           console.log(error);
         }
@@ -76,9 +91,10 @@ export const authOptions = {
     }),
   ],
 
-  pages: {
-    signOut: "/"
-  },
+  // pages: {
+  //   signOut: "/",
+  //   signIn:"/"
+  // },
 
   session: {
     strategy: "jwt",
@@ -87,7 +103,6 @@ export const authOptions = {
   callbacks: {
     // Invoked on successful signin
     async signIn({ user, account }) {
-      
       // 1. Connect to database
       await connectDB();
       // 2. Check if user exists
@@ -101,7 +116,6 @@ export const authOptions = {
           username: username,
           image: user.picture,
         });
-      
       }
 
       // 4. Return true to allow sign in
@@ -110,8 +124,8 @@ export const authOptions = {
 
     async jwt({ token, user }) {
       if (user) {
-        console.log(user, token)
-        token.name=user.name
+        console.log(user, token);
+        token.name = user.name;
       }
       return token;
     },
