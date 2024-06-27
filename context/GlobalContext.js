@@ -18,5 +18,6 @@ const [unreadCount, setUnreadCount] = useState(0);
 
 // Create custom hook to access context
 export function useGlobalContext() {
-    return useContext(GlobalContext)
+    
+    return useContext(GlobalContext);
 }

@@ -11,6 +11,8 @@ const [ isDeleted, setIsDeleted] = useState(false)
 
  const { unreadCount, setUnreadCount } = useGlobalContext();
 
+ console.log(message)
+
 const handleReadClick = async () => {
      try {
          const res = await fetch(`/api/messages/${message._id}`, {
@@ -19,6 +21,7 @@ const handleReadClick = async () => {
 
          if(res.status === 200) {
           const { read } = await res.json()
+          
           setIsRead(read)
           setUnreadCount((prevCount) => (read ? prevCount - 1 : prevCount + 1))
           if(read){
@@ -63,7 +66,7 @@ if(isDeleted){
       )}
       <h2 className="text-xl mb-4">
         <span className="font-bold">Property Inquiry:</span>{" "}
-        {message.property.name}
+        {message.name}
       </h2>
       <p className="text-gray-700">{message.body}</p>
 

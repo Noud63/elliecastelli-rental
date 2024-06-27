@@ -74,27 +74,29 @@ const handleDeleteProperty = async (propertyId) => {
 }
 
   return (
-    <section className="bg-blue-50">
-      <div className="container m-auto py-24">
-        <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
-          <h1 className="text-3xl font-bold mb-4">Your Profile</h1>
-          <div className="flex flex-col md:flex-row">
+    <section className="bg-blue-50 pt-32 h-screen">
+      <div className="container m-auto">
+        <div className="bg-white mb-4 shadow-md rounded-xl border m-4 md:m-0">
+          <h1 className="pl-4 py-2 text-white text-2xl font-bold mb-4 bg-gradient-to-r from-slate-700 via-blue-500 to-slate-700 rounded-t-lg">
+            Your Profile
+          </h1>
+          <div className="flex flex-col md:flex-row pb-8">
             <div className="md:w-1/4 mx-20 mt-10">
               <div className="mb-4">
                 <Image
-                  className="h-32 w-32 md:h-48 md:w-48 rounded-full mx-auto md:mx-0"
+                  className="h-20 w-20 rounded-full mx-auto md:mx-0"
                   src={profileImage || ProfileDefault}
-                  width={200}
-                  height={200}
+                  width={100}
+                  height={100}
                   alt="User"
                 />
               </div>
-              <h2 className="text-2xl mb-4">
-                <span className="font-bold block">Name: </span>
+              <h2 className="text-xl mb-4">
+                <span className="font-semibold block">Name: </span>
                 {profileName}
               </h2>
-              <h2 className="text-2xl">
-                <span className="font-bold block">Email: </span>
+              <h2 className="text-xl">
+                <span className="font-semibold block">Email: </span>
                 {profileEmail}
               </h2>
             </div>

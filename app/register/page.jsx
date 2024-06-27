@@ -1,19 +1,23 @@
 "use client";
 import { useState } from "react";
-import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SendHorizontal } from "lucide-react";
 import { ArrowRight } from "lucide-react";
+import { CircleX } from "lucide-react";
+import { CircleCheckBig } from "lucide-react";
 import Link from "next/link";
 
 const RegistrationForm = () => {
+
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [wasSubmitted, setWasSubmitted] = useState(false);
+  const [error, setError] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [message, setMessage] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,23 +37,24 @@ const RegistrationForm = () => {
         },
         body: JSON.stringify(data),
       });
+       console.log(res);
 
       if (res.status === 200) {
-        toast.success("Successfull Registration");
-        // setWasSubmitted(true);
-
-        // setTimeout(() => {
-        //   setWasSubmitted(false);
-        // }, 5000);
-      } else if (res.status === 400 || res.status === 401) {
+        setSuccess(true)
+        setTimeout(() => {
+          setSuccess(false);
+        }, 5000);
+      } else if (res.status === 409 || res.status === 400) {
         const dataObj = await res.json();
-        toast.error(dataObj.message);
-      } else {
-        toast.error("Error sending form");
-      }
+        console.log(dataObj.message);
+        setMessage(dataObj.message);
+        setError(true);
+        setTimeout(() => {
+          setError(false);
+        }, 5000);
+      } 
     } catch (error) {
       console.log(error);
-      toast.error("Error sending form");
     } finally {
       setName("");
       setUsername("");
@@ -133,7 +138,19 @@ const RegistrationForm = () => {
           />
         </div>
 
-        <div className="mt-8 mb-4">
+        {error && (
+          <div className="w-full flex flex-row items-center px-4 py-3 rounded-md bg-red-100">
+            <CircleX size={20} color="darkred" className="mr-2" />
+            <span className="text-red-800">{message}</span>
+          </div>
+        )}
+
+        {success && <div className="w-full flex flex-row items-center px-4 py-2 rounded-md bg-green-100 mb-2">
+          <CircleCheckBig size={20} color="green" className="mr-2" />
+          <span className="text-green-600">Successful registered!</span>
+        </div>}
+
+        <div className="mt-4 mb-4">
           <Button
             className="bg-gradient-to-r from-slate-600 via-blue-500 to-slate-600 text-white text-md py-6 rounded-lg w-full flex items-center justify-center"
             type="submit"

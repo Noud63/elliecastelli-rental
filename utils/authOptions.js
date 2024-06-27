@@ -1,16 +1,23 @@
 import GoogleProvider from "next-auth/providers/google";
 import connectDB from "@/config/database";
 import User from "@/models/User";
+import Register from "@/models/Register";
 import CredentialsProvider from "next-auth/providers/credentials";
 import FacebookProvider from "next-auth/providers/facebook";
 import GithubProvider from "next-auth/providers/github";
 import EmailProvider from "next-auth/providers/email";
 import bcrypt from "bcrypt";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import clientPromise from "../lib/db"
+import clientPromise from "../lib/db";
 
 export const authOptions = {
+
   adapter: MongoDBAdapter(clientPromise),
+
+  session: {
+    strategy: "jwt",
+  },
+
   providers: [
     EmailProvider({
       server: {
@@ -34,16 +41,13 @@ export const authOptions = {
           response_type: "code",
         },
       },
+      allowDangerousEmailAccountLinking: true,
     }),
 
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    }),
-
-    GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      allowDangerousEmailAccountLinking: true,
     }),
 
     CredentialsProvider({
@@ -65,9 +69,9 @@ export const authOptions = {
         try {
           if (!credentials) return null;
 
-          const foundUser = await User.findOne({ email: credentials.email });
-
-          console.log(foundUser);
+          const foundUser = await User.findOne({
+            email: credentials.email,
+          });
 
           if (!foundUser) {
             throw new Error("Invalid email or password");
@@ -83,6 +87,7 @@ export const authOptions = {
           }
 
           return foundUser;
+
         } catch (error) {
           console.log(error);
         }
@@ -91,47 +96,45 @@ export const authOptions = {
     }),
   ],
 
-  // pages: {
-  //   signOut: "/",
-  //   signIn:"/"
-  // },
-
-  session: {
-    strategy: "jwt",
+  pages: {
+    signIn: "/"
   },
 
   callbacks: {
     // Invoked on successful signin
-    async signIn({ user, account }) {
+    async signIn({ user, profile, account }) {
+        console.log(user)
       // 1. Connect to database
-      await connectDB();
-      // 2. Check if user exists
-      const userExists = await User.findOne({ email: user.email });
-      // 3. If not, add user to database
-      if (!userExists) {
-        //Truncate username if too long
-        const username = user.name.slice(0, 20);
-        await User.create({
-          email: user.email,
-          username: username,
-          image: user.picture,
-        });
+      if (account.provider === "google" || account.provider === "facebook") {
+        //  console.log(profile);
+        await connectDB();
+        // 2. Check if user exists
+        const userExists = await User.findOne({ email: profile.email });
+        // 3. If not, add user to database
+        if (!userExists) {
+          //Truncate username if too long
+        
+          await User.create({
+            email: profile.email,
+            username: profile.name,
+            image: profile.picture,
+          });
+          
+        }
       }
-
       // 4. Return true to allow sign in
       return true;
     },
 
     async jwt({ token, user }) {
       if (user) {
-        console.log(user, token);
-        token.name = user.name;
+        token.name = user.username;
       }
       return token;
     },
 
     //Modify the session object
-    async session({ session }) {
+    async session({ session, token }) {
       // 1. Get user from the database
       const user = await User.findOne({ email: session.user.email });
       // 2. Assign user id to the session

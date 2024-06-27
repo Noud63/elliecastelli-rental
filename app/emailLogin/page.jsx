@@ -6,17 +6,18 @@ import { Label } from "@/components/ui/label";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { LogIn, ArrowRight } from "lucide-react";
-import { toast } from "react-toastify";
 import { CircleCheckBig } from "lucide-react";
 import { CircleX } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
 const EmailLoginPage = () => {
+  
   const [email, setEmail] = useState("");
 
   const { data: session} = useSession()
 
+  
 useEffect(() => {
     if(session?.user){
         redirect("/")
@@ -79,4 +80,3 @@ useEffect(() => {
 
 export default EmailLoginPage;
 
-//  onClick={() => signIn("email", { email })}

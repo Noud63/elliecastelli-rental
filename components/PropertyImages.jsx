@@ -17,7 +17,7 @@ const PropertyImages = ({images}) => {
                 <Image
                   ref={ref}
                   onClick={open}
-                  src={image}
+                  src={images[0]}
                   alt=""
                   className="object.cover w-full h-[400px] mx-auto rounded-xl cursor-pointer"
                   width="0"

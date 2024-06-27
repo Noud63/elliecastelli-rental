@@ -38,8 +38,9 @@ const LoginForm = () => {
       email,
       password,
       redirect: false,
-      callbackUrl: "/",
     });
+
+console.log(res)
       
      if(res.ok === 200) {
         toast.success("Successfully logged in!")
@@ -144,14 +145,7 @@ const LoginForm = () => {
      </Button>
 
      <Button
-       className="w-full text-md text-blue-950 bg-slate-200 py-6 mb-2 mt-2 flex justify-start hover:bg-slate-200"
-       onClick={() => signIn("github", { email, password })}
-     >
-       <IconBrandGithub className="text-blue-900 mr-2" /> Login with Github
-     </Button>
-
-     <Button
-       className="w-full text-md text-blue-950 bg-slate-200 py-6 flex justify-start hover:bg-slate-200"
+       className="w-full text-md text-blue-950 bg-slate-200 py-6 flex justify-start hover:bg-slate-200 mt-2"
        onClick={() => signIn("google", { email, password })}
      >
        <IconBrandGoogle className="text-blue-900 mr-2" />

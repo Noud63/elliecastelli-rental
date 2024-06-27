@@ -15,19 +15,19 @@ const Navbar = () => {
 
 const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
-const [providers, setProviders] = useState(null)
+// const [providers, setProviders] = useState(null)
 
 const pathname = usePathname()
 
-useEffect(() => {
-  const setAuthProviders = async() => {
-    const res = await getProviders()
+// useEffect(() => {
+//   const setAuthProviders = async() => {
+//     const res = await getProviders()
 
-    setProviders(res)
+//     setProviders(res)
     
-  }
-    setAuthProviders()
-},[])
+//   }
+//     setAuthProviders()
+// },[])
 
 
 return (
