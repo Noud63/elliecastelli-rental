@@ -19,7 +19,7 @@ const FeaturedPropertyCard = ({property}) => {
 
 
   return (
-    <div className="bg-white rounded-xl shadow-[0px_4px_6px_rgba(23,37,84,.9)]">
+    <div className="bg-white rounded-xl shadow-[0px_4px_6px_rgba(23,37,84,.9)] bg-gradient-to-t from-blue-200 via-white to-white">
       <div className="relative flex flex-row max-lg:flex-col">
         <Image
           src={property.images[0]}
@@ -79,7 +79,7 @@ const FeaturedPropertyCard = ({property}) => {
             )}
           </div>
 
-          <div className="border border-gray-200 mb-5"></div>
+          <div className="border border-dotted border-slate-700 mb-5"></div>
 
           <div className="flex justify-between items-center max-md:flex-col">
             <div className="w-full flex align-middle gap-2 max-md:flex-start max-md:mb-2">
@@ -91,7 +91,7 @@ const FeaturedPropertyCard = ({property}) => {
             </div>
             <Link
               href={`/properties/${property._id}`}
-              className="h-[36px] bg-gradient-to-t from-blue-900 via-blue-500 to-blue-300 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm max-md:w-full"
+              className="bg-slate-950 text-blue-200 px-8 py-1 rounded-lg text-center text-sm max-md:w-full"
             >
               Details
             </Link>

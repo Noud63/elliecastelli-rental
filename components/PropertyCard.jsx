@@ -20,7 +20,7 @@ const PropertyCard = ({property, loading}) => {
   }
 
   return (
-    <div className="rounded-xl relative shadow-[0px_2px_4px_rgba(23,37,84,.4)] bg-white">
+    <div className="w-full max-w-[380px] md:max-w-full rounded-xl relative shadow-[0px_3px_6px_rgba(23,37,84,.7)] bg-gradient-to-t from-blue-200 via-white to-white  border-b-2 border-slate-900">
       
         {loading ? <Spinner loading={loading} /> : <Image
           src={property.images[0]} 
@@ -32,9 +32,9 @@ const PropertyCard = ({property, loading}) => {
           priority={true}
         />}
       <div className="p-4">
-        <div className="text-left md:text-center mb-6">
+        <div className="text-left md:text-center mb-4">
           <h3 className="text-xl font-bold">{property.name}</h3>
-          <div className="text-gray-600">{property.type}</div>
+          <div className="text-gray-600 font-medium">{property.type}</div>
         </div>
         <h3 className="absolute top-[10px] right-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
           ${getRateDisplay()}
@@ -56,7 +56,7 @@ const PropertyCard = ({property, loading}) => {
           </p>
         </div>
 
-        <div className="flex justify-center gap-4 text-green-900 text-sm mb-4">
+        <div className="flex justify-center gap-4 text-green-900 text-sm mb-6">
           {property.rates.nightly && (
             <p>
               {" "}
@@ -80,7 +80,7 @@ const PropertyCard = ({property, loading}) => {
           )}
         </div>
 
-        <div className="border border-gray-200 mb-6"></div>
+        <div className="border border-dotted border-slate-700 mb-6"></div>
 
         <div className="flex justify-between items-center max-md:flex-col mb-2">
           <div className="w-full flex align-middle gap-2 max-md:flex-start max-md:mb-2">
@@ -92,7 +92,7 @@ const PropertyCard = ({property, loading}) => {
           </div>
           <Link
             href={`/properties/${property._id}`}
-            className="h-[36px] bg-gradient-to-t from-blue-900 via-blue-500 to-blue-300 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm max-md:w-full"
+            className=" bg-slate-950 text-blue-200 px-8 py-1 rounded-lg text-center text-sm max-md:w-full"
           >
             Details
           </Link>

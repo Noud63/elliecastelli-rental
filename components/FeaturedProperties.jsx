@@ -8,8 +8,8 @@ const FeaturedProperties = async () => {
 
   return (
     properties.length > 0 && (
-      <section className="bg-gradient-to-r from-slate-900 via-blue-500 to-slate-900 px-4 pt-6 pb-24 mt-10">
-        <div className="container-xl lg:container m-auto">
+      <section className="bg-gradient-to-r from-slate-950 via-slate-800/40 to-slate-950 pt-6 pb-24 mt-10 px-4">
+        <div className="w-full max-w-[1340px] mx-auto">
           <h2 className="text-3xl font-bold text-white mt-6 mb-12 text-center">
             Featured Properties
           </h2>

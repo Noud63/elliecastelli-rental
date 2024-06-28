@@ -60,13 +60,13 @@ console.log(res)
  }
 
  return (
-   <div className="signInBox mt-40 w-full flex justify-center flex-col max-w-[400px] mx-auto p-4 border-2 border-white rounded-lg">
-     <h3 className="w-full text-xl text-blue-900 font-bold mb-4 flex justify-center">
+   <div className="signInBox bg-blue-200/20 w-full flex justify-center flex-col max-w-[400px] mx-auto p-4 rounded-lg mt-40">
+     <h3 className="w-full text-xl text-blue-950 font-bold mb-4 flex justify-center">
        Login
      </h3>
 
      <form onSubmit={handleSubmit}>
-       <Label htmlFor="email" className="ml-3 mb-2 text-md text-blue-900">
+       <Label htmlFor="email" className="ml-3 mb-2 text-md text-blue-950">
          Email:
        </Label>
        <Input
@@ -77,7 +77,7 @@ console.log(res)
          onChange={(e) => setEmail(e.target.value)}
          required
        />
-       <Label htmlFor="email" className="ml-3 my-2 text-md text-blue-900">
+       <Label htmlFor="email" className="ml-3 my-2 text-md text-blue-950">
          Password:
        </Label>
        <div className="relative">
@@ -106,33 +106,31 @@ console.log(res)
 
        <Button
          type="submit"
-         className="w-full text-md bg-gradient-to-r from-slate-600 via-blue-500 to-slate-600 py-6 mb-2"
+         className="w-full text-md bg-gradient-to-r from-slate-900 via-blue-500/40 to-slate-900 py-6 mb-2"
        >
          <LogIn size={20} className="mr-2" />
          Login
        </Button>
 
-       <div className="w-full mt-2 flex items-center gap-1 text-gray-600">
+       <div className="w-full mt-2 flex items-center gap-1 text-blue-950 font-semibold">
          Don't have an account? <ArrowRight size={16} />
          <Link href="/register">Register</Link>
        </div>
 
-       <div className="w-full mt-2 flex items-center gap-1 text-gray-600">
+       <div className="w-full mt-2 flex items-center gap-1 text-blue-950 font-semibold">
          Forgot your password? <ArrowRight size={16} className="ml-1" />
          <Link href="/resetpassword">Reset password</Link>
        </div>
 
-       <div className="relative w-full h-[1px] bg-blue-900 mt-8 mb-4 flex justify-center items-center">
-         <div className="absolute w-[30px] h-[30px] rounded-full bg-white flex justify-center">
+       <div className="relative w-full h-[1px] bg-blue-950 mt-8 mb-4 flex justify-center items-center">
+         <div className="absolute w-[30px] h-[30px] rounded-full bg-white flex justify-center items-center pb-1 mb-1">
            or
          </div>
        </div>
      </form>
 
      <Link href="/emailLogin">
-       <Button
-         className="w-full text-md text-blue-950 bg-slate-200 py-6 mt-4 mr-2 flex justify-start hover:bg-slate-200"
-       >
+       <Button className="w-full text-md text-blue-950 bg-slate-200 py-6 mt-4 mr-2 flex justify-start hover:bg-slate-200">
          <Mail size={20} className="text-blue-900 mr-3" /> Login with Email
        </Button>
      </Link>

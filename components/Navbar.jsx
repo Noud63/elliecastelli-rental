@@ -7,11 +7,15 @@ import profileDefault from "@/assets/images/profile.png";
 import Link from 'next/link';
 import { signIn, signOut, useSession, getProviders} from 'next-auth/react'
 import UnreadMessageCount from './UnreadMessageCount';
+import PropertySearchForm from './PropertySearchForm';
+import scroll from '@/utils/scroll';
    
 const Navbar = () => {
 
   const {data:session} = useSession()
   const profileImage = session?.user?.image
+
+  const scrolled = scroll();
 
 const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
@@ -31,7 +35,11 @@ const pathname = usePathname()
 
 
 return (
-  <nav className="w-full fixed top-0 left-0 bg-gradient-to-r from-slate-900 via-blue-500 to-slate-900 border-b border-slate-950 shadow-[0px_2px_4px_rgba(0,0,0,.6)] z-[999]">
+  <nav
+    className={`${
+      scrolled ? "-translate-y-full" : "translate-y-0"
+    } w-full fixed top-0 shadow-[0px_2px_4px_rgba(0,0,0,.5)] z-[999] transform ease-in-out duration-500`}
+  >
     <div className="w-full flex justify-between px-2 sm:px-6 lg:px-8">
       <div className="w-full relative flex h-20 items-center justify-between">
         <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -39,7 +47,7 @@ return (
           <button
             type="button"
             id="mobile-dropdown-button"
-            className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-white focus:outline-none"
+            className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 focus:outline-none"
             aria-controls="mobile-menu"
             aria-expanded="false"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -63,7 +71,7 @@ return (
           </button>
         </div>
 
-        <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
+        <div className="w-[250px] flex items-center justify-center md:items-stretch md:justify-start">
           {/* <!-- Logo --> */}
           <Link className="flex flex-shrink-0 items-center" href="/">
             <Image className="h-12 w-auto" src={logo} alt="PropertyPulse" />
@@ -77,13 +85,17 @@ return (
           </Link>
         </div>
 
+        <div className="max-xl:hidden flex flex-1 pl-8 ">
+          <PropertySearchForm />
+        </div>
+
         {/* <!-- Desktop Menu Hidden below md screens --> */}
         <div className="hidden md:ml-6 md:flex items-center">
           <div className="flex space-x-2">
             <Link
               href="/"
               className={`${
-                pathname === "/" ? "border-b-2 border-blue-500" : ""
+                pathname === "/" ? "border-b-2 border-white" : ""
               } text-white px-5 py-3`}
             >
               Home
@@ -92,7 +104,7 @@ return (
             <Link
               href="/properties"
               className={`${
-                pathname === "/properties" ? "border-b-2 border-blue-500" : ""
+                pathname === "/properties" ? "border-b-2 border-white" : ""
               } text-white px-5 py-3`}
             >
               Properties
@@ -103,38 +115,44 @@ return (
                 href="/properties/add"
                 className={`${
                   pathname === "/properties/add"
-                    ? "border-b-2 border-blue-500"
+                    ? "border-b-2 border-white"
                     : ""
-                } text-white rounded-md px-5 py-3`}
+                } text-white px-5 py-3`}
               >
                 Add Property
               </Link>
             )}
           </div>
-        </div>
+          {/* <!-- Right Side Menu (Logged Out) --> */}
+          {!session && (
+            <div className="hidden md:block">
+              <div className="flex items-center">
+                <Link
+                  href="/signIn"
+                  className="flex items-center text-white  
+                      px-5 py-3"
+                >
+                  <span
+                    className={`${
+                      pathname === "/signIn" ? "border-b-2 border-white" : ""
+                    } text-white block  px-3 py-2 text-base`}
+                  >
+                    Login
+                  </span>
+                </Link>
 
-        {/* <!-- Right Side Menu (Logged Out) --> */}
-        {!session && (
-          <div className="hidden md:block">
-            <div className="flex items-center">
-              <Link
-                href="/signIn"
-                className="flex items-center text-white  
-                     rounded-md px-5 py-3"
-              >
-                <span className="text-white">Login</span>
-              </Link>
-
-              <Link
-                href="/register"
-                className="flex items-center text-white  
-                     rounded-md px-5 py-3 cursor-pointer"
-              >
-                <span className="text-white">Register</span>
-              </Link>
+                <Link
+                  href="/register"
+                  className={`${
+                    pathname === "/register" ? "border-b-2 border-white" : ""
+                  } text-white block  px-3 py-2 text-base`}
+                >
+                  <span className="text-white">Register</span>
+                </Link>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* <!-- Right Side Menu (Logged In) --> */}
         {session && (
@@ -229,7 +247,7 @@ return (
                     id="user-menu-item-2"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
-                      signOut();
+                      signOut({ callbackUrl: "/", redirect: true });
                     }}
                   >
                     Sign Out
@@ -250,7 +268,7 @@ return (
             href="/"
             className={`${
               pathname === "/" ? "border-b-2 border-blue-400" : ""
-            } text-white block  px-3 py-2 text-base font-medium`}
+            } text-white block  px-3 py-2 text-base`}
           >
             Home
           </Link>
@@ -258,7 +276,7 @@ return (
             href="/properties"
             className={`${
               pathname === "/properties" ? "border-b-2 border-blue-400" : ""
-            } text-white block  px-3 py-2 text-base font-medium`}
+            } text-white block  px-3 py-2 text-base`}
           >
             Properties
           </Link>
@@ -269,7 +287,7 @@ return (
                 pathname === "/properties/add"
                   ? "border-b-2 border-blue-400"
                   : ""
-              } text-white block px-3 py-2 text-base font-medium`}
+              } text-white block px-3 py-2 text-base`}
             >
               Add Property
             </Link>
@@ -278,8 +296,8 @@ return (
           <Link
             href="/signIn"
             className={`${
-              pathname === "/signIn" ? "border-b-2 border-blue-400" : ""
-            } text-white block px-3 py-2 text-base font-medium`}
+              pathname === "/signIn" ? "border-b-2 border-white" : ""
+            } text-white block px-3 py-2 text-base`}
           >
             Login
           </Link>
@@ -287,10 +305,10 @@ return (
           <Link
             href="/register"
             className={`${
-              pathname === "/register" ? "border-b-2 border-blue-400" : ""
-            } text-white block px-3 py-2 text-base font-medium`}
+              pathname === "/register" ? "border-b-2 border-white" : ""
+            } text-white block px-3 py-2 text-base`}
           >
-           Register
+            Register
           </Link>
 
           {/* {!session &&
@@ -313,3 +331,4 @@ return (
 }
 
 export default Navbar
+

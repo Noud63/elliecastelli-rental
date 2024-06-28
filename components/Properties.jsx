@@ -10,7 +10,7 @@ const Properties = () => {
     const [properties, setProperties] = useState([])
     const [loading, setLoading] = useState(true)
     const [page, setPage] = useState(1)
-    const [pageSize, setPageSize] = useState(3)
+    const [pageSize, setPageSize] = useState(4)
     const [totalItems, setTotalItems] = useState(0)
 
     
@@ -46,14 +46,20 @@ const Properties = () => {
   return loading ? (
     <Spinner loading={loading} />
   ) : (
-    <section className="min-h-screen px-4 py-6">
+    <section className="min-h-screen px-4 py-6 w-full max-xxl:max-w-[1000px] max-xxl:mx-auto max-md:flex">
       <div className="container-xl lg:container m-auto px-4 py-6">
         {properties.length === 0 ? (
           <p>No properties found</p>
         ) : (
-          <div className={`grid grid-cols-1 md:grid-cols-2 xlg:grid-cols-3 gap-6`}>
+          <div
+            className={`grid grid-cols-1 md:grid-cols-2 xxl:grid-cols-4 gap-6`}
+          >
             {properties.map((property) => (
-              <PropertyCard key={property._id} property={property} loading={loading}/>
+              <PropertyCard
+                key={property._id}
+                property={property}
+                loading={loading}
+              />
             ))}
           </div>
         )}

@@ -96,14 +96,11 @@ export const authOptions = {
     }),
   ],
 
-  pages: {
-    signIn: "/"
-  },
 
   callbacks: {
     // Invoked on successful signin
     async signIn({ user, profile, account }) {
-        console.log(user)
+        console.log(account)
       // 1. Connect to database
       if (account.provider === "google" || account.provider === "facebook") {
         //  console.log(profile);

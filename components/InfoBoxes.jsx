@@ -4,11 +4,11 @@ import InfoBox from './InfoBox';
 const InfoBoxes = () => {
   return (
     <section>
-      <div className="container-xl lg:container m-auto mt-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
+      <div className="w-full flex justify-center mt-2 px-4 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg">
           <InfoBox
             heading="For renters"
-            backgroundColor="bg-gray-100"
+            backgroundColor="bg-white"
             buttonInfo={{
               text: "Browse properties",
               link: "/properties",
@@ -21,7 +21,7 @@ const InfoBoxes = () => {
           </InfoBox>
           <InfoBox
             heading="For property owners"
-            backgroundColor="bg-blue-100"
+            backgroundColor="bg-blue-200"
             buttonInfo={{
               text: "Add property",
               link: "/properties/add",

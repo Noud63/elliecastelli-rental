@@ -19,14 +19,11 @@ export const GET = async (request, { params }) => {
     }
 
     const { userId } = sessionUser;
-    console.log(userId)
 
     const count = await Message.countDocuments({
         recipient: userId,
         read: false
     })
-
-    console.log(count)
 
     return new Response(JSON.stringify({count: count}), { status: 200 });
   } catch (error) {

@@ -17,7 +17,8 @@ export const metadata = {
 const MainLayout = ({children}) => {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-gradient-to-r from-slate-950 via-blue-500/50 to-slate-950">
+        <div className="fixed left-0 top-0 h-screen w-full bg-[url('/images/realestatebg.jpg')] bg-cover opacity-10 -z-[999]" />
         <GlobalProvider>
           <AuthProvider>
             <Navbar />

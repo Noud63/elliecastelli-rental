@@ -101,7 +101,7 @@ const handleDeleteProperty = async (propertyId) => {
               </h2>
             </div>
 
-            <div className="md:w-3/4 md:pl-4">
+            <div className="md:w-3/4 md:pl-4 pr-4">
               <h2 className="text-xl font-semibold mb-4">Your Listings</h2>
               {!loading && properties.length === 0 && (
                 <p>No property listings here!</p>
