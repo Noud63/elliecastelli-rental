@@ -44,23 +44,19 @@ const SearchResultsPage = () => {
 
   return (
     <>
-      <section className="bg-blue-700 py-4">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col items-start sm:px-6 lg:px-8">
-          <PropertySearchForm />
-        </div>
-      </section>
+      
       {loading ? (
         <Spinner loading={loading} />
       ) : (
-        <section className="px-4 py-6">
+        <section className="px-4 py-6 mt-20">
           <div className="container-xl lg:container m-auto px-4 py-6">
             <Link
               href="/properties"
-              className="flex items-center text-blue-500 hover:underline mb-3"
+              className="flex items-center text-white mb-3"
             >
-              <FaArrowAltCircleLeft className="mr-2 mb-1" /> back to Properties
+              <FaArrowAltCircleLeft className="mr-2" /> back to Properties
             </Link>
-            <h1 className="text-2xl mb-4">Search Results</h1>
+            <h1 className="w-full max-w-[1350px] text-xl mb-4 text-white bg-slate-900 px-4 pb-2 pt-1 rounded-lg">Search Results</h1>
             {properties.length === 0 ? (
               <p>No search results found</p>
             ) : (

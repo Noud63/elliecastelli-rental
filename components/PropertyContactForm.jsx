@@ -61,8 +61,10 @@ const PropertyContactForm = ({ property }) => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h3 className="text-xl font-bold mb-6 flex justify-center">Contact Property Manager</h3>
+    <div className="bg-blue-50 to-white p-6 rounded-lg shadow-md">
+      <h3 className="text-xl font-bold mb-6 flex justify-center">
+        Contact Property Manager
+      </h3>
       {!session ? (
         <p>You must be logged in to send a message</p>
       ) : wasSubmitted ? (
