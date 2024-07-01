@@ -108,8 +108,8 @@ console.log(res)
          type="submit"
          className="w-full text-md bg-gradient-to-r from-slate-900 via-blue-500/40 to-slate-900 py-6 mb-2"
        >
-         <LogIn size={20} className="mr-2" />
-         Login
+         <LogIn size={20} className="mr-2 text-blue-100" />
+         <span className="text-blue-100">Login</span>
        </Button>
 
        <div className="w-full mt-2 flex items-center gap-1 text-blue-950 font-semibold">
@@ -130,23 +130,23 @@ console.log(res)
      </form>
 
      <Link href="/emailLogin">
-       <Button className="w-full text-md text-blue-950 bg-slate-200 py-6 mt-4 mr-2 flex justify-start hover:bg-slate-200">
-         <Mail size={20} className="text-blue-900 mr-3" /> Login with Email
+       <Button className="w-full text-md text-blue-100  bg-gradient-to-r from-slate-900 via-blue-500/40 to-slate-900 py-6 mt-4 mr-2 flex justify-start">
+         <Mail size={20} className="text-blue-100 mr-3" /> Login with Email
        </Button>
      </Link>
 
      <Button
-       className="w-full text-md text-blue-950 bg-slate-200 py-6 mt-2 flex justify-start hover:bg-slate-200"
+       className="w-full text-md text-blue-100  bg-gradient-to-r from-slate-900 via-blue-500/40 to-slate-900 py-6 mt-2 flex justify-start"
        onClick={() => signIn("facebook", { email, password })}
      >
-       <IconBrandFacebook className="text-blue-900 mr-2" /> Login with Facebook
+       <IconBrandFacebook className="text-blue-100 mr-2" /> Login with Facebook
      </Button>
 
      <Button
-       className="w-full text-md text-blue-950 bg-slate-200 py-6 flex justify-start hover:bg-slate-200 mt-2"
+       className="w-full text-md text-blue-100  bg-gradient-to-r from-slate-900 via-blue-500/40 to-slate-900 py-6 flex justify-start mt-2"
        onClick={() => signIn("google", { email, password })}
      >
-       <IconBrandGoogle className="text-blue-900 mr-2" />
+       <IconBrandGoogle className="text-blue-100 mr-2" />
        Login with Google
      </Button>
    </div>

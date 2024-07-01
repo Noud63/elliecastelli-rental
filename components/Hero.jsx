@@ -3,7 +3,7 @@ import PropertySearchForm from './PropertySearchForm'
 
 const Hero = () => {
   return (
-    <section className="pt-[140px]">
+    <section className="pt-[140px] max-md:pt-[100px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">

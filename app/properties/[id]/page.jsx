@@ -5,7 +5,7 @@ import { fetchSingleProperty } from '@/utils/request'
 import PropertyHeaderImage from '@/components/PropertyHeaderImage'
 import Link from 'next/link'
 import PropertyDetails from '@/components/PropertyDetails'
-import {FaArrowCircleLeft, FaArrowLeft} from 'react-icons/fa'
+import {FaArrowCircleLeft, FaArrowLeft, FaArrowRight} from 'react-icons/fa'
 import Spinner from '@/components/Spinner'
 import PropertyImages from '@/components/PropertyImages'
 import BookmarkButton from '@/components/BookmarkButton'
@@ -54,19 +54,23 @@ const PropertyPage = () => {
       {loading && <Spinner loading={loading} />}
       {!loading && property && (
         <>
+          <div className="w-full max-w-[1350px] flex flex-row m-auto py-6 pl-10 bg-slate-900 mt-20 text-blue-50 items-center">
+            <FaArrowRight className="mr-2" />
+            {property.type}, {property.location.city}
+          </div>
           <PropertyHeaderImage image={property.images[0]} />
           <section>
-            <div className="container m-auto py-6 px-6">
+            <div className="w-full max-w-[1350px] m-auto py-6 pl-10 bg-slate-900">
               <Link
                 href="/properties"
-                className="text-blue-500 hover:text-blue-600 flex items-center"
+                className="text-blue-100 hover:text-blue-200 flex items-center"
               >
                 <FaArrowLeft className="mr-2" /> Back to Properties
               </Link>
             </div>
           </section>
 
-          <section className="bg-blue-50">
+          <section className="">
             <div className="container m-auto py-10 px-6">
               <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
                 <PropertyDetails property={property} />
@@ -78,7 +82,6 @@ const PropertyPage = () => {
                   <ShareButtons property={property} />
 
                   <PropertyContactForm property={property} />
-                  
                 </aside>
               </div>
             </div>

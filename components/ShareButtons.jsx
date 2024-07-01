@@ -17,7 +17,7 @@ const ShareButtons = ({ property }) => {
 
   return (
     <>
-      <h3 className="text-xl font-bold text-center pt-2">
+      <h3 className="text-xl font-bold text-center pt-2 text-white">
         Share this property
       </h3>
       <div className="flex gap-3 justify-center pb-5">
@@ -26,7 +26,7 @@ const ShareButtons = ({ property }) => {
           quote={property.name}
           hashtag={`#${property.type.replace(/\s/g, "")}ForRent`}
         >
-          <FacebookIcon size={40} round={true} />
+          <FacebookIcon size={40} round={true}/>
         </FacebookShareButton>
 
         <TwitterShareButton

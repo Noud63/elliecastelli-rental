@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from 'react'
-import { useRouter } from 'next/navigation'
+import React, {useState, useEffect} from 'react'
+import { useRouter, useParams, usePathname } from 'next/navigation'
 
 
 const PropertySearchForm = () => {
@@ -10,6 +10,20 @@ const [ location, setLocation ] = useState("")
 const [ propertyType, setPropertyType] = useState("All")
 
 const router = useRouter()
+
+const [buttonColor, setButtonColor] = useState("");
+
+const pathname = usePathname();
+const { id } = useParams();
+
+useEffect(() => {
+  if (pathname === `/properties/${id}`) {
+    setButtonColor("border");
+  } else {
+    setButtonColor("border-0");
+  }
+}, [pathname]);
+
 
 const handleSubmit = (e) => {
     e.preventDefault()
@@ -26,7 +40,7 @@ const handleSubmit = (e) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-[700px] flex flex-row items-center mx-auto"
+      className="w-full max-w-[700px] flex flex-row items-center mx-auto max-md:flex-col max-md:w-[610px]"
     >
       <div className="w-full md:w-3/5 md:pr-2 mb-4 md:mb-0">
         <label htmlFor="location" className="sr-only">
@@ -64,7 +78,7 @@ const handleSubmit = (e) => {
       </div>
       <button
         type="submit"
-        className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-2 rounded-lg bg-slate-900 text-blue-100 focus:outline-none focus:ring focus:ring-blue-500"
+        className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-2 rounded-lg bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 text-blue-100 focus:outline-none"
       >
         Search
       </button>

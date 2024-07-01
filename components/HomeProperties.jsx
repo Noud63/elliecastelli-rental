@@ -30,7 +30,7 @@ const recentProperties = data.properties.slice(0,6);
       <section className="m-auto max-w-[475px] mt-12 pb-28 px-6">
         <a
           href="/properties"
-          className="block bg-slate-950 text-blue-200 text-center font-medium py-4 rounded-xl"
+          className="block bg-gradient-to-r from-slate-950 via-slate-800 to-slate-950 text-blue-200 text-center font-medium py-4 rounded-xl"
         >
           View All Properties
         </a>

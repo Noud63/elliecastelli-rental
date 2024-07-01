@@ -20,7 +20,8 @@ const PropertyCard = ({property, loading}) => {
   }
 
   return (
-    <div className="w-full max-w-[380px] md:max-w-full rounded-xl relative shadow-[0px_3px_6px_rgba(23,37,84,.7)] bg-gradient-to-t from-blue-200 via-white to-white  border-b-2 border-slate-900">
+    <div className="w-full max-w-[380px] md:max-w-full rounded-xl relative shadow-[0px_3px_6px_rgba(23,37,84,.7)] 
+    bg-gradient-to-t from-blue-200 via-white to-white  border-b-2 border-slate-900">
       
         {loading ? <Spinner loading={loading} /> : <Image
           src={property.images[0]} 

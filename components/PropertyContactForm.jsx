@@ -62,7 +62,7 @@ const PropertyContactForm = ({ property }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
-      <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
+      <h3 className="text-xl font-bold mb-6 flex justify-center">Contact Property Manager</h3>
       {!session ? (
         <p>You must be logged in to send a message</p>
       ) : wasSubmitted ? (
@@ -138,7 +138,7 @@ const PropertyContactForm = ({ property }) => {
           </div>
           <div>
             <button
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
+              className="bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
               type="submit"
             >
               <FaPaperPlane className="mr-2" /> Send Message

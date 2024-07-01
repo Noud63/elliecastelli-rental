@@ -101,8 +101,10 @@ const PropertyAddForm = () => {
 
   return (
     <form action="/api/properties" method="POST" encType="multipart/form-data">
-      <h2 className="bg-slate-700 
-      text-white text-2xl text-center font-semibold mb-6 py-6 rounded-t-xl [text-shadow:_0_1px_1px_rgb(0_0_0_/_70%)]">
+      <h2
+        className="bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950
+      text-white text-2xl text-center font-semibold mb-6 py-6 rounded-t-xl [text-shadow:_0_1px_1px_rgb(0_0_0_/_70%)]"
+      >
         Add Property
       </h2>
       <div className="px-6">
@@ -563,7 +565,7 @@ const PropertyAddForm = () => {
         </div>
         <div>
           <button
-            className="bg-slate-700 text-white font-semibold py-4 px-4 rounded-lg w-full focus:outline-none focus:shadow-outline"
+            className="bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 text-white font-semibold py-4 px-4 rounded-lg w-full focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Add Property

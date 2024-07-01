@@ -6,7 +6,7 @@ const Footer = () => {
 
     const currentYear = new Date().getFullYear()
   return (
-    <footer className="relative flex bg-slate-950 h-[500px] py-4">
+    <footer className="relative flex bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 h-[500px] py-4">
       <div className="w-full max-w-[1200px] mx-auto flex justify-between items-center px-4 md:flex-row max-md:flex-col max-md:justify-around">
         <div className="w-22 flex flex-col items-center text-white">
           <Image src={logo} alt="Logo" className="h-20 w-auto" />

@@ -74,14 +74,14 @@ const handleDeleteProperty = async (propertyId) => {
 }
 
   return (
-    <section className="bg-blue-50 pt-32 h-screen">
-      <div className="container m-auto">
-        <div className="bg-white mb-4 shadow-md rounded-xl border m-4 md:m-0">
-          <h1 className="pl-4 py-2 text-white text-2xl font-bold mb-4 bg-gradient-to-r from-slate-700 via-blue-500 to-slate-700 rounded-t-lg">
+    <section className="pt-32 h-screen">
+      <div className="w-full max-w-[800px]  m-auto ">
+        <div className="mb-4 shadow-md rounded-xl m-4 md:m-0 signInBox bg-gradient-to-t from-blue-200  to-white">
+          <h1 className="pl-4 py-2 text-white text-2xl font-bold mb-4 bg-gradient-to-r from-slate-900 via-blue-500/50 to-slate-900 rounded-t-lg">
             Your Profile
           </h1>
           <div className="flex flex-col md:flex-row pb-8">
-            <div className="md:w-1/4 mx-20 mt-10">
+            <div className="md:w-1/4 mx-12 mt-2">
               <div className="mb-4">
                 <Image
                   className="h-20 w-20 rounded-full mx-auto md:mx-0"
@@ -113,7 +113,7 @@ const handleDeleteProperty = async (propertyId) => {
                   <div className="mb-10" key={property._id}>
                     <Link href={`/properties/${property._id}`}>
                       <Image
-                        className="h-32 w-full rounded-md object-cover"
+                        className="h-44 w-auto rounded-md object-cover"
                         src={property.images[0]}
                         alt=""
                         width={500}
@@ -123,21 +123,20 @@ const handleDeleteProperty = async (propertyId) => {
                     </Link>
                     <div className="mt-2">
                       <p className="text-lg font-semibold">{properties.name}</p>
-                      <p className="text-gray-600">
-                        Address:
-                        {property.location.street} {property.location.city}{" "}
-                        {property.location.state}
+                      <p className="text-slate-600">
+                        <span className="font-semibold text-slate-700">Address:</span> {property.location.street}{" "}
+                        {property.location.city} {property.location.state}
                       </p>
                     </div>
-                    <div className="mt-2">
+                    <div className="mt-4">
                       <Link
                         href={`/properties/${property._id}/edit`}
-                        className="bg-blue-500 text-white px-3 py-3 rounded-md mr-2 hover:bg-blue-600"
+                        className="bg-blue-900 text-white px-3 py-2 rounded-md mr-2"
                       >
                         Edit
                       </Link>
                       <button
-                        className="bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600"
+                        className=" bg-red-700 text-white px-3 py-2 rounded-md"
                         type="button"
                         onClick={() => handleDeleteProperty(property._id)}
                       >

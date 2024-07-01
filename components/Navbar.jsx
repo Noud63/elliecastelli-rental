@@ -2,13 +2,15 @@
 import React,{useState, useEffect} from 'react'
 import Image from 'next/image';
 import { redirect, usePathname } from 'next/navigation';
-import logo from "@/assets/images/ellielogo3.png";
+import logo from "@/assets/images/ellielogo.png";
+import logo2 from "@/assets/images/ellielogo3.png";
 import profileDefault from "@/assets/images/profile.png";
 import Link from 'next/link';
 import { signIn, signOut, useSession, getProviders} from 'next-auth/react'
 import UnreadMessageCount from './UnreadMessageCount';
 import PropertySearchForm from './PropertySearchForm';
 import scroll from '@/utils/scroll';
+import { useParams } from 'next/navigation';
    
 const Navbar = () => {
 
@@ -19,9 +21,13 @@ const Navbar = () => {
 
 const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
+
+const [color, setColor] = useState("")
+const [buttonColor, setButtonColor] = useState("")
 // const [providers, setProviders] = useState(null)
 
 const pathname = usePathname()
+
 
 // useEffect(() => {
 //   const setAuthProviders = async() => {
@@ -47,7 +53,7 @@ return (
           <button
             type="button"
             id="mobile-dropdown-button"
-            className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 focus:outline-none"
+            className="relative inline-flex items-center justify-center rounded-md p-2 text-blue-200 focus:outline-none"
             aria-controls="mobile-menu"
             aria-expanded="false"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -71,12 +77,12 @@ return (
           </button>
         </div>
 
-        <div className="w-[250px] flex items-center justify-center md:items-stretch md:justify-start">
+        <div className={`w-[250px] flex items-center justify-center md:items-stretch md:justify-start max-md:w-full ${session?.user ? "max-md:justify-center mr-0" : "max-md:justify-end"}  max-md:mr-4`}>
           {/* <!-- Logo --> */}
           <Link className="flex flex-shrink-0 items-center" href="/">
-            <Image className="h-12 w-auto" src={logo} alt="PropertyPulse" />
+            <Image className="h-12 w-auto" src={logo2} alt="PropertyPulse" />
 
-            <div className="hidden md:flex text-white ml-2 flex-col text-center">
+            <div className={`max-md:hidden flex text-white ml-2 flex-col text-center`}>
               <span className="font-ChopinScript text-4xl ">
                 Ellie Castelli
               </span>
@@ -263,20 +269,21 @@ return (
     {/* <!-- Mobile menu, show/hide based on menu state. --> */}
     {isMobileMenuOpen && (
       <div className="" id="mobile-menu">
-        <div className="space-y-1 px-2 pb-3 pt-2">
+        <div className="space-y-1 px-2 pb-3 pt-2 relative bg-slate-900/70">
+          {/* <div className="absolute left-0 top-0 h-full w-full bg-[url('/images/realestatebg.jpg')] bg-right opacity-100 -z-[999]" /> */}
           <Link
             href="/"
             className={`${
-              pathname === "/" ? "border-b-2 border-blue-400" : ""
-            } text-white block  px-3 py-2 text-base`}
+              pathname === "/" ? "border-b border-blue-200" : ""
+            } text-blue-200 block px-3 py-2 text-base`}
           >
             Home
           </Link>
           <Link
             href="/properties"
             className={`${
-              pathname === "/properties" ? "border-b-2 border-blue-400" : ""
-            } text-white block  px-3 py-2 text-base`}
+              pathname === "/properties" ? "border-b border-blue-200" : ""
+            } text-blue-200 block  px-3 py-2 text-base`}
           >
             Properties
           </Link>
@@ -285,9 +292,9 @@ return (
               href="/properties/add"
               className={`${
                 pathname === "/properties/add"
-                  ? "border-b-2 border-blue-400"
+                  ? "border-b-2 border-blue-200"
                   : ""
-              } text-white block px-3 py-2 text-base`}
+              } text-blue-200 block px-3 py-2 text-base`}
             >
               Add Property
             </Link>
@@ -296,8 +303,8 @@ return (
           <Link
             href="/signIn"
             className={`${
-              pathname === "/signIn" ? "border-b-2 border-white" : ""
-            } text-white block px-3 py-2 text-base`}
+              pathname === "/signIn" ? "border-b border-blue-200" : ""
+            } text-blue-200 block px-3 py-2 text-base`}
           >
             Login
           </Link>
@@ -305,8 +312,8 @@ return (
           <Link
             href="/register"
             className={`${
-              pathname === "/register" ? "border-b-2 border-white" : ""
-            } text-white block px-3 py-2 text-base`}
+              pathname === "/register" ? "border-b border-blue-200" : ""
+            } text-blue-200 block px-3 py-2 text-base`}
           >
             Register
           </Link>
