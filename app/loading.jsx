@@ -8,7 +8,7 @@ const override = {
 
 }
 
-const LoadibgPage = ({loading}) => {
+const LoadingPage = ({loading}) => {
   return (
     <ClipLoader
       color="#3b82f"
@@ -20,4 +20,4 @@ const LoadibgPage = ({loading}) => {
   );
 }
 
-export default LoadibgPage
+export default LoadingPage

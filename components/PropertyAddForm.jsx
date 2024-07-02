@@ -161,7 +161,7 @@ const PropertyAddForm = () => {
             onChange={handleChange}
           ></textarea>
         </div>
-        <div className="mb-4 bg-blue-50 p-4">
+        <div className="mb-4 bg-blue-100 p-4">
           <label className="block text-gray-700 font-bold mb-2">Location</label>
           <input
             type="text"
@@ -447,7 +447,7 @@ const PropertyAddForm = () => {
             </div>
           </div>
         </div>
-        <div className="mb-4 bg-blue-50 p-4">
+        <div className="mb-4 bg-blue-100 p-4">
           <label className="block text-gray-700 font-bold mb-2">
             Rates (Leave blank if not applicable)
           </label>

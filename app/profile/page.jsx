@@ -31,7 +31,7 @@ useEffect(() => {
         if(res.status === 200) {
             const data = await res.json()
             setProperties(data)
-            
+            console.log(data)
         }
     } catch (error) {
         console.log(error)
@@ -74,8 +74,8 @@ const handleDeleteProperty = async (propertyId) => {
 }
 
   return (
-    <section className="pt-32 h-screen flex justify-center mb-44">
-      <div className="w-full max-w-[800px] mx-6">
+    <section className="pt-32 min-h-screen flex justify-center">
+      <div className="w-full max-w-[800px] mx-6 mb-44">
         <div className="shadow-md rounded-xl m-4 md:m-0 signInBox bg-gradient-to-t from-blue-200 to-white">
           <h1 className="pl-4 py-2 text-white text-xl font-semibold mb-4 bg-gradient-to-r from-slate-900 via-blue-500/50 to-slate-900 rounded-t-lg">
             Your Profile
@@ -101,7 +101,7 @@ const handleDeleteProperty = async (propertyId) => {
               </h2>
             </div>
 
-            <div className="md:w-3/4 pr-4 ">
+            <div className="md:w-3/4 pr-8 max-md:pr-0">
               <h2 className="text-xl font-semibold mb-4 border-b border-dotted border-slate-800 pb-2">
                 Your Listings
               </h2>
@@ -138,7 +138,7 @@ const handleDeleteProperty = async (propertyId) => {
                     </div>
 
                     <div className="mt-4 flex flex-row">
-                      <button className="bg-blue-950 text-white w-[80px] py-2 rounded-md mr-2">
+                      <button className="bg-green-700 text-white w-[80px] py-2 rounded-md mr-2">
                         <Link href={`/properties/${property._id}/edit`}>
                           Edit
                         </Link>
