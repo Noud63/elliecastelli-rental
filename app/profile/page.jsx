@@ -74,35 +74,37 @@ const handleDeleteProperty = async (propertyId) => {
 }
 
   return (
-    <section className="pt-32 h-screen">
-      <div className="w-full max-w-[800px]  m-auto ">
-        <div className="mb-4 shadow-md rounded-xl m-4 md:m-0 signInBox bg-gradient-to-t from-blue-200  to-white">
-          <h1 className="pl-4 py-2 text-white text-2xl font-semibold mb-4 bg-gradient-to-r from-slate-900 via-blue-500/50 to-slate-900 rounded-t-lg">
+    <section className="pt-32 h-screen flex justify-center mb-44">
+      <div className="w-full max-w-[800px] mx-6">
+        <div className="shadow-md rounded-xl m-4 md:m-0 signInBox bg-gradient-to-t from-blue-200 to-white">
+          <h1 className="pl-4 py-2 text-white text-xl font-semibold mb-4 bg-gradient-to-r from-slate-900 via-blue-500/50 to-slate-900 rounded-t-lg">
             Your Profile
           </h1>
-          <div className="flex flex-col md:flex-row pb-8">
-            <div className="md:w-1/4 mx-12 mt-2">
-              <div className="mb-4">
+          <div className="flex flex-col md:flex-row pb-8 max-md:px-6">
+            <div className="md:w-1/4 mx-12 mt-2 max-md:mx-0 max-md:mb-6">
+              <div className="mb-6 max-md:border-b border-dotted border-slate-800 max-md:pb-4">
                 <Image
-                  className="h-20 w-20 rounded-full mx-auto md:mx-0"
+                  className="h-16 w-16 rounded-full mx-auto md:mx-0"
                   src={profileImage || ProfileDefault}
                   width={100}
                   height={100}
                   alt="User"
                 />
               </div>
-              <h2 className="text-xl mb-4">
-                <span className="font-semibold block">Name: </span>
-                {profileName}
+              <h2 className="text-xl mb-4 ">
+                <span className="font-semibold text-[18px] block">Name: </span>
+                <span className="text-[18px]">{profileName}</span>
               </h2>
               <h2 className="text-xl">
-                <span className="font-semibold block">Email: </span>
-                {profileEmail}
+                <span className="font-semibold text-[18px] block">Email: </span>
+                <span className="text-[18px]">{profileEmail}</span>
               </h2>
             </div>
 
-            <div className="md:w-3/4 md:pl-4 pr-4">
-              <h2 className="text-xl font-semibold mb-4">Your Listings</h2>
+            <div className="md:w-3/4 pr-4 ">
+              <h2 className="text-xl font-semibold mb-4 border-b border-dotted border-slate-800 pb-2">
+                Your Listings
+              </h2>
               {!loading && properties.length === 0 && (
                 <p>No property listings here!</p>
               )}
@@ -110,10 +112,13 @@ const handleDeleteProperty = async (propertyId) => {
                 <Spinner loading={loading} />
               ) : (
                 properties.map((property) => (
-                  <div className="mb-10" key={property._id}>
+                  <div
+                    className="mb-6 border-b border-dotted border-slate-800 pb-6 max-md:pb-8"
+                    key={property._id}
+                  >
                     <Link href={`/properties/${property._id}`}>
                       <Image
-                        className="h-44 w-auto rounded-md object-cover"
+                        className=" w-auto rounded-md object-cover"
                         src={property.images[0]}
                         alt=""
                         width={500}
@@ -124,19 +129,23 @@ const handleDeleteProperty = async (propertyId) => {
                     <div className="mt-2">
                       <p className="text-lg font-semibold">{properties.name}</p>
                       <p className="text-slate-600">
-                        <span className="font-semibold text-slate-700">Address:</span> {property.location.street}{" "}
-                        {property.location.city} {property.location.state}
+                        <span className="font-semibold text-slate-700">
+                          Address:
+                        </span>{" "}
+                        {property.location.street}, {property.location.city},{" "}
+                        {property.location.state}
                       </p>
                     </div>
-                    <div className="mt-4">
-                      <Link
-                        href={`/properties/${property._id}/edit`}
-                        className="bg-blue-900 text-white px-3 py-2 rounded-md mr-2"
-                      >
-                        Edit
-                      </Link>
+
+                    <div className="mt-4 flex flex-row">
+                      <button className="bg-blue-950 text-white w-[80px] py-2 rounded-md mr-2">
+                        <Link href={`/properties/${property._id}/edit`}>
+                          Edit
+                        </Link>
+                      </button>
+
                       <button
-                        className=" bg-red-700 text-white px-3 py-2 rounded-md"
+                        className=" bg-red-700 text-white w-[80px] py-2 rounded-md"
                         type="button"
                         onClick={() => handleDeleteProperty(property._id)}
                       >

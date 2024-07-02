@@ -77,12 +77,18 @@ return (
           </button>
         </div>
 
-        <div className={`w-[250px] flex items-center justify-center md:items-stretch md:justify-start max-md:w-full ${session?.user ? "max-md:justify-center mr-0" : "max-md:justify-end"}  max-md:mr-4`}>
+        <div
+          className={`w-[250px] flex items-center justify-center md:items-stretch md:justify-start max-md:w-full ${
+            session?.user ? "max-md:justify-center mr-0" : "max-md:justify-end"
+          }  max-md:mr-4`}
+        >
           {/* <!-- Logo --> */}
           <Link className="flex flex-shrink-0 items-center" href="/">
             <Image className="h-12 w-auto" src={logo2} alt="PropertyPulse" />
 
-            <div className={`max-md:hidden flex text-white ml-2 flex-col text-center`}>
+            <div
+              className={`max-md:hidden flex text-white ml-2 flex-col text-center`}
+            >
               <span className="font-ChopinScript text-4xl ">
                 Ellie Castelli
               </span>
@@ -193,7 +199,7 @@ return (
               <div>
                 <button
                   type="button"
-                  className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none "
                   id="user-menu-button"
                   aria-expanded="false"
                   aria-haspopup="true"
@@ -216,7 +222,7 @@ return (
               {isProfileMenuOpen && (
                 <div
                   id="user-menu"
-                  className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  className="dropDownMenu absolute -right-8 top-[57px] w-48  bg-gradient-to-t from-blue-100 to-white py-1 shadow-lg focus:outline-none px-2"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="user-menu-button"
@@ -224,7 +230,7 @@ return (
                 >
                   <Link
                     href="/profile"
-                    className="block px-4 py-2 text-sm text-gray-700"
+                    className="block px-2 py-2 text-sm text-blue-950 border-b border-dotted border-slate-800"
                     role="menuitem"
                     tabIndex="-1"
                     id="user-menu-item-0"
@@ -236,7 +242,7 @@ return (
                   </Link>
                   <Link
                     href="/properties/saved"
-                    className="block px-4 py-2 text-sm text-gray-700"
+                    className="block px-2 py-2 text-sm text-blue-950 border-b border-dotted border-slate-800"
                     role="menuitem"
                     tabIndex="-1"
                     id="user-menu-item-2"
@@ -247,7 +253,7 @@ return (
                     Saved Properties
                   </Link>
                   <button
-                    className="block px-4 py-2 text-sm text-gray-700"
+                    className="block px-2 py-2 text-sm text-blue-950"
                     role="menuitem"
                     tabIndex="-1"
                     id="user-menu-item-2"

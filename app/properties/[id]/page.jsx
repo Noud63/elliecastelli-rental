@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation'
 import { fetchSingleProperty } from '@/utils/request'
 import PropertyHeaderImage from '@/components/PropertyHeaderImage'
 import Link from 'next/link'
+import Image from 'next/image'
 import PropertyDetails from '@/components/PropertyDetails'
 import {FaArrowCircleLeft, FaArrowLeft, FaArrowRight} from 'react-icons/fa'
 import Spinner from '@/components/Spinner'
@@ -11,6 +12,7 @@ import PropertyImages from '@/components/PropertyImages'
 import BookmarkButton from '@/components/BookmarkButton'
 import ShareButtons from '@/components/ShareButtons'
 import PropertyContactForm from '@/components/PropertyContactForm'
+import logo from '@/assets/images/ellielogo3.png'
 
 const PropertyPage = () => {
 
@@ -54,9 +56,15 @@ const PropertyPage = () => {
       {loading && <Spinner loading={loading} />}
       {!loading && property && (
         <>
-          <div className="w-full max-w-[1350px] flex flex-row m-auto py-6 pl-10 bg-slate-900 mt-20 text-blue-50 items-center">
-            <FaArrowRight className="mr-2" />
-            {property.type}, {property.location.city}
+          <div className="w-full max-w-[1350px] flex flex-row justify-between m-auto py-4 px-10 bg-slate-900 mt-28 text-blue-50 items-center">
+            <div className="flex flex-row items-center">
+              <FaArrowRight className="mr-2" />
+              {property.type}, {property.location.city}
+            </div>
+
+            <div className="w-10">
+              <Image src={logo} width={0} height={0} size="100vw" alt="logo" />
+            </div>
           </div>
           <PropertyHeaderImage image={property.images[0]} />
           <section>

@@ -79,7 +79,7 @@ const BookmarkButton = ({property}) => {
   ) : (
     <button
       onClick={handleClick}
-      className="bg-slate-900  text-white font-bold w-full py-3 px-4 rounded-full flex items-center justify-center"
+      className="bg-green-600 text-white font-bold w-full py-3 px-4 rounded-full flex items-center justify-center border-b border-green-800"
     >
       <FaBookmark className="fas fa-bookmark mr-2" /> Bookmark Property
     </button>
