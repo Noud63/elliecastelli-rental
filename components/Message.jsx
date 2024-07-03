@@ -58,17 +58,25 @@ if(isDeleted){
 }
 
   return (
-    <div className="relative bg-white p-4 rounded-md shadow-md border border-gray-200">
-      {!isRead && (
-        <div className="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded-medium">
-          New
-        </div>
-      )}
-      <h2 className="text-xl mb-4">
-        <span className="font-bold">Property Inquiry:</span>{" "}
-        {message.name}
-      </h2>
-      <p className="text-gray-700">{message.body}</p>
+    <div className=" bg-gradient-to-t from-blue-200 via-blue-100 to-white p-4 rounded-md shadow-md border-b-2 border-slate-500">
+
+      <div className="w-full mb-2 flex flex-row justify-between items-center border-b border-dotted border-slate-800 pb-2">
+        <h2 className="flex text-xl">
+          <span className="flex items-center font-bold">Property Inquiry:</span>
+          <span className="ml-2">{message.name}</span>
+        </h2>
+        {!isRead && (
+          <div className="flex items-center bg-blue-950 text-white px-2 py-1 rounded-md">
+            New Message
+          </div>
+        )}
+      </div>
+
+      <p className="text-gray-700">
+        <strong>Message: </strong>
+        <br />
+        {message.body}
+      </p>
 
       <ul className="mt-4">
         <li>
@@ -77,30 +85,35 @@ if(isDeleted){
 
         <li>
           <strong>Reply Email:</strong>
-          <a href={`mailto:${message.email}`} className="text-blue-500">
+          <a href={`mailto:${message.email}`} className="text-blue-600">
             {" "}
             {message.email}
           </a>
         </li>
         <li>
           <strong>Reply Phone:</strong>
-          <a href={`tel:${message.phone}`} className="text-blue-500">
+          <a href={`tel:${message.phone}`} className="text-blue-600">
             {" "}
             {message.phone}
           </a>
         </li>
-        <li>
+        <li className="border-b border-dotted border-slate-800 pb-4">
           <strong>Received:</strong>{" "}
           {new Date(message.createdAt).toLocaleString()}h
         </li>
       </ul>
       <button
         onClick={handleReadClick}
-        className={`mt-4 mr-3 ${isRead ? "bg-gray-300" : "bg-blue-500 text-white"}  py-1 px-3 rounded-md`}
+        className={`mt-4 mr-3 ${
+          isRead ? "border border-slate-800 bg-blue-200" : "bg-blue-600 text-white"
+        }  py-1 px-3 rounded-md`}
       >
         {isRead ? "Mark as New" : "Mark as Read"}
       </button>
-      <button onClick={handleDeleteClick} className="mt-4 bg-red-500 text-white py-1 px-3 rounded-md">
+      <button
+        onClick={handleDeleteClick}
+        className="mt-4 bg-red-700 text-white py-1 px-3 rounded-md"
+      >
         Delete
       </button>
     </div>

@@ -28,10 +28,10 @@ const Messages = () => {
 
   return (
     loading ? (<Spinner loading={loading} />) : (
-    <section className="bg-blue-50">
-      <div className="container m-auto py-24 max-w-6xl">
-        <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
-          <h1 className="text-3xl font-bold mb-4">Your Messages</h1>
+    <section className="mt-28 flex justify-center">
+      <div className="w-full signInBox max-w-6xl rounded-xl mx-6">
+        <div className="bg-blue-200/30 px-6 py-8 shadow-md rounded-md md:m-0">
+          <h1 className="text-white text-3xl font-bold mb-4">Your Messages</h1>
 
           <div className="space-y-4">
             {messages.length === 0 ? (<p>You have no messages!</p>) : (

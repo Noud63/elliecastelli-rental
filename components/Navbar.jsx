@@ -172,7 +172,7 @@ return (
             <Link href="/messages" className="relative group">
               <button
                 type="button"
-                className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="relative rounded-full flex justify-center items-center bg-slate-950 w-8 h-8 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 <span className="absolute -inset-1.5"></span>
                 <span className="sr-only">View notifications</span>
@@ -181,7 +181,7 @@ return (
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
-                  stroke="currentColor"
+                  stroke="lightblue"
                   aria-hidden="true"
                 >
                   <path

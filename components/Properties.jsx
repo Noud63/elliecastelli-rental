@@ -47,7 +47,7 @@ const Properties = () => {
     <Spinner loading={loading} />
   ) : (
     <section className="min-h-screen px-4 py-6 w-full max-xxl:max-w-[1000px] max-xxl:mx-auto max-md:flex">
-      <div className="container-xl lg:container m-auto px-4 py-6">
+      <div className="max-w-[1440px] w-full m-auto px-4 py-6 max-md:max-w-[390px] max-md:px-2">
         {properties.length === 0 ? (
           <p>No properties found</p>
         ) : (
