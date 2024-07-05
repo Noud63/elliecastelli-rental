@@ -77,12 +77,12 @@ const handleDeleteProperty = async (propertyId) => {
     <section className="pt-32 min-h-screen flex justify-center">
       <div className="w-full max-w-[800px] mx-6 mb-44">
         <div className="shadow-md rounded-xl m-4 md:m-0 signInBox bg-gradient-to-t from-blue-200 to-white">
-          <h1 className="pl-4 py-2 text-white text-xl font-semibold mb-4 bg-gradient-to-r from-slate-900 via-blue-500/50 to-slate-900 rounded-t-lg">
+          <h1 className="pl-4 py-2 text-white text-xl font-semibold mb-4 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 rounded-t-lg">
             Your Profile
           </h1>
           <div className="flex flex-col md:flex-row pb-8 max-md:px-6">
-            <div className="md:w-1/4 mx-12 mt-2 max-md:mx-0 max-md:mb-6">
-              <div className="mb-6 max-md:border-b border-dotted border-slate-800 max-md:pb-4">
+            <div className="md:w-1/4 mx-6 mt-2 max-md:mx-0 max-md:mb-6 border-b border-dotted border-slate-800 pb-4">
+              <div className="mb-4 max-md:border-b border-dotted border-slate-800 max-md:pb-4">
                 <Image
                   className="h-16 w-16 rounded-full mx-auto md:mx-0"
                   src={profileImage || ProfileDefault}
@@ -91,7 +91,7 @@ const handleDeleteProperty = async (propertyId) => {
                   alt="User"
                 />
               </div>
-              <h2 className="text-xl mb-4 ">
+              <h2 className="text-xl mb-4">
                 <span className="font-semibold text-[18px] block">Name: </span>
                 <span className="text-[18px]">{profileName}</span>
               </h2>
@@ -102,8 +102,8 @@ const handleDeleteProperty = async (propertyId) => {
             </div>
 
             <div className="md:w-3/4 pr-8 max-md:pr-0">
-              <h2 className="text-xl font-semibold mb-4 border-b border-dotted border-slate-800 pb-2">
-                Your Listings
+              <h2 className="text-xl font-semibold mb-4 pb-2">
+                Your Listings:
               </h2>
               {!loading && properties.length === 0 && (
                 <p>No property listings here!</p>

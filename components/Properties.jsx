@@ -10,7 +10,7 @@ const Properties = () => {
     const [properties, setProperties] = useState([])
     const [loading, setLoading] = useState(true)
     const [page, setPage] = useState(1)
-    const [pageSize, setPageSize] = useState(4)
+    const [pageSize, setPageSize] = useState(8)
     const [totalItems, setTotalItems] = useState(0)
 
     

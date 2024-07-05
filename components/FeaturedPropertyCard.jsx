@@ -20,26 +20,32 @@ const FeaturedPropertyCard = ({property}) => {
 
   return (
     <div className="bg-white rounded-xl shadow-[0px_4px_6px_rgba(23,37,84,.9)] bg-gradient-to-t from-blue-200 via-white to-white">
-      <div className="relative flex flex-row max-lg:flex-col">
-        <Image
-          src={property.images[0]}
-          alt=""
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="object-cover rounded-l-xl rounded-r-none max-lg:rounded-b-none max-lg:rounded-t-xl w-full lg:w-2/5"
-        />
-        <div className="w-full p-6 flex flex-col">
-          <h3 className="w-full flex justify-center text-xl max-xl:text-lg max-md:text-xl font-bold ">
+      <div className="flex flex-row max-lg:flex-col">
+        <div className="w-full relative">
+          <Image
+            src={property.images[0]}
+            alt=""
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="object-cover h-full rounded-l-xl rounded-r-none max-lg:rounded-b-none max-xlg:rounded-t-xl w-full pt-[43px]"
+          />
+          <div className="w-full absolute top-0 left-0 bg-slate-950 rounded-tl-xl px-4 h-[43px] 
+          text-blue-100 font-bold flex justify-start items-center md:text-center max-lg:rounded-t-xl">
+            ${getRateDisplay()}
+          </div>
+        </div>
+
+        <div className="w-full flex flex-col">
+          <div className="w-full bg-blue-900/40 flex justify-center items-center text-xl h-[43px] 
+          max-xl:text-lg rounded-tr-xl max-md:text-xl font-bold max-lg:rounded-tr-none">
             {property.name}
-          </h3>
-          <div className="w-full flex justify-center text-gray-600 mb-4">
+          </div>
+          <div className="w-full flex justify-center font-semibold text-gray-600 mb-4 border-b border-dotted border-slate-800 pb-3 mt-3">
             {property.type}
           </div>
-          <h3 className="absolute top-[10px] left-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
-            ${getRateDisplay()}
-          </h3>
-          <div className="flex justify-center gap-4 text-gray-500 mb-4">
+
+          <div className="flex justify-center gap-4 text-gray-500 mb-4  px-6 ">
             <p>
               <FaBed className="inline-block mr-1" /> {property.beds}{" "}
               <span className="md:hidden lg:inline">Beds</span>
@@ -55,7 +61,7 @@ const FeaturedPropertyCard = ({property}) => {
             </p>
           </div>
 
-          <div className="flex justify-center gap-4 text-green-900 text-sm mb-4">
+          <div className="flex justify-center gap-4 text-green-900 text-sm mb-4 border-b border-dotted border-slate-800 pb-5">
             {property.rates.nightly && (
               <p>
                 {" "}
@@ -79,9 +85,7 @@ const FeaturedPropertyCard = ({property}) => {
             )}
           </div>
 
-          <div className="border border-dotted border-slate-700 mb-5"></div>
-
-          <div className="flex justify-between items-center max-md:flex-col">
+          <div className="flex justify-between items-center max-md:flex-col pb-4 px-4">
             <div className="w-full flex align-middle gap-2 max-md:flex-start max-md:mb-2">
               <FaMapMarker className="text-lg text-orange-700" />
               <span className="text-orange-700">
@@ -91,7 +95,7 @@ const FeaturedPropertyCard = ({property}) => {
             </div>
             <Link
               href={`/properties/${property._id}`}
-              className="bg-slate-950 text-blue-200 px-8 py-1 rounded-lg text-center text-sm max-md:w-full"
+              className="bg-slate-950 text-blue-200 px-6 py-1 rounded-lg text-center text-sm max-md:w-full"
             >
               Details
             </Link>

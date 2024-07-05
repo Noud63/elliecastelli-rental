@@ -58,25 +58,34 @@ if(isDeleted){
 }
 
   return (
-    <div className=" bg-gradient-to-t from-blue-200 via-blue-100 to-white p-4 rounded-md shadow-md border-b-2 border-slate-500">
+    <div className=" bg-blue-100 p-4 rounded-md shadow-md border-b-2 border-slate-500">
+      {!isRead && (
+        <div className="hidden items-center bg-blue-950 text-white px-2 py-1 rounded-md max-sm:flex max-sm:mb-2">
+          New Message
+        </div>
+      )}
+      <div className="w-full mb-2 flex flex-row justify-between items-center border-b border-dotted border-slate-800 pb-2 ">
+        <div className="flex text-xl max-sm:flex-col">
+          <span className="flex items-center font-bold">Property inquiry:</span>
+          <span className="ml-2 max-sm:ml-0 max-sm:text-[18px]">
+            {message.property.name}
+          </span>
+        </div>
 
-      <div className="w-full mb-2 flex flex-row justify-between items-center border-b border-dotted border-slate-800 pb-2">
-        <h2 className="flex text-xl">
-          <span className="flex items-center font-bold">Property Inquiry:</span>
-          <span className="ml-2">{message.name}</span>
-        </h2>
         {!isRead && (
-          <div className="flex items-center bg-blue-950 text-white px-2 py-1 rounded-md">
+          <div className="flex items-center bg-blue-950 text-white px-2 py-1 rounded-md max-sm:hidden">
             New Message
           </div>
         )}
       </div>
 
-      <p className="text-gray-700">
+      <div className="text-gray-700">
         <strong>Message: </strong>
         <br />
-        {message.body}
-      </p>
+        <div className="bg-white min-h-20 p-2 rounded-md mt-2 border border-blue-900/30">
+          {message.body}
+        </div>
+      </div>
 
       <ul className="mt-4">
         <li>
@@ -105,7 +114,9 @@ if(isDeleted){
       <button
         onClick={handleReadClick}
         className={`mt-4 mr-3 ${
-          isRead ? "border border-slate-800 bg-blue-200" : "bg-blue-600 text-white"
+          isRead
+            ? "border border-slate-800 bg-blue-200"
+            : "bg-blue-600 text-white"
         }  py-1 px-3 rounded-md`}
       >
         {isRead ? "Mark as New" : "Mark as Read"}
