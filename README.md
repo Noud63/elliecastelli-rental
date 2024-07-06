@@ -16,7 +16,8 @@ Cloudinary <br />
 opencage-api-client (geocoding) <br />
 Leaflet OpenStreetMap <br /><br />
 
-![ec-r](https://github.com/Noud63/elliecastelli-rental/assets/38325801/b9465b30-2760-4952-8612-0640aaf14679)<br /><br />
-![ec-r2](https://github.com/Noud63/elliecastelli-rental/assets/38325801/72daf751-8190-481c-8dca-99bfbd1886fa)<br /><br />
-![ec-r-duo](https://github.com/Noud63/elliecastelli-rental/assets/38325801/bd3538f6-408d-42a2-89cd-e76240743044)<br /><br />
-![ec-r3](https://github.com/Noud63/elliecastelli-rental/assets/38325801/581ad4ce-bfe5-41df-87d3-26420f2f8f0c)<br /><br />
+![ec-r](https://github.com/Noud63/elliecastelli-rental/assets/38325801/db131ced-cc98-4914-8b62-5b62bffd2530)<br /><br />
+![ec-r-2](https://github.com/Noud63/elliecastelli-rental/assets/38325801/894350a3-82fd-4cea-bee9-9031017d1ac2)<br /><br />
+![ec-r-6](https://github.com/Noud63/elliecastelli-rental/assets/38325801/2fb8ea92-9927-4163-b27f-62ff7e2730a3)<br /><br />
+![ec-r-duo](https://github.com/Noud63/elliecastelli-rental/assets/38325801/ffb287a8-3ce3-4830-91ff-7a928a56c217)<br /><br />
+![ec-r-trio](https://github.com/Noud63/elliecastelli-rental/assets/38325801/d42d7dc9-887a-4328-8e87-6187d85085e1)<br /><br />
