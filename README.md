@@ -15,7 +15,7 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
 <li>opencage-api-client (geocoding)</li> 
 <li>Leaflet OpenStreetMap</li><br />
 
-<b>Features:</b><br/>
+<div class="underline"><b>Features:</b></div><br/>
 
 <ul><li>register</li>
 <li>login with:</li>
