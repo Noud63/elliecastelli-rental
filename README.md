@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 <h2>Ellie Castelli Rental Division</h2>
 Platform where real-estate owners can list their properties for rent.<br /><br />
 
-<b>Build with:</b><br />
+<ins><b>Build with:</b><ins><br />
 <li>Next.js 14</li>
 <li>NextAuth.js</li>
 <li>OAuth 2.0</li> 
