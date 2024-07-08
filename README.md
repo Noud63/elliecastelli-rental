@@ -19,10 +19,11 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
 
 <ul><li>register</li>
 <li>login with:</li>
-<ol><li>credentials</li>
-<li>email</li>
-<li>google</li>
-<li>facebook</li></ol>
+<ol>credentials
+email
+google
+facebook
+</ol>
 </ul>
 Upload property<br/>
 Edit uploaded property<br/>
