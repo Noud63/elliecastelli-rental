@@ -20,4 +20,4 @@ Leaflet OpenStreetMap <br /><br />
 ![ec-r-2](https://github.com/Noud63/elliecastelli-rental/assets/38325801/80da09b9-d206-44b4-9198-3114f393d99a)<br /><br />
 ![ec-r-duo](https://github.com/Noud63/elliecastelli-rental/assets/38325801/2d20eaf5-0d89-4f7d-a1da-534f1387c499)<br /><br />
 ![ec-r-trio](https://github.com/Noud63/elliecastelli-rental/assets/38325801/aa20a1dd-a1e9-48fe-995d-993fa9523695)<br /><br />
-![ec-r-trio](https://github.com/Noud63/elliecastelli-rental/assets/38325801/d42d7dc9-887a-4328-8e87-6187d85085e1)<br /><br />
+![ec-r-11](https://github.com/Noud63/elliecastelli-rental/assets/38325801/0a0a4822-f8c1-46b1-91dc-bcc4036f0677)<br /><br />
