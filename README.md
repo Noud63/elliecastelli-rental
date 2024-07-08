@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 <b>NextJs 14 App Router Application</b><br />
 
 <b>Build with:</b><br />
-Next.js<br />
+<li>Next.js</li><br />
 NextAuth.js <br />
 OAuth 2.0 <br />
 MongoDB <br />
@@ -15,6 +15,11 @@ react-photoswipe-gallery<br />
 Cloudinary <br />
 opencage-api-client (geocoding) <br />
 Leaflet OpenStreetMap <br /><br />
+
+Features:<br/><br />
+
+
+
 
 ![ec-r](https://github.com/Noud63/elliecastelli-rental/assets/38325801/db131ced-cc98-4914-8b62-5b62bffd2530)<br /><br />
 ![ec-r-2](https://github.com/Noud63/elliecastelli-rental/assets/38325801/80da09b9-d206-44b4-9198-3114f393d99a)<br /><br />
