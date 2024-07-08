@@ -2,8 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ![ellielogo_readme2](https://github.com/Noud63/elliecastelli-rental/assets/38325801/1ba8e48e-002c-4d49-b9d0-8d21e0ae87fe)
 
-<span style="font-size:24px">Ellie Castelli Rental Division</span>
-<hr>Platform where real-estate owners can list their properties for rent.</hr><br /><br />
+## Ellie Castelli Rental Division
+Platform where real-estate owners can list their properties for rent.<br /><br />
 
 <ins>**Build with:**<ins><br />
 <li>Next.js 14</li>
