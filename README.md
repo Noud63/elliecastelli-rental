@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+![ellielogo_readme](https://github.com/Noud63/elliecastelli-rental/assets/38325801/f9e55542-5dcf-4caf-a257-b71bf6877fdd)<br/>
+
 <h2>Ellie Castelli Rental Division</h2>
 Platform where real-estate owners can list their properties for rent.<br /><br />
 
@@ -23,7 +25,7 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
     * email
     * google
     * facebook
-* Upload property
+* Upload property (attached image files uploaded to Cloudinary)
 * Edit or delete uploaded property
 * Search property
 * Share property on social media 
