@@ -1,12 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-<h1>Ellie Castelli Rental Division</h1>
-Platform where real-estate owners can list their rental properety
-
-<b>NextJs 14 App Router Application</b><br />
+<h2>Ellie Castelli Rental Division</h2>
+Platform where real-estate owners can list their properties for rent.
 
 <b>Build with:</b><br />
-<li>Next.js</li>
+<li>Next.js 14</li>
 <li>NextAuth.js</li>
 <li>OAuth 2.0</li> 
 <li>MongoDB</li> 
@@ -18,6 +16,19 @@ Platform where real-estate owners can list their rental properety
 <li>Leaflet OpenStreetMap</li><br />
 
 Features:<br/><br />
+
+register<br/>
+login with:<br/>
+<li>credentials</li>
+<li>email</li>
+<li>google</li>
+<li>facebook</li><br/>
+Upload property<br/>
+Edit uploaded property<br/>
+Search property<br/>
+Add property<br/>
+Send mail to property owner<br />
+List messages <br/>
 
 
 
