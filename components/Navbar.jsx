@@ -131,7 +131,7 @@ return (
                     : ""
                 } text-white px-5 py-3`}
               >
-                Add Property
+                Upload
               </Link>
             )}
           </div>

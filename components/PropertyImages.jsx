@@ -10,7 +10,7 @@ const PropertyImages = ({images}) => {
     close: true,
     counter: true,
     bgOpacity: 0.8,
-    padding: { top: 20, bottom: 40, left: 50, right: 500 },
+    padding: { top: 20, bottom: 40, left: 50, right: 50 },
   };
 
   return (
