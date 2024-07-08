@@ -33,7 +33,7 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
 * Bookmark property
 * View Bookmarked properties
 * SignOut
-<<br />
+<br /><br />
 
 
 
