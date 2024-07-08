@@ -17,8 +17,8 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
 
 <b>Features:</b><br/>
 
-register<br/>
-login with:<br/>
+<li>register</li>
+<li>login with:</li>
 <li>credentials</li>
 <li>email</li>
 <li>google</li>
