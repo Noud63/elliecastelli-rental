@@ -5,8 +5,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 <b>NextJs 14 App Router Application</b><br />
 
 <b>Build with:</b><br />
-<li>Next.js</li><br />
-NextAuth.js <br />
+<li>Next.js</li>
+<li>NextAuth.js</li><br />
 OAuth 2.0 <br />
 MongoDB <br />
 Tailwind <br />
