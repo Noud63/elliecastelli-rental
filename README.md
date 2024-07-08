@@ -3,7 +3,7 @@
 
 ![ellielogo_readme](https://github.com/Noud63/elliecastelli-rental/assets/38325801/25d70f66-3269-4340-b679-cd7bba93c958)
 
-<h2 align="center">Ellie Castelli Rental Division</h2>
+<h2 align="center">Ellie Castelli Rental Division</h2><br />
 Platform where real-estate owners can list their properties for rent.<br /><br />
 
 <ins>**Build with:**<ins><br />
