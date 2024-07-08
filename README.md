@@ -6,15 +6,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 <b>Build with:</b><br />
 <li>Next.js</li>
-<li>NextAuth.js</li><br />
-OAuth 2.0 <br />
-MongoDB <br />
-Tailwind <br />
-Shadcn/ui <br />
-react-photoswipe-gallery<br />
-Cloudinary <br />
-opencage-api-client (geocoding) <br />
-Leaflet OpenStreetMap <br /><br />
+<li>NextAuth.js</li>
+<li>OAuth 2.0</li> 
+<li>MongoDB</li> 
+<li>Tailwind</li> 
+<li>Shadcn/ui</li> 
+<li>react-photoswipe-gallery</li>
+<li>Cloudinary</li>
+<li>opencage-api-client (geocoding)</li> 
+<li>Leaflet OpenStreetMap</li><br />
 
 Features:<br/><br />
 
