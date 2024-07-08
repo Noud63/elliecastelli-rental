@@ -28,11 +28,16 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
 </ul>
 <ul>
 <li>Upload property</li>
-<li>Edit uploaded property</li>
+<li>Edit or delete uploaded property</li>
 <li>Search property</li>
-<li>Add property</li>
-<li>Send mail to property owner<b/li>
-<li>List messages </li></ul><br />
+<li>Send message to property owner<b/li>
+<li>List messages </li>
+<li>View listed properties as owner</li>
+<li>View listed properties as owner</li>
+<li>Bookmark property</li>
+<li>View Bookmarked properties</li>
+<li>SignOut</li>
+</ul><br />
 
 
 
