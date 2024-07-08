@@ -23,17 +23,16 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
     * email
     * google
     * facebook
-
-*Upload property
-Edit or delete uploaded property
-Search property
-Share property on social media 
-Send message to property owner<
-List messages 
-View listed properties as owner
-Bookmark property
-View Bookmarked properties
-SignOut
+* Upload property
+* Edit or delete uploaded property
+* Search property
+* Share property on social media 
+* Send message to property owner<
+* List messages 
+* View listed properties as owner
+* Bookmark property
+* View Bookmarked properties
+* SignOut
 <<br />
 
 
