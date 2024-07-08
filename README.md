@@ -1,4 +1,5 @@
-## This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+ ##
 
 ![ellielogo_readme](https://github.com/Noud63/elliecastelli-rental/assets/38325801/25d70f66-3269-4340-b679-cd7bba93c958)
 
