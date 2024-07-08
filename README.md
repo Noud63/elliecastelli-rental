@@ -34,7 +34,6 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
 <li>Send message to property owner<b/li>
 <li>List messages </li>
 <li>View listed properties as owner</li>
-<li>View listed properties as owner</li>
 <li>Bookmark property</li>
 <li>View Bookmarked properties</li>
 <li>SignOut</li>
