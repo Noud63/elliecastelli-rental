@@ -1,7 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 <h2>Ellie Castelli Rental Division</h2>
-Platform where real-estate owners can list their properties for rent.
+Platform where real-estate owners can list their properties for rent.<br /><br />
 
 <b>Build with:</b><br />
 <li>Next.js 14</li>
