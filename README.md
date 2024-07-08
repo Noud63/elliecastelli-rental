@@ -17,12 +17,12 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
 
 <b>Features:</b><br/>
 
-<li>register</li>
+<ul><li>register</li>
 <li>login with:</li>
-<ul>credentials</ul>
-<ul>email</ul>
-<ul>google</ul>
-<ul>facebook</ul>
+<li>credentials</li>
+<li>email</li>
+<li>google</li>
+<li>facebook</li></ul>
 Upload property<br/>
 Edit uploaded property<br/>
 Search property<br/>
