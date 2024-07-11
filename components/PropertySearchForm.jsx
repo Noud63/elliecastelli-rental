@@ -78,7 +78,7 @@ const handleSubmit = (e) => {
       </div>
       <button
         type="submit"
-        className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-2 rounded-lg bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 text-blue-100 focus:outline-none"
+        className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-2 rounded-lg bg-gradient-to-r from-slate-950  via-[#172f54] to-slate-950 text-blue-100 focus:outline-none"
       >
         Search
       </button>

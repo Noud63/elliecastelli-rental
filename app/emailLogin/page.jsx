@@ -25,10 +25,10 @@ useEffect(() => {
   }, [session]);
 
   return (
-    <div className="signInBox mt-40 w-full flex justify-center flex-col max-w-[400px] mx-auto p-4 border-2 border-white rounded-lg">
-      <h3 className="w-full text-xl text-blue-900 font-bold mb-4 flex justify-center">
+    <div className="signInBox mt-40 w-full flex justify-center flex-col max-w-[400px] mx-auto p-4 rounded-lg border-b-2 border-blue-950">
+      <div className="w-full text-xl text-blue-950 font-bold mb-4 flex justify-center border-b-2 border-dotted border-slate-900 pb-4">
         Login with email
-      </h3>
+      </div>
 
       <form>
         <Label htmlFor="email" className="ml-3 mb-2 text-md text-blue-900">
@@ -56,7 +56,7 @@ useEffect(() => {
 
         <Button
           type="button"
-          className="w-full text-md bg-gradient-to-r from-slate-600 via-blue-500 to-slate-600 py-6 my-2"
+          className="w-full text-md bg-gradient-to-r from-slate-950  via-[#172f54] to-slate-950 py-6 my-2"
           onClick={() => signIn("email", { email })}
         >
           <LogIn size={20} className="mr-2" />
@@ -64,12 +64,12 @@ useEffect(() => {
         </Button>
       </form>
 
-      <div className="w-full mt-2 flex items-center gap-1 text-gray-600">
+      <div className="w-full mt-2 flex items-center gap-1 text-slate-950 font-semibold">
         Not registered yet <ArrowRight size={16} />
         <Link href="/register">Register</Link>
       </div>
 
-      <div className="w-full flex items-center gap-1 py-2 text-gray-600">
+      <div className="w-full flex items-center gap-1 py-2 text-slate-950 font-semibold">
         Back to login page
         <ArrowRight size={16} />
         <Link href="/signIn">Login</Link>

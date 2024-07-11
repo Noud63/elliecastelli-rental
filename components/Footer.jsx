@@ -7,9 +7,8 @@ const Footer = () => {
     const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="w-full relative flex justify-center bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 h-[500px] py-4">
+    <footer className="w-full relative flex justify-center bg-gradient-to-r from-slate-950  via-[#0b1d39] to-slate-950 h-[500px] py-4">
       <div className="w-full max-w-[1400px] flex justify-between items-center md:flex-row max-md:flex-col max-md:justify-around px-12">
-        
         <div className="w-36 flex flex-col items-center text-white">
           <Image
             src={logo}

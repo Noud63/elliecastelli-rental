@@ -11,7 +11,7 @@ export const POST = async (request) => {
     const { name, email, username, password } = await request.json();
 
     //Find user in database
-    const user = await User.findOne({ email: email });
+    const user = await Register.findOne({ email: email });
 
     if (user) {
       return new Response(JSON.stringify({ message: "User already exist!"}), { status: 409 });
@@ -20,7 +20,7 @@ export const POST = async (request) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const newUser = await User.create({
+    const newUser = await Register.create({
       email: email,
       name: name,
       username: username,

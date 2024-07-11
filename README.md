@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ![ellielogo_readme](https://github.com/Noud63/elliecastelli-rental/assets/38325801/3a7a410e-86b3-4b53-a6e6-37f6ccb7b2b1)
 
-## Ellie Castelli Rental Division
+## Ellie Castelli Rental Division<br/>
 Platform where real-estate owners can list their properties for rent.<br /><br />
 
 <ins>**Build with:**<ins><br />
@@ -36,8 +36,6 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
 * View Bookmarked properties
 * SignOut
 <br /><br />
-
-
 
 
 ![ec-r](https://github.com/Noud63/elliecastelli-rental/assets/38325801/db131ced-cc98-4914-8b62-5b62bffd2530)<br /><br />

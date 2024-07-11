@@ -30,7 +30,7 @@ const Messages = () => {
   return loading ? (
     <Spinner loading={loading} />
   ) : (
-    <section className="min-h-screen mt-28 flex justify-center mb-20">
+    <section className="h-auto mt-28 flex justify-center mb-40">
       <div className="w-full signInBox max-w-6xl rounded-xl max-xxlg:shadow-none">
         <div className="bg-blue-200/30 px-6 pt-4 pb-8 shadow-md rounded-md md:m-0 max-xxlg:bg-blue-200/0 max-xxlg:shadow-none">
           <h1 className="flex items-center text-white text-3xl font-bold mb-4">

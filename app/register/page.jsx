@@ -64,11 +64,11 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className="w-full mx-auto mt-40">
+    <div className="w-full mx-auto mt-40 px-4">
       <div className="signInBox p-6 rounded-lg shadow-md w-full max-w-[600px] mx-auto  bg-blue-200/20">
-        <h3 className="flex justify-center text-xl text-blue-950 font-bold mb-6">
+        <div className="flex justify-center text-xl text-blue-950 font-bold mb-4 border-b-2 border-dotted border-slate-900 pb-4">
           Register
-        </h3>
+        </div>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -155,7 +155,7 @@ const RegistrationForm = () => {
 
           <div className="mt-4 mb-4">
             <Button
-              className="bg-gradient-to-r from-slate-900 via-blue-500/40 to-slate-900 text-white text-md py-6 rounded-lg w-full flex items-center justify-center"
+              className="bg-gradient-to-r from-slate-950  via-[#102546] to-slate-950 text-white text-md py-6 rounded-lg w-full flex items-center justify-center"
               type="submit"
             >
               <SendHorizontal className="mr-2" /> Register

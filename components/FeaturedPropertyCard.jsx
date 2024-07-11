@@ -30,15 +30,19 @@ const FeaturedPropertyCard = ({property}) => {
             sizes="100vw"
             className="object-cover h-full rounded-l-xl rounded-r-none max-lg:rounded-b-none max-xlg:rounded-t-xl w-full pt-[43px]"
           />
-          <div className="w-full absolute top-0 left-0 bg-slate-950 rounded-tl-xl px-4 h-[43px] 
-          text-blue-100 font-bold flex justify-start items-center md:text-center max-lg:rounded-t-xl">
+          <div
+            className="w-full absolute top-0 left-0 bg-gradient-to-r from-slate-950 via-[#0a1b35] to-slate-950 rounded-tl-xl px-4 h-[43px] 
+          text-blue-100 font-bold flex justify-start items-center md:text-center max-lg:rounded-t-xl"
+          >
             ${getRateDisplay()}
           </div>
         </div>
 
         <div className="w-full flex flex-col">
-          <div className="w-full bg-blue-900/40 flex justify-center items-center text-xl h-[43px] 
-          max-xl:text-lg rounded-tr-xl max-md:text-xl font-bold max-lg:rounded-tr-none">
+          <div
+            className="w-full bg-blue-900/40 flex justify-center items-center text-xl h-[43px] 
+          max-xl:text-lg rounded-tr-xl max-md:text-xl font-bold max-lg:rounded-tr-none"
+          >
             {property.name}
           </div>
           <div className="w-full flex justify-center font-semibold text-gray-600 mb-4 border-b border-dotted border-slate-800 pb-3 mt-3">

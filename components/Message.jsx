@@ -58,9 +58,9 @@ if(isDeleted){
 }
 
   return (
-    <div className=" bg-blue-100 p-4 rounded-md shadow-md border-b-2 border-slate-500">
+    <div className=" bg-blue-100/60 p-4 rounded-md shadow-md border-b-2 border-slate-500">
       {!isRead && (
-        <div className="hidden items-center bg-blue-950 text-white px-2 py-1 rounded-md max-sm:flex max-sm:mb-2">
+        <div className="hidden items-center bg-gradient-to-r from-slate-950  via-[#172f54] to-slate-950 text-white px-2 py-1 rounded-md max-sm:flex max-sm:mb-2">
           New Message
         </div>
       )}

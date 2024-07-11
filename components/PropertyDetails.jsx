@@ -19,23 +19,26 @@ const PropertyDetails = ({ property }) => {
 
 return (
   <main>
-    <div className="bg-gradient-to-t from-blue-50 to-white p-6 rounded-lg shadow-md text-center md:text-left">
-      <h1 className="text-3xl font-bold mb-4">{property.name}</h1>
-      <div className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start">
+    <div className="bg-gradient-to-t from-slate-200 to-white rounded-lg shadow-md text-center md:text-left pb-4">
+      <div className="bg-gradient-to-r from-slate-950 via-[#102546] to-slate-950 text-[18px] text-blue-100 font-semibold mb-4 py-3 px-6 rounded-t-lg">
+        # {property.name}
+      </div>
+      <div className="text-gray-500  flex justify-center items-center md:justify-start px-6 border-b border-dotted border-slate-900 pb-3">
         <FaMapMarker className="text-lg text-orange-700 mr-2" />
         <p className="text-orange-700">
-          {property.location.street} {property.location.city}{" "}
+          {property.location.street}, {property.location.city},{" "}
           {property.location.state}{" "}
         </p>
       </div>
 
-      <h3 className="text-lg font-semibold my-6 bg-slate-800 text-white p-2 rounded-md">
-        Rates & Options
-      </h3>
-      <div className="flex flex-col md:flex-row justify-between px-2">
-        <div className="flex items-center justify-center mb-4 border-b  border-gray-400 md:border-b-0 pb-4 md:pb-0">
-          <div className="text-gray-500 mr-2 font-bold">Nightly</div>
-          <div className="text-2xl font-bold text-blue-500">
+      <div className="text-lg font-semibold mt-3 text-slate-900 px-6 pb-3 border-b border-dotted border-slate-900">
+        Rates & Options:
+      </div>
+
+      <div className="flex flex-col md:flex-row justify-between items-center px-6 pt-4 max-md:justify-center ">
+        <div className="w-1/3 flex items-center justify-center mb-4 max-md:pb-2 max-md:mt-2 border-r border-slate-800  max-md:w-full max-md:border-none">
+          <div className="text-slate-900 mr-2 text-[18px]">Nightly:</div>
+          <div className="text-lg font-medium text-slate-700">
             {property.rates.nightly ? (
               `$${property.rates.nightly.toLocaleString()}`
             ) : (
@@ -43,9 +46,10 @@ return (
             )}
           </div>
         </div>
-        <div className="flex items-center justify-center mb-4 border-b border-gray-200 md:border-b-0 pb-4 md:pb-0">
-          <div className="text-gray-500 mr-2 font-bold">Weekly</div>
-          <div className="text-2xl font-bold text-blue-500">
+
+        <div className="w-1/3 flex items-center justify-center mb-4 border-r border-slate-800 max-md:w-full max-md:border-none">
+          <div className="text-slate-900 mr-2 text-[18px]">Weekly:</div>
+          <div className="text-xl font-normal text-slate-700">
             {property.rates.weekly ? (
               `$${property.rates.weekly.toLocaleString()}`
             ) : (
@@ -53,9 +57,10 @@ return (
             )}
           </div>
         </div>
-        <div className="flex items-center justify-center mb-4 pb-4 md:pb-0">
-          <div className="text-gray-500 mr-2 font-bold">Monthly</div>
-          <div className="text-2xl font-bold text-blue-500">
+
+        <div className="w-1/3 flex items-center justify-center mb-4 max-md:w-full max-md:border-none">
+          <div className="text-slate-900 mr-2 text-[18px]">Monthly:</div>
+          <div className="text-xl font-normal text-slate-700">
             {property.rates.monthly ? (
               `$${property.rates.monthly.toLocaleString()}`
             ) : (
@@ -66,29 +71,36 @@ return (
       </div>
     </div>
 
-    <div className="bg-gradient-to-t from-blue-50 to-white p-6 rounded-lg shadow-md mt-6">
-      <h3 className="text-lg font-bold mb-6">Description & Details</h3>
-      <div className="flex justify-center gap-4 text-blue-500 mb-4 text-xl space-x-9">
+    <div className="bg-gradient-to-t from-blue-50 to-white rounded-lg shadow-md mt-6 pb-4">
+      <div className="bg-gradient-to-r from-slate-950  via-[#102546] to-slate-950 text-[18px] font-semibold mb-4 text-blue-100 py-3 px-6 rounded-t-lg">
+        # Description & Details
+      </div>
+
+      <p className="text-gray-600 mb-4 text-[17px] text-center border-b border-dotted border-slate-900 pb-4">
+        {property.description}
+      </p>
+      <div className="flex justify-center gap-4 mb-4 text-xl space-x-9">
         <p>
-          <FaBed className="inline-block mr-2" />
-          {property.beds} <span className="hidden sm:inline">Beds</span>
+          <FaBed className="inline-block mr-2 text-slate-500" />
+          {property.beds} <span className="hidden sm:inline ">Beds</span>
         </p>
         <p>
-          <FaBath className="inline-block mr-2" />
+          <FaBath className="inline-block mr-2 text-slate-500" />
           {property.baths} <span className="hidden sm:inline">Baths</span>
         </p>
         <p>
-          <FaRulerCombined className="inline-block mr-2" />
+          <FaRulerCombined className="inline-block mr-2 text-slate-500" />
           {property.square_feet} <span className="hidden sm:inline">sqft</span>
         </p>
       </div>
-      <p className="text-gray-500 mb-4 text-center">{property.description}</p>
     </div>
 
-    <div className="bg-gradient-to-t from-blue-50 to-white p-6 rounded-lg shadow-md mt-6">
-      <h3 className="text-lg font-bold mb-6">Amenities</h3>
+    <div className="bg-gradient-to-t from-blue-50 to-white rounded-lg shadow-md mt-6 pb-6">
+      <div className="bg-gradient-to-r from-slate-950  via-[#102546] to-slate-950 py-3 text-lg font-semibold mb-6 rounded-t-lg text-blue-100 pl-6">
+        # Amenities
+      </div>
 
-      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none space-y-2">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none  px-6">
         {property.amenities.map((amenity, index) => (
           <li key={index}>
             <FaCheck className="inline-block text-green-600 mr-2" />

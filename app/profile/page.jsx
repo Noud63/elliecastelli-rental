@@ -77,7 +77,7 @@ const handleDeleteProperty = async (propertyId) => {
     <section className="pt-32 min-h-screen flex justify-center">
       <div className="w-full max-w-[800px] mx-6 mb-44">
         <div className="shadow-md rounded-xl m-4 md:m-0 signInBox bg-gradient-to-t from-blue-200 to-white">
-          <h1 className="pl-4 py-2 text-white text-xl font-semibold mb-4 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 rounded-t-lg">
+          <h1 className="pl-4 py-2 text-white text-xl font-semibold mb-4 bg-gradient-to-r from-slate-950  via-[#172f54] to-slate-950 rounded-t-lg">
             Your Profile
           </h1>
           <div className="flex flex-col md:flex-row pb-8 max-md:px-6">

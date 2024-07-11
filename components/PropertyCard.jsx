@@ -39,10 +39,14 @@ const PropertyCard = ({property, loading}) => {
       )}
       <div className="">
         <div className="text-left md:text-center mb-5 border-b border-dotted border-slate-900 pb-2">
-          <h3 className="text-xl text-center font-bold bg-blue-900/40 py-2">{property.name}</h3>
-          <div className="text-gray-600 text-center font-medium pt-2">{property.type}</div>
+          <h3 className="text-xl text-center font-bold bg-blue-900/40 py-2">
+            {property.name}
+          </h3>
+          <div className="text-gray-600 text-center font-medium pt-2">
+            {property.type}
+          </div>
         </div>
-        <h3 className="w-full absolute top-0 right-0 bg-slate-900 px-4 py-3 rounded-t-lg text-blue-100 text-lg font-semibold text-left md:text-center lg:text-left">
+        <h3 className="w-full absolute top-0 right-0 bg-gradient-to-r from-slate-950  via-[#0c1d38] to-slate-950 px-4 py-3 rounded-t-lg text-blue-100 text-lg font-semibold text-left md:text-center lg:text-left">
           ${getRateDisplay()}
         </h3>
 
@@ -57,8 +61,7 @@ const PropertyCard = ({property, loading}) => {
           </p>
           <p>
             <FaRulerCombined className="inline mr-2" />
-            {property.square_feet}{" "}
-            <span className=" lg:inline">sqft</span>
+            {property.square_feet} <span className=" lg:inline">sqft</span>
           </p>
         </div>
 
@@ -96,7 +99,7 @@ const PropertyCard = ({property, loading}) => {
           </div>
           <Link
             href={`/properties/${property._id}`}
-            className=" bg-slate-950 text-blue-200 px-8 py-1 rounded-lg text-center text-sm max-md:w-full"
+            className="bg-gradient-to-r from-slate-950  via-[#172f54] to-slate-950 text-blue-200 px-8 py-1 rounded-lg text-center text-sm max-md:w-full"
           >
             Details
           </Link>

@@ -61,10 +61,10 @@ const PropertyContactForm = ({ property }) => {
   };
 
   return (
-    <div className="bg-blue-50 to-white p-6 rounded-lg shadow-md">
-      <h3 className="text-xl font-bold mb-6 flex justify-center">
+    <div className="bg-blue-50 to-white rounded-lg shadow-md ">
+      <div className="bg-gradient-to-r from-slate-950  via-[#172f54] to-slate-950 py-4 text-blue-100 rounded-t-lg text-xl font-semibold mb-6 flex justify-center">
         Contact Property Manager
-      </h3>
+      </div>
       {!session ? (
         <p>You must be logged in to send a message</p>
       ) : wasSubmitted ? (
@@ -73,7 +73,7 @@ const PropertyContactForm = ({ property }) => {
         </p>
       ) : (
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+          <div className="mb-4 px-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="name"
@@ -90,7 +90,7 @@ const PropertyContactForm = ({ property }) => {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 px-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="email"
@@ -107,7 +107,7 @@ const PropertyContactForm = ({ property }) => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 px-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="phone"
@@ -123,7 +123,7 @@ const PropertyContactForm = ({ property }) => {
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 px-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="message"
@@ -138,9 +138,9 @@ const PropertyContactForm = ({ property }) => {
               onChange={(e) => setMessage(e.target.value)}
             ></textarea>
           </div>
-          <div>
+          <div className="px-4 pb-6">
             <button
-              className="bg-slate-900 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
+              className="bg-blue-700 text-white font-bold py-3 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
               type="submit"
             >
               <FaPaperPlane className="mr-2" /> Send Message

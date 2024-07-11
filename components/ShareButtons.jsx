@@ -17,7 +17,7 @@ const ShareButtons = ({ property }) => {
 
   return (
     <>
-      <h3 className="text-xl font-bold text-center pt-2 text-white">
+      <h3 className="text-xl font-semibold text-center pt-2 text-white">
         Share this property
       </h3>
       <div className="flex gap-3 justify-center pb-5">

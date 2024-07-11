@@ -1,0 +1,16 @@
+{
+  "_id": {
+    "$oid": "668fa92fdb18ab0f93ec002a"
+  },
+  "email": "noudvandun@gmail.com",
+  "username": "Noud van Dun",
+  "image": "https://lh3.googleusercontent.com/a/ACg8ocJvL33LsFmEJ5v3LqSaS_aVWgPZ6c2ZNGrXUNwqZsvtmbNHAU9P=s96-c",
+  "bookmarks": [],
+  "createdAt": {
+    "$date": "2024-07-11T09:43:11.690Z"
+  },
+  "updatedAt": {
+    "$date": "2024-07-11T11:03:39.245Z"
+  },
+  "__v": 0
+}

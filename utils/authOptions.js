@@ -11,7 +11,6 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "../lib/db";
 
 export const authOptions = {
-
   adapter: MongoDBAdapter(clientPromise),
 
   session: {
@@ -69,7 +68,7 @@ export const authOptions = {
         try {
           if (!credentials) return null;
 
-          const foundUser = await User.findOne({
+          const foundUser = await Register.findOne({
             email: credentials.email,
           });
 
@@ -87,7 +86,6 @@ export const authOptions = {
           }
 
           return foundUser;
-
         } catch (error) {
           console.log(error);
         }
@@ -96,11 +94,12 @@ export const authOptions = {
     }),
   ],
 
-
   callbacks: {
     // Invoked on successful signin
     async signIn({ user, profile, account }) {
-        console.log(account)
+      // console.log(account);
+      // console.log(profile);
+      // console.log(user);
       // 1. Connect to database
       if (account.provider === "google" || account.provider === "facebook") {
         //  console.log(profile);
@@ -109,16 +108,31 @@ export const authOptions = {
         const userExists = await User.findOne({ email: profile.email });
         // 3. If not, add user to database
         if (!userExists) {
-          //Truncate username if too long
-        
           await User.create({
             email: profile.email,
             username: profile.name,
-            image: profile.picture,
+            image: account.provider === "google" ? profile.picture : user.image,
           });
-          
+        }
+
+        // If user exist add corresponding profile image from google or facebook
+        if (userExists) {
+          await User.updateOne({ email: userExists.email }, [
+            {
+              $set: {
+                image: {
+                  $cond: {
+                    if: account.provider === "facebook",
+                    then: user.image,
+                    else: profile.picture,
+                  },
+                },
+              },
+            },
+          ]);
         }
       }
+      
       // 4. Return true to allow sign in
       return true;
     },
@@ -141,3 +155,4 @@ export const authOptions = {
     },
   },
 };
+
