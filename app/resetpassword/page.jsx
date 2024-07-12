@@ -66,9 +66,9 @@ const handleSubmit = async(e) => {
 }
 
   return (
-    <div className="signInBox mt-40 w-full flex justify-center flex-col max-w-[400px] mx-auto p-4 border-b-2 border-blue-950 rounded-lg">
+    <div className="signInBox mt-40 w-full flex justify-center flex-col max-w-[400px] mx-auto p-4 border-b-2 border-blue-950 rounded-lg bg-blue-100/20">
       <div className="w-full text-xl text-blue-950 font-bold mb-4 flex justify-center border-b-2 border-dotted border-slate-900 pb-4">
-        Reset Password
+        Reset link
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -103,7 +103,7 @@ const handleSubmit = async(e) => {
           className="w-full text-md bg-gradient-to-r from-slate-950  via-[#172f54] to-slate-950 py-6 mb-2"
         >
           <LogIn size={20} className="mr-2" />
-          {!pending ? "Reset" : "Processing...."}
+          {!pending ? "Send" : "Processing...."}
         </Button>
       </form>
 

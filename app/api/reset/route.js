@@ -1,8 +1,10 @@
-import Reset from "@/models/Reset";
 import Register from "@/models/Register";
-import User from "@/models/User";
 import connectDB from "@/config/database";
-import bcrypt from "bcrypt";
+import { nanoid } from "nanoid";
+import { Resend } from "resend";
+import ResetPasswordEmailTemplate from "@/components/ResetPasswordEmailTemplate";
+
+const resend = new Resend(process.env.EMAIL_SERVER_PASSWORD);
 
 export const POST = async(request) => {
   try {
@@ -13,14 +15,26 @@ export const POST = async(request) => {
     //Find user in database
     const user = await Register.findOne({ email: email });
 
-    console.log(user)
-
      if (!user) {
        return new Response("User not found!", { status: 404 });
      }
 
     if (user) {
-      return new Response(JSON.stringify(user), { status: 200 });
+      const token = nanoid(32)
+      
+    const { data, error } = await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: [email],
+      subject: "Reset password",
+      react: ResetPasswordEmailTemplate(token) 
+    });
+
+    if (error) {
+      return Response.json({ error }, { status: 500 });
+    }
+
+    return Response.json({ data });
+
     }
 
   } catch (error) {
