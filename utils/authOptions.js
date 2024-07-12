@@ -11,6 +11,7 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "../lib/db";
 
 export const authOptions = {
+  
   adapter: MongoDBAdapter(clientPromise),
 
   session: {
@@ -100,12 +101,14 @@ export const authOptions = {
       // console.log(account);
       // console.log(profile);
       // console.log(user);
+
       // 1. Connect to database
       if (account.provider === "google" || account.provider === "facebook") {
-        //  console.log(profile);
         await connectDB();
+
         // 2. Check if user exists
         const userExists = await User.findOne({ email: profile.email });
+
         // 3. If not, add user to database
         if (!userExists) {
           await User.create({
@@ -115,7 +118,7 @@ export const authOptions = {
           });
         }
 
-        // If user exist add corresponding profile image from google or facebook
+        // If user exist add corresponding profile-image (from google or facebook) by updating document image value
         if (userExists) {
           await User.updateOne({ email: userExists.email }, [
             {
@@ -132,7 +135,7 @@ export const authOptions = {
           ]);
         }
       }
-      
+
       // 4. Return true to allow sign in
       return true;
     },

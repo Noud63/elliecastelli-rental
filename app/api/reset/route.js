@@ -1,4 +1,5 @@
 import Reset from "@/models/Reset";
+import Register from "@/models/Register";
 import User from "@/models/User";
 import connectDB from "@/config/database";
 import bcrypt from "bcrypt";
@@ -10,7 +11,7 @@ export const POST = async(request) => {
     const { email } = await request.json();
 
     //Find user in database
-    const user = await User.findOne({ email: email });
+    const user = await Register.findOne({ email: email });
 
     console.log(user)
 

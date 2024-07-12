@@ -66,33 +66,33 @@ const handleSubmit = async(e) => {
 }
 
   return (
-    <div className="signInBox mt-40 w-full flex justify-center flex-col max-w-[400px] mx-auto p-4 border-2 border-white rounded-lg">
-      <h3 className="w-full text-xl text-blue-900 font-bold mb-4 flex justify-center">
+    <div className="signInBox mt-40 w-full flex justify-center flex-col max-w-[400px] mx-auto p-4 border-b-2 border-blue-950 rounded-lg">
+      <div className="w-full text-xl text-blue-950 font-bold mb-4 flex justify-center border-b-2 border-dotted border-slate-900 pb-4">
         Reset Password
-      </h3>
+      </div>
 
       <form onSubmit={handleSubmit}>
-        <Label htmlFor="email" className="ml-3 mb-2 text-md text-blue-900">
+        <Label htmlFor="email" className="ml-2 mb-2 text-md text-blue-950">
           Email:
         </Label>
         <Input
           type="email"
           placeholder="Email"
           value={email}
-          className="focus-visible:ring-0 mb-2 mt-2"
+          className="focus-visible:ring-0 mb-3 mt-2"
           onChange={(e) => setEmail(e.target.value)}
           required
         />
 
         {success && (
-          <div className="w-full flex flex-row items-center px-4 py-2 rounded-md bg-green-100 mb-2">
+          <div className="w-full flex flex-row items-center px-4 py-2 rounded-md bg-green-100 mb-3">
             <CircleCheckBig size={20} color="green" className="mr-2" />
             <span className="text-green-600">Reset email sent!</span>
           </div>
         )}
 
         {error && (
-          <div className="w-full flex flex-row items-center px-4 py-2 rounded-md bg-red-100 mb-2">
+          <div className="w-full flex flex-row items-center px-4 py-2 rounded-md bg-red-100 mb-3">
             <CircleX size={20} color="darkred" className="mr-2" />
             <span className="text-red-800">User not found!</span>
           </div>
@@ -100,7 +100,7 @@ const handleSubmit = async(e) => {
 
         <Button
           type="submit"
-          className="w-full text-md bg-gradient-to-r from-slate-600 via-blue-500 to-slate-600 py-6 mb-2"
+          className="w-full text-md bg-gradient-to-r from-slate-950  via-[#172f54] to-slate-950 py-6 mb-2"
         >
           <LogIn size={20} className="mr-2" />
           {!pending ? "Reset" : "Processing...."}
@@ -108,7 +108,9 @@ const handleSubmit = async(e) => {
       </form>
 
       <Link href="/signIn">
-        <div className="w-full flex justify-center mt-2">Login</div>
+        <div className="w-full flex justify-center mt-2 text-slate-900 font-semibold">
+          Login
+        </div>
       </Link>
     </div>
   );

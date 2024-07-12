@@ -6,25 +6,26 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Platform where real-estate owners can list their properties for rent.<br /><br />
 
 <ins>**Build with:**<ins><br />
-<li>Next.js 14</li>
-<li>NextAuth.js</li>
-<li>OAuth 2.0</li> 
-<li>MongoDB</li> 
-<li>Tailwind</li> 
-<li>Shadcn/ui</li> 
-<li>react-photoswipe-gallery</li>
-<li>Cloudinary</li>
-<li>opencage-api-client (geocoding)</li> 
-<li>Leaflet OpenStreetMap</li><br />
+* Next.js 14
+* NextAuth.js
+* OAuth 2.0 
+* MongoDB 
+* Tailwind 
+* Shadcn/ui 
+* react-photoswipe-gallery
+* Cloudinary
+* opencage-api-client (geocoding) 
+* Leaflet OpenStreetMap<br />
 
 <ins>**Features:**</ins><br/>
 
 * register
 * login with:
     * credentials
-    * email
+    * email (magic link)
     * google
     * facebook
+* Reset password
 * Upload property (attached image files uploaded to Cloudinary)
 * Edit or delete uploaded property
 * Search property
