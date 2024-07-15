@@ -10,9 +10,9 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
 * NextAuth.js
 * OAuth 2.0 
 * MongoDB 
+* Resend 
 * Tailwind 
 * Shadcn/ui 
-* react-photoswipe-gallery
 * Cloudinary
 * opencage-api-client (geocoding) 
 * Leaflet OpenStreetMap<br />

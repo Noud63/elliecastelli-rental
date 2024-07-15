@@ -29,6 +29,8 @@ export const POST = async(request) => {
       react: ResetPasswordEmailTemplate(token) 
     });
 
+    await Register.findOneAndUpdate({email:email}, {verifyToken:token})
+
     if (error) {
       return Response.json({ error }, { status: 500 });
     }

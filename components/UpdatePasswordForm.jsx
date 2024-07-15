@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { LogIn, ArrowRight, Eye, EyeOff} from "lucide-react";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams, router } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
 
@@ -15,39 +15,36 @@ const UpdatePasswordForm = () => {
 
   const [isView, setIsView] = useState(false);
 
-  const [password, setPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const router = useRouter();
-  const { data: session } = useSession();
+  const { token } = useParams()
 
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      });
+           const res = await fetch("/api/updatepassword", {
+             method: "POST",
+             headers: {
+               "Content-Type": "application/json",
+             },
+             body: JSON.stringify({newPassword, token}),
+           }); 
 
-      console.log(res);
-
-      if (res.ok === 200) {
-        toast.success("Successfully logged in!");
-        router.push("/");
-      }
-
-      if (!res.ok) {
-        toast.success("Invalid email or password!");
-      }
+           console.log(res)
+          if(res.status === 200){
+             router.push("/signIn")
+          }
+          
     } catch (error) {
-      toast.error("Login error!");
+      
       console.log(error, { message: error.message });
     } finally {
-      setEmail("");
-      setPassword("");
+      setNewPassword("");
+      setRepeatPassword("");
     }
   };
 
@@ -60,14 +57,14 @@ const UpdatePasswordForm = () => {
 
         <form onSubmit={handleSubmit}>
           <Label htmlFor="email" className="ml-3 mb-2 text-md text-blue-950">
-            Password:
+            New password:
           </Label>
           <Input
             type="password"
-            placeholder="Password"
-            value={password}
+            placeholder="New password"
+            value={newPassword}
             className="mb-2 mt-2 outline-none focus-visible:ring-0"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setNewPassword(e.target.value)}
             required
           />
           <Label htmlFor="email" className="ml-3 my-2 text-md text-blue-950">

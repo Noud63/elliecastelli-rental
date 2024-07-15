@@ -19,7 +19,7 @@ const ResetPasswordEmailTemplate = (token) => {
           marginTop:"20px"
         }}
       >
-        <a href={`http://localhost:3000/updatepassword?token=${token}`}>
+        <a href={`http://localhost:3000/updatepassword/${token}`} >
           <span
             style={{
               color: "#fff",
