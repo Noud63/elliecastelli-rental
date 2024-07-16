@@ -19,6 +19,10 @@ const RegisterSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
     },
+    avatar: {
+      type: String,
+      required : false
+    },
     verifyToken: {
       type: String,
       required: false

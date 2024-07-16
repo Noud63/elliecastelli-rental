@@ -46,7 +46,6 @@ const handleSubmit = async(e) => {
 
       if (res.status === 200) {
         const dataObj = await res.json();
-        console.log(dataObj)
         setSuccess(true);
         setPending(false)
       } else if (res.status === 404) {
@@ -107,11 +106,6 @@ const handleSubmit = async(e) => {
         </Button>
       </form>
 
-      <Link href="/signIn">
-        <div className="w-full flex justify-center mt-2 text-slate-900 font-semibold">
-          Login
-        </div>
-      </Link>
     </div>
   );
 }

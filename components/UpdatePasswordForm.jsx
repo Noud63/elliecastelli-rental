@@ -3,13 +3,10 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
 import { LogIn, ArrowRight, Eye, EyeOff} from "lucide-react";
-import { toast } from "react-toastify";
-import { useRouter, useParams, router } from "next/navigation";
-import { signIn } from "next-auth/react";
-import { useSession } from "next-auth/react";
-
+import { CircleCheckBig } from "lucide-react";
+import { CircleX } from "lucide-react";
+import { useRouter, useParams} from "next/navigation";
 
 const UpdatePasswordForm = () => {
 
@@ -17,6 +14,9 @@ const UpdatePasswordForm = () => {
 
   const [newPassword, setNewPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [pending, setPending] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const { token } = useParams()
 
@@ -24,6 +24,8 @@ const UpdatePasswordForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setPending(true)
 
     try {
            const res = await fetch("/api/updatepassword", {
@@ -34,13 +36,17 @@ const UpdatePasswordForm = () => {
              body: JSON.stringify({newPassword, token}),
            }); 
 
-           console.log(res)
           if(res.status === 200){
-             router.push("/signIn")
+            setPending(false)
+            setSuccess(true)
+            setTimeout(() => {
+                router.push("/signIn");
+                setSuccess(false)
+            },3000)
+            
           }
           
     } catch (error) {
-      
       console.log(error, { message: error.message });
     } finally {
       setNewPassword("");
@@ -94,12 +100,26 @@ const UpdatePasswordForm = () => {
             )}
           </div>
 
+          {success && (
+            <div className="w-full flex flex-row items-center px-4 py-2 rounded-md bg-green-100 mb-2 mt-4">
+              <CircleCheckBig size={20} color="green" className="mr-2" />
+              <span className="text-green-600">Password updated!</span>
+            </div>
+          )}
+
+          {error && (
+            <div className="w-full flex flex-row items-center px-4 py-2 rounded-md bg-red-100 mb-2 mt-4">
+              <CircleX size={20} color="darkred" className="mr-2" />
+              <span className="text-red-800">User not found!</span>
+            </div>
+          )}
+
           <Button
             type="submit"
-            className="w-full text-md bg-gradient-to-r from-slate-950  via-[#102546] to-slate-950 py-6 mt-4"
+            className="w-full text-md bg-gradient-to-r from-slate-950  via-[#102546] to-slate-950 py-6 mt-2"
           >
             <LogIn size={20} className="mr-2 text-blue-100" />
-            <span className="text-blue-100">Reset password</span>
+            <span className="text-blue-100">{pending ? "Processing..." : "Reset password"}</span>
           </Button>
         </form>
       </div>

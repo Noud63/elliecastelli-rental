@@ -14,7 +14,7 @@ const profileImage = session?.user?.image
 const profileName = session?.user?.name
 const profileEmail = session?.user?.email
 
-console.log(session)
+console.log(session.user)
 
 const [properties, setProperties] = useState([])
 const [loading, setLoading] = useState(true)
@@ -31,7 +31,6 @@ useEffect(() => {
         if(res.status === 200) {
             const data = await res.json()
             setProperties(data)
-            console.log(data)
         }
     } catch (error) {
         console.log(error)
@@ -73,6 +72,27 @@ const handleDeleteProperty = async (propertyId) => {
     }
 }
 
+
+const editProfile = async () => {
+
+    try {
+           const res = await fetch("/api/editprofile", {
+             method: "POST",
+             headers: {
+               "Content-Type": "application/json",
+             },
+             body: JSON.stringify({username: profileName, email:profileEmail}),
+           });
+
+            console.log(res)
+
+    } catch (error) {
+    console.log(error);
+    }
+
+}
+
+
   return (
     <section className="pt-32 min-h-screen flex justify-center">
       <div className="w-full max-w-[800px] mx-6 mb-44">
@@ -84,7 +104,7 @@ const handleDeleteProperty = async (propertyId) => {
             <div className="md:w-1/4 mx-6 mt-2 max-md:mx-0 max-md:mb-6 border-b border-dotted border-slate-800 pb-4">
               <div className="mb-4 max-md:border-b border-dotted border-slate-800 max-md:pb-4">
                 <Image
-                  className="h-16 w-16 rounded-full mx-auto md:mx-0"
+                  className="h-16 w-16 rounded-full mx-auto md:mx-0 cursor-pointer"
                   src={profileImage || ProfileDefault}
                   width={100}
                   height={100}
@@ -99,6 +119,13 @@ const handleDeleteProperty = async (propertyId) => {
                 <span className="font-semibold text-[18px] block">Email: </span>
                 <span className="text-[18px]">{profileEmail}</span>
               </h2>
+
+              <button
+                className="w-full rounded-lg bg-blue-700 text-white mt-4 py-2"
+                onClick={editProfile}
+              >
+                Edit profile
+              </button>
             </div>
 
             <div className="md:w-3/4 pr-8 max-md:pr-0">

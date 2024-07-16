@@ -69,6 +69,8 @@ export const authOptions = {
         try {
           if (!credentials) return null;
 
+          console.log(credentials)
+
           const foundUser = await Register.findOne({
             email: credentials.email,
           });
