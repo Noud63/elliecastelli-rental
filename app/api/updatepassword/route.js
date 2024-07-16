@@ -26,7 +26,7 @@ export const POST = async (request) => {
     } else {
       return new Response(
         JSON.stringify(
-          { message: "Failed update attempt!" },
+          { message: "Update failed!" },
           { status: 404 }
         )
       );

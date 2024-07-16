@@ -6,15 +6,16 @@ import { Label } from "@/components/ui/label";
 import {
   IconBrandGithub,
   IconBrandGoogle,
-  IconBrandFacebook
+  IconBrandFacebook,
+  IconTruckReturn
 } from "@tabler/icons-react";
+import { CircleX } from "lucide-react";
+import { CircleCheckBig } from "lucide-react";
 import Link from "next/link";
 import { LogIn, ArrowRight, Eye, EyeOff, Mail } from "lucide-react";
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
-import { useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
 
 
 const LoginForm = () => {
@@ -23,14 +24,10 @@ const LoginForm = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+   const [error, setError] = useState(false);
+   const [success, setSuccess] = useState(false);
 
  const router = useRouter()
- const { data: session} = useSession()
-
- console.log(session)
-
- const user = session?.user;
- if (user) redirect("/");
 
  const handleSubmit = async(e) => {
     e.preventDefault()
@@ -41,16 +38,20 @@ const LoginForm = () => {
       password,
       redirect: false,
     });
-
-console.log(res)
-      
-     if(res.ok === 200) {
-        toast.success("Successfully logged in!")
-        router.push("/")
-     }
+      console.log(res)
+     if(res.status === 200) {
+        setSuccess(true)
+        setTimeout(()=> {
+          router.push("/");
+        },3000)
+      }
 
      if(!res.ok){
-         toast.success("Invalid email or password!");
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
+        
      }
    } catch (error) {
     toast.error("Login error!");
@@ -106,6 +107,20 @@ console.log(res)
              />
            )}
          </div>
+
+         {error && (
+           <div className="w-full flex flex-row items-center px-4 py-3 rounded-md bg-red-100 mt-4 mb-4">
+             <CircleX size={20} color="darkred" className="mr-2" />
+             <span className="text-red-800">Invalid credentials</span>
+           </div>
+         )}
+
+         {success && (
+           <div className="w-full flex flex-row items-center px-4 py-2 rounded-md bg-green-100 mb-4 mt-4">
+             <CircleCheckBig size={20} color="green" className="mr-2" />
+             <span className="text-green-600">Successful loggin!</span>
+           </div>
+         )}
 
          <Button
            type="submit"

@@ -25,6 +25,10 @@ const UserSchema = new Schema(
         ref: "Property",
       },
     ],
+    verifyToken: {
+      type: String,
+      required: false,
+    },
   },
   {
     timestamps: true,

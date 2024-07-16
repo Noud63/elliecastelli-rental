@@ -28,7 +28,6 @@ const [buttonColor, setButtonColor] = useState("")
 
 const pathname = usePathname()
 
-
 // useEffect(() => {
 //   const setAuthProviders = async() => {
 //     const res = await getProviders()

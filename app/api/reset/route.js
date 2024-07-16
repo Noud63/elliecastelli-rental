@@ -1,4 +1,5 @@
 import Register from "@/models/Register";
+import User from "@/models/User";
 import connectDB from "@/config/database";
 import { nanoid } from "nanoid";
 import { Resend } from "resend";
@@ -13,7 +14,7 @@ export const POST = async(request) => {
     const { email } = await request.json();
 
     //Find user in database
-    const user = await Register.findOne({ email: email });
+    const user = await User.findOne({ email: email });
 
      if (!user) {
        return new Response("User not found!", { status: 404 });
@@ -29,7 +30,7 @@ export const POST = async(request) => {
       react: ResetPasswordEmailTemplate(token) 
     });
 
-    await Register.findOneAndUpdate({email:email}, {verifyToken:token})
+    await User.findOneAndUpdate({email:email}, {verifyToken:token})
 
     if (error) {
       return Response.json({ error }, { status: 500 });
@@ -37,6 +38,8 @@ export const POST = async(request) => {
 
     return Response.json({ data });
 
+    }else{
+        return new Response("User!", { status: 404 });
     }
 
   } catch (error) {
