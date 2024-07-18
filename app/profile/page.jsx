@@ -12,6 +12,7 @@ const ProfilePage = () => {
 
 const {data:session} = useSession()
 const profileImage = session?.user?.image
+// -->Commented out because of problem with session update<--
 // const profileName = session?.user?.name
 // const profileEmail = session?.user?.email
 
@@ -100,7 +101,7 @@ const handleDeleteProperty = async (propertyId) => {
             <div className="md:w-1/4 ml-6 mr-8 mt-2 max-md:mx-0 max-md:mb-6 pb-4">
               <div className="mb-4 max-md:border-b border-dotted border-slate-800 max-md:pb-4 max-md:mb-2">
                 <Image
-                  className="h-16 w-16 rounded-full mx-auto md:mx-0"
+                  className="h-14 w-14 rounded-full mx-auto md:mx-0"
                   src={profileImage || ProfileDefault}
                   width={100}
                   height={100}
@@ -149,7 +150,7 @@ const handleDeleteProperty = async (propertyId) => {
                   >
                     <Link href={`/properties/${property._id}`}>
                       <Image
-                        className=" w-auto rounded-md object-cover"
+                        className=" w-auto rounded-md object-cover boxShadow"
                         src={property.images[0]}
                         alt=""
                         width={500}
