@@ -98,11 +98,12 @@ export const authOptions = {
   callbacks: {
     // Invoked on successful signin
     async signIn({ user, profile, account }) {
-      // console.log(account);
-      // console.log(profile);
-      // console.log(user);
 
+      console.log(profile)
+      console.log(user)
+      
       // 1. Connect to database
+    
       if (account.provider === "google" || account.provider === "facebook") {
         await connectDB();
 
@@ -142,7 +143,8 @@ export const authOptions = {
 
     async jwt({ token, user }) {
       if (user) {
-        token.name = user.username;
+        token.name = user.name;
+        token.username = user.username
       }
       return token;
     },
@@ -154,6 +156,8 @@ export const authOptions = {
       // 2. Assign user id to the session
       session.user.id = user._id.toString();
       // 3. Return session
+      session.user.username = token.username
+      
       return session;
     },
   },

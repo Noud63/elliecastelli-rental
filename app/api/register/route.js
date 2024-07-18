@@ -16,7 +16,6 @@ export const POST = async (request) => {
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    const token = nanoid(32);
 
     // Create new user if user is not found in DB
     if(!user){

@@ -1,22 +1,37 @@
-import Register from "@/models/Register";
+import User from "@/models/User";
 import connectDB from "@/config/database";
 
+import { getSessionUser } from "@/utils/getSessionUser";
 
-export const POST = async (request) => {
-         
-    try {
-        await connectDB()
+export const PUT = async (request) => {
+  try {
+    await connectDB();
+    const sessionUser = await getSessionUser();
 
-        const { username, email } = await request.json()
-        console.log(username, email)
-        const res = await Register.findOneAndUpdate({email}, {username})
-
-        if(res){
-        return new Response(JSON.stringify(res), { status: 200 }); 
-        }
-        
-    } catch (error) {
-     console.log(error)
-     return new Response(JSON.stringify({message:"Failed to update!"}), { status: 404 }); 
+    if (!sessionUser || !sessionUser.user.id) {
+      return new Response("User ID is required", { status: 401 });
     }
-}
+
+    const { userId } = sessionUser;
+
+    const { name, email } = await request.json();
+    console.log(name, email);
+
+     const updateDocument = {
+       $set: {
+         name: name,
+       },
+     };
+
+    const updated = await User.updateOne({_id:userId}, updateDocument)
+   
+    if (updated) {
+      return new Response(JSON.stringify(updated), { status: 200 });
+    } else {
+      return new Response("Update failed!", { status: 400 });
+    }
+  } catch (error) {
+    console.log(error);
+    return new Response("Something went wrong!", { status: 500 });
+  }
+};
