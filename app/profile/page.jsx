@@ -1,99 +1,103 @@
-"use client"
-import { useState, useEffect} from 'react'
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import  ProfileDefault from "@/assets/images/profile.png"
-import Spinner from '@/components/Spinner';
-import { toast } from 'react-toastify';
-import { getInfo } from '@/utils/getUserInfo';
+import profileDefault from "@/assets/images/profile.png";
+import Spinner from "@/components/Spinner";
+import { toast } from "react-toastify";
+import { getInfo } from "@/utils/getUserInfo";
 
 const ProfilePage = () => {
+  const { data: session } = useSession();
+  const profileImage = session?.user?.avatar[0] || session?.user?.image || profileDefault;
+  // -->Commented out because of problem with session update<--
+  // const profileName = session?.user?.name
+  // const profileEmail = session?.user?.email
 
-const {data:session} = useSession()
-const profileImage = session?.user?.image
-// -->Commented out because of problem with session update<--
-// const profileName = session?.user?.name
-// const profileEmail = session?.user?.email
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [avatar, setAvatar] = useState([]);
 
- const [name, setName] = useState("");
- const [email, setEmail] = useState("");
- const [userName, setUserName] = useState("");
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-const [properties, setProperties] = useState([])
-const [loading, setLoading] = useState(true)
+  console.log(session);
 
-useEffect(() => {
-   const fetchUserProperties = async(userId) => {
+  useEffect(() => {
+    const fetchUserProperties = async (userId) => {
+      if (!userId) return;
 
-    if(!userId) return
-
-    try {
-        const res = await fetch(`/api/properties/user/${userId}`)
-        if(res.status === 200) {
-            const data = await res.json()
-            setProperties(data)
+      try {
+        const res = await fetch(`/api/properties/user/${userId}`);
+        if (res.status === 200) {
+          const data = await res.json();
+          setProperties(data);
         }
-    } catch (error) {
-        console.log(error)
-    } finally {
+      } catch (error) {
+        console.log(error);
+      } finally {
         setLoading(false);
-    }
-  }
-   // Fetch user properties when session is available
-   if(session?.user?.id){
+      }
+    };
+    // Fetch user properties when session is available
+    if (session?.user?.id) {
       fetchUserProperties(session.user.id);
-   }
- },[session])
-
-
-useEffect(() => {
-  const userData = async (id) => {
-    if(!id) return
-        const res = await getInfo(id);
-    if (res) {
-      setName(res.name);
-      setEmail(res.email);
-      setUserName(res.userName);
     }
-  };
-  if (session?.user?.id) {
-    userData(session.user.id);
-  }
-}, [session]);
+  }, [session]);
 
+  useEffect(() => {
+    const userData = async (id) => {
+      if (!id) return;
+      const res = await getInfo(id);
+      console.log(res);
+      if (res) {
+        setName(res.name);
+        setEmail(res.email);
+        setUserName(res.userName);
+        setAvatar(res.avatar);
+      }
+    };
+    if (session?.user?.id) {
+      userData(session.user.id);
+    }
+  }, [session]);
 
+  const handleDeleteProperty = async (propertyId) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this property"
+    );
 
-const handleDeleteProperty = async (propertyId) => {
-    const confirmed = window.confirm("Are you sure you want to delete this property")
-
-    if(!confirmed) return
+    if (!confirmed) return;
 
     try {
-      const res = await fetch(`/api/properties/${propertyId}`, {method: 'DELETE'}) 
+      const res = await fetch(`/api/properties/${propertyId}`, {
+        method: "DELETE",
+      });
 
-      if(res.status === 200) {
-
+      if (res.status === 200) {
         //Remove the property from state
-        const updatedProperty = properties.filter((property) => property._id !== propertyId)
+        const updatedProperty = properties.filter(
+          (property) => property._id !== propertyId
+        );
 
-        setProperties(updatedProperty)
+        setProperties(updatedProperty);
 
-        toast.success("Property Deleted!")
-      }else{
-       toast.error("Failed to delete property!")
+        toast.success("Property Deleted!");
+      } else {
+        toast.error("Failed to delete property!");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast.error("Failed to delete property!");
     }
-}
-
+  };
 
   return (
     <section className="pt-32 min-h-screen flex justify-center">
       <div className="w-full max-w-[800px] mx-6 mb-44">
-        <div className="shadow-md rounded-xl m-4 md:m-0 signInBox bg-gradient-to-t from-blue-200 to-white">
+        <div className="shadow-md rounded-xl m-4 md:m-0 signInBox bg-gradient-to-t from-blue-200 to-white/90">
           <h1 className="pl-4 py-2 text-white text-xl font-semibold mb-4 bg-gradient-to-r from-slate-950  via-[#172f54] to-slate-950 rounded-t-lg">
             Your Profile
           </h1>
@@ -102,7 +106,7 @@ const handleDeleteProperty = async (propertyId) => {
               <div className="mb-4 max-md:border-b border-dotted border-slate-800 max-md:pb-4 max-md:mb-2">
                 <Image
                   className="h-14 w-14 rounded-full mx-auto md:mx-0"
-                  src={profileImage || ProfileDefault}
+                  src={profileImage}
                   width={100}
                   height={100}
                   alt="User"
@@ -193,6 +197,6 @@ const handleDeleteProperty = async (propertyId) => {
       </div>
     </section>
   );
-}
+};
 
-export default ProfilePage
+export default ProfilePage;

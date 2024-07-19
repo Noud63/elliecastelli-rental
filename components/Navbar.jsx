@@ -15,7 +15,8 @@ import { useParams } from 'next/navigation';
 const Navbar = () => {
 
   const {data:session} = useSession()
-  const profileImage = session?.user?.image
+  const profileImage =
+    session?.user?.avatar[0] || session?.user?.image || profileDefault;
 
   const scrolled = scroll();
 

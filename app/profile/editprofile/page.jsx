@@ -11,63 +11,85 @@ import { getInfo } from "@/utils/getUserInfo";
 import { useRouter } from "next/navigation";
 
 const EditProfilePage = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
 
-  const { data: session } = useSession();
+  
+  const { data:session} = useSession()
 
-  const router = useRouter()
+  const [fields, setFields] = useState({
+    name: "",
+    email: "",
+    userName: "",
+    avatar: [],
+  });
 
   useEffect(() => {
     const userData = async (id) => {
       const res = await getInfo(id);
       if (res) {
-        setName(res.name);
-        setEmail(res.email);
-        setUserName(res.userName);
+        setFields({name: res.name, email: res.email, userName:res.userName, avatar:res.avatar })
       }
     };
     if (session?.user?.id) {
       userData(session.user.id);
     }
   }, [session]);
-  
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
-    const data = {
-      name,
-      email,
-    };
+  const handleChange = async (e) => {
+    // e.preventDefault();
+   const { name, value } = e.target
 
-    try {
-      const res = await fetch("/api/editprofile", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+   setFields((prevFields) => ({
+        ...prevFields,
+        [name]: value,
+      }));
+    
+    // const data = {
+    //   name,
+    //   email,
+    //   userName,
+    //   avatar,
+    // };
 
-      if (res.status === 200) {
-        setSuccess(true);
-        setTimeout(() => {
-          setSuccess(false);
-          router.push(`/profile`);
-        }, 3000);
-      } else if (res.status === 409 || res.status === 400) {
-        setError(true);
-        setTimeout(() => {
-          setError(false);
-        }, 5000);
-      }
-    } catch (error) {
-      console.log(error);
+    // try {
+    //   const res = await fetch("/api/editprofile", {
+    //     method: "PUT",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   });
+
+    //   if (res.status === 200) {
+    //     setSuccess(true);
+    //     setTimeout(() => {
+    //       setSuccess(false);
+    //       router.push(`/profile`);
+    //     }, 3000);
+    //   } else if (res.status === 409 || res.status === 400) {
+    //     setError(true);
+    //     setTimeout(() => {
+    //       setError(false);
+    //     }, 5000);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
+
+  const handleImageChange = (e) => {
+    const { files } = e.target;
+    console.log(files);
+
+    const updatedImages = []
+
+    for (const file of files) {
+     updatedImages.push(file)
     }
+    setFields((prev) => ({
+      ...prev,
+      avatar: updatedImages,
+    }));
   };
 
   return (
@@ -77,7 +99,11 @@ const EditProfilePage = () => {
           Edit profile
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form
+          action="/api/editprofile"
+          method="POST"
+          encType="multipart/form-data"
+        >
           <div className="mb-4">
             <Label
               className="block text-blue-950 text-md font-bold mb-2"
@@ -88,11 +114,31 @@ const EditProfilePage = () => {
             <Input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900 leading-tight focus:outline-none focus:shadow-outline"
               id="name"
+              name="name"
               type="text"
-              placeholder="Enter your name"
+              placeholder={"Enter your name"}
               required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              defaultValue={fields.name}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="mb-4">
+            <Label
+              className="block text-blue-950 text-md font-bold mb-2"
+              htmlFor="username"
+            >
+              Username:
+            </Label>
+            <Input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900 leading-tight focus:outline-none focus:shadow-outline"
+              id="userName"
+              name="userName"
+              type="text"
+              placeholder={"Enter username"}
+              required
+              defaultValue={fields.userName}
+              onChange={handleChange}
             />
           </div>
 
@@ -107,14 +153,33 @@ const EditProfilePage = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
-              placeholder="Enter your email"
+              name="email"
+              placeholder={"Enter your email"}
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              defaultValue={fields.email}
+              onChange={handleChange}
             />
           </div>
 
-          {error && (
+          <div className="mb-4">
+            <label
+              htmlFor="avatar"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Avatar
+            </label>
+            <input
+              type="file"
+              id="images"
+              name="avatar"
+              className="border border-blue-950 rounded w-full py-2 px-3"
+              accept="image/*"
+              multiple
+              onChange={handleImageChange}
+            />
+          </div>
+
+          {/* {error && (
             <div className="w-full flex flex-row items-center px-4 py-3 rounded-md bg-red-100">
               <CircleX size={20} color="darkred" className="mr-2" />
               <span className="text-red-800">Failed to update!</span>
@@ -126,7 +191,7 @@ const EditProfilePage = () => {
               <CircleCheckBig size={20} color="green" className="mr-2" />
               <span className="text-green-600">Successful updated!</span>
             </div>
-          )}
+          )} */}
 
           <div className="mt-4 mb-4">
             <Button

@@ -28,7 +28,7 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
 * Reset password
 * Upload property (attached image files uploaded to Cloudinary)
 * Edit or delete uploaded property
-* Edit user profile
+* Edit user profile (+ upload new avatar to cloudinary)
 * Search property
 * Share property on social media 
 * Send message to property owner

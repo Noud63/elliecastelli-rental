@@ -110,12 +110,14 @@ export const authOptions = {
         // 2. Check if user exists
         const userExists = await User.findOne({ email: profile.email });
 
+        console.log(userExists.avatar[0])
+
         // 3. If not, add user to database
         if (!userExists) {
           await User.create({
             email: profile.email,
             username: profile.name,
-            image: account.provider === "google" ? profile.picture : user.image,
+            image: userExists.avatar[0],
           });
         }
 
@@ -157,6 +159,7 @@ export const authOptions = {
       session.user.id = user._id.toString();
       // 3. Return session
       session.user.username = token.username
+      session.user.avatar = user.avatar
       
       return session;
     },
