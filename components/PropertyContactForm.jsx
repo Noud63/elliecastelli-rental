@@ -66,7 +66,7 @@ const PropertyContactForm = ({ property }) => {
         Contact Property Manager
       </div>
       {!session ? (
-        <p>You must be logged in to send a message</p>
+        <div className="w-full flex justify-center pb-6">You must be logged in to send a message!</div>
       ) : wasSubmitted ? (
         <p className="text-green-500 mb-4">
           Your message has been sent successfully

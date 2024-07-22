@@ -87,6 +87,7 @@ export const authOptions = {
           }
 
           return foundUser;
+          
         } catch (error) {
           console.log(error);
         }
@@ -99,25 +100,23 @@ export const authOptions = {
     // Invoked on successful signin
     async signIn({ user, profile, account }) {
 
-      console.log(profile)
-      console.log(user)
+      // console.log(profile)
+      // console.log(user)
       
       // 1. Connect to database
-    
-      if (account.provider === "google" || account.provider === "facebook") {
-        await connectDB();
+       await connectDB();
 
+      if (account.provider === "google" || account.provider === "facebook") {
+       
         // 2. Check if user exists
         const userExists = await User.findOne({ email: profile.email });
-
-        console.log(userExists.avatar[0])
 
         // 3. If not, add user to database
         if (!userExists) {
           await User.create({
             email: profile.email,
             username: profile.name,
-            image: userExists.avatar[0],
+            image: account.provider === "google" ? profile.picture : user.image
           });
         }
 
@@ -157,10 +156,11 @@ export const authOptions = {
       const user = await User.findOne({ email: session.user.email });
       // 2. Assign user id to the session
       session.user.id = user._id.toString();
-      // 3. Return session
-      session.user.username = token.username
-      session.user.avatar = user.avatar
-      
+      // 4. Assign username to the session
+      session.user.username = token.username;
+      // 4. Assign avatar to the session
+      session.user.avatar = user?.avatar;
+      // 5. Return session
       return session;
     },
   },

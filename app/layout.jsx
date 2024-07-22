@@ -7,7 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 import "photoswipe/dist/photoswipe.css";
 import { GlobalProvider } from '@/context/GlobalContext';
 
-
 export const metadata = {
     title: "PorpertyPulse | Find the perfect Rental",
     description: "Find the perfect Rental",
@@ -18,7 +17,7 @@ const MainLayout = ({children}) => {
   return (
     <html lang="en">
       <body className="bg-gradient-to-r from-slate-950 via-blue-500/50 to-slate-950">
-        <div className="fixed left-0 top-0 h-screen w-full bg-[url('/images/realestatebg.jpg')] bg-cover opacity-10 -z-[999]" />
+        <div className="fixed left-0 top-0 h-screen w-full bg-[url('/images/realestatebg.jpg')] bg-cover opacity-20 -z-[999]" />
         <GlobalProvider>
           <AuthProvider>
             <Navbar />

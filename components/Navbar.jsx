@@ -1,7 +1,7 @@
 "use client"
 import React,{useState, useEffect} from 'react'
 import Image from 'next/image';
-import { redirect, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import logo from "@/assets/images/ellielogo.png";
 import logo2 from "@/assets/images/ellielogo3.png";
 import profileDefault from "@/assets/images/profile.png";
@@ -10,7 +10,6 @@ import { signIn, signOut, useSession, getProviders} from 'next-auth/react'
 import UnreadMessageCount from './UnreadMessageCount';
 import PropertySearchForm from './PropertySearchForm';
 import scroll from '@/utils/scroll';
-import { useParams } from 'next/navigation';
    
 const Navbar = () => {
 
@@ -107,7 +106,7 @@ return (
             <Link
               href="/"
               className={`${
-                pathname === "/" ? "border-b-2 border-white" : ""
+                pathname === "/" ? "border-b-2 border-blue-300" : ""
               } text-white px-5 py-3`}
             >
               Home

@@ -3,11 +3,11 @@ import InfoBox from './InfoBox';
 
 const InfoBoxes = () => {
   return (
-    <section>
-      <div className="w-full flex justify-center mt-2 px-4 mb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg">
+    <section className="w-full">
+      <div className="flex justify-center items-center">
+        <div className="w-full flex flex-col gap-4 rounded-lg ">
           <InfoBox
-            heading="For renters"
+            heading="Rent"
             backgroundColor="bg-white"
             buttonInfo={{
               text: "Browse properties",
@@ -20,7 +20,7 @@ const InfoBoxes = () => {
             owners.
           </InfoBox>
           <InfoBox
-            heading="For property owners"
+            heading="Rent Out"
             backgroundColor="bg-blue-200"
             buttonInfo={{
               text: "Add property",

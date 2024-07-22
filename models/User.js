@@ -19,9 +19,11 @@ const UserSchema = new Schema(
     image: {
       type: String,
     },
-    avatar: {
-      type: [],
-    },
+    avatar: [
+      {
+        type: String,
+      },
+    ],
     bookmarks: [
       {
         type: Schema.Types.ObjectId,

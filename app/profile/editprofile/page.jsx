@@ -11,9 +11,7 @@ import { getInfo } from "@/utils/getUserInfo";
 import { useRouter } from "next/navigation";
 
 const EditProfilePage = () => {
-
-  
-  const { data:session} = useSession()
+  const { data: session } = useSession();
 
   const [fields, setFields] = useState({
     name: "",
@@ -26,7 +24,12 @@ const EditProfilePage = () => {
     const userData = async (id) => {
       const res = await getInfo(id);
       if (res) {
-        setFields({name: res.name, email: res.email, userName:res.userName, avatar:res.avatar })
+        setFields({
+          name: res.name,
+          email: res.email,
+          userName: res.userName,
+          avatar: res.avatar,
+        });
       }
     };
     if (session?.user?.id) {
@@ -34,16 +37,14 @@ const EditProfilePage = () => {
     }
   }, [session]);
 
-
   const handleChange = async (e) => {
-    // e.preventDefault();
-   const { name, value } = e.target
+    const { name, value } = e.target;
 
-   setFields((prevFields) => ({
-        ...prevFields,
-        [name]: value,
-      }));
-    
+    setFields((prevFields) => ({
+      ...prevFields,
+      [name]: value,
+    }));
+
     // const data = {
     //   name,
     //   email,
@@ -81,10 +82,10 @@ const EditProfilePage = () => {
     const { files } = e.target;
     console.log(files);
 
-    const updatedImages = []
+    const updatedImages = [];
 
     for (const file of files) {
-     updatedImages.push(file)
+      updatedImages.push(file);
     }
     setFields((prev) => ({
       ...prev,
