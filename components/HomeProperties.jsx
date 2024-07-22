@@ -10,33 +10,35 @@ const data = await fetchProperties()
 const recentProperties = data.properties.slice(0,6);
 
   return (
-    <div className="w-full">
-      <section className="px-4 py-6 pt-20">
-        <h2 className="text-3xl font-bold text-slate-800 mb-12 text-center">
-          Recent Properties
-        </h2>
-        <div className="w-full md:max-w-[1400px] mx-auto max-lg:max-w-[340px]">
-          <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6">
-            {recentProperties.length === 0 ? (
-              <p>No properties found!</p>
-            ) : (
-              recentProperties.map((property) => (
-                <PropertyCard key={property._id} property={property} />
-              ))
-            )}
+    <>
+      <section className="w-full flex flex-col py-6 pt-20 px-4">
+        <div className="w-full max-w-[1340px] mx-auto max-md:max-w-[340px]">
+          <h2 className="text-3xl font-bold mb-12 max-md:text-2xl text-white max-xl:text-center">
+            Recent Properties
+          </h2>
+          <div className="w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6">
+              {recentProperties.length === 0 ? (
+                <p>No properties found!</p>
+              ) : (
+                recentProperties.map((property) => (
+                  <PropertyCard key={property._id} property={property} />
+                ))
+              )}
+            </div>
           </div>
         </div>
       </section>
-      <section className="m-auto max-w-[475px] mt-12 pb-28 px-6">
+      <section className="w-full max-w-[475px] mt-12 flex justify-center pb-28 mx-auto">
         <a
           href="/properties"
-          className="block bg-gradient-to-r from-slate-950  via-[#0c1d38] to-slate-950 
-          text-blue-200 text-center font-medium py-4 rounded-xl max-md:w-[340px] mx-auto"
+          className="bg-gradient-to-r from-slate-950  via-[#0c1d38] to-slate-950 
+          text-blue-200 text-center font-medium py-4 rounded-xl  mx-auto px-6"
         >
           View All Properties
         </a>
       </section>
-    </div>
+    </>
   );
 }
 

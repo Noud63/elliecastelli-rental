@@ -64,7 +64,7 @@ useEffect(() => {
         </Button>
       </form>
 
-      <div className="w-full mt-2 flex items-center gap-1 text-slate-950 font-semibold">
+      {/* <div className="w-full mt-2 flex items-center gap-1 text-slate-950 font-semibold">
         Not registered yet <ArrowRight size={16} />
         <Link href="/register">Register</Link>
       </div>
@@ -73,7 +73,7 @@ useEffect(() => {
         Back to login page
         <ArrowRight size={16} />
         <Link href="/signIn">Login</Link>
-      </div>
+      </div> */}
     </div>
   );
 };

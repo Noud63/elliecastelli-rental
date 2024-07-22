@@ -96,7 +96,7 @@ return (
           </Link>
         </div>
 
-        <div className="max-xl:hidden flex flex-1 pl-8 ">
+        <div className="max-xl:hidden pl-8 flex flex-1">
           <PropertySearchForm />
         </div>
 

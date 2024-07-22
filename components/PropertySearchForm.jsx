@@ -40,7 +40,7 @@ const handleSubmit = (e) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-[700px] flex flex-row items-center mx-auto max-md:flex-col max-md:max-w-[390px] px-2"
+      className="w-full max-w-[700px] flex flex-row items-center mx-auto max-md:flex-col px-2 max-md:px-0 max-xl:mb-6 max-md:max-w-[680px]"
     >
       <div className="w-full md:w-3/5 md:pr-2 mb-4 md:mb-0">
         <label htmlFor="location" className="sr-only">

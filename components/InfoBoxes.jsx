@@ -3,7 +3,7 @@ import InfoBox from './InfoBox';
 
 const InfoBoxes = () => {
   return (
-    <section className="w-full">
+    <section className="w-full  max-xl:max-w-[680px] max-xl:mx-auto">
       <div className="flex justify-center items-center">
         <div className="w-full flex flex-col gap-4 rounded-lg ">
           <InfoBox
