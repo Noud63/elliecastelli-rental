@@ -40,7 +40,7 @@ Platform where real-estate owners can list their properties for rent.<br /><br /
 <br /><br />
 
 
-![ec-r](https://github.com/user-attachments/assets/d69bd998-77fe-437e-aa89-49f0ce78a089)<br /><br />
+![ec-r](https://github.com/user-attachments/assets/7f40807a-73a4-43d3-a436-8d01583b1e1a)<br /><br />
 ![ec-r-2](https://github.com/Noud63/elliecastelli-rental/assets/38325801/80da09b9-d206-44b4-9198-3114f393d99a)<br /><br />
 ![ec-r-duo](https://github.com/Noud63/elliecastelli-rental/assets/38325801/2d20eaf5-0d89-4f7d-a1da-534f1387c499)<br /><br />
 ![ec-r-trio](https://github.com/Noud63/elliecastelli-rental/assets/38325801/aa20a1dd-a1e9-48fe-995d-993fa9523695)<br /><br />
