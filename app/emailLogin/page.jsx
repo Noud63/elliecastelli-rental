@@ -74,6 +74,7 @@ useEffect(() => {
         <ArrowRight size={16} />
         <Link href="/signIn">Login</Link>
       </div> */}
+      
     </div>
   );
 };
