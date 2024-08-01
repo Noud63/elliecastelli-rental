@@ -5,6 +5,7 @@ import Message from "@/components/Message";
 import { MessageSquareMore } from "lucide-react";
 
 const Messages = () => {
+
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -33,18 +34,25 @@ const Messages = () => {
     <section className="h-auto mt-28 flex justify-center mb-40">
       <div className="w-full signInBox max-w-6xl rounded-xl max-xxlg:shadow-none">
         <div className="bg-blue-200/30 px-6 pt-4 pb-8 shadow-md rounded-md md:m-0 max-xxlg:bg-blue-200/0 max-xxlg:shadow-none">
-          <h1 className="flex items-center text-white text-3xl font-bold mb-4">
+          <div className="flex items-center text-white text-3xl font-bold mb-4 border-b-2 border-dotted border-white pb-4">
             {" "}
             <MessageSquareMore size={28} className="pt-1" />
             Messages
-          </h1>
+          </div>
 
           <div className="space-y-4">
             {messages.length === 0 ? (
-              <p>You have no messages!</p>
+              <div className="flex justify-center text-slate-900 font-semibold text-lg">
+                You have no messages!
+              </div>
             ) : (
               messages.map((message) => (
-                <Message key={message._id} message={message} />
+                <div
+                  className="border-b-2 border-dotted border-white pb-4"
+                  key={message._id}
+                >
+                  <Message message={message} />
+                </div>
               ))
             )}
           </div>

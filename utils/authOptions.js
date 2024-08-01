@@ -2,6 +2,7 @@ import GoogleProvider from "next-auth/providers/google";
 import connectDB from "@/config/database";
 import User from "@/models/User";
 import Register from "@/models/Register";
+import profileDefault from "@/assets/images/profile.png";
 import CredentialsProvider from "next-auth/providers/credentials";
 import FacebookProvider from "next-auth/providers/facebook";
 import GithubProvider from "next-auth/providers/github";
@@ -102,12 +103,12 @@ export const authOptions = {
 
       // console.log(profile)
       // console.log(user)
+      // console.log(account)
       
       // 1. Connect to database
        await connectDB();
-
+    
       if (account.provider === "google" || account.provider === "facebook") {
-       
         // 2. Check if user exists
         const userExists = await User.findOne({ email: profile.email });
 
@@ -116,7 +117,8 @@ export const authOptions = {
           await User.create({
             email: profile.email,
             username: profile.name,
-            image: account.provider === "google" ? profile.picture : user.image
+            name: profile.name,
+            image: account.provider === "google" ? profile.picture : user.image,
           });
         }
 
@@ -144,23 +146,29 @@ export const authOptions = {
 
     async jwt({ token, user }) {
       if (user) {
-        token.name = user.name;
-        token.username = user.username
+        // token.name = user.name;
+        token.username = user.username;
       }
-      return token;
+         return token;
     },
 
-    //Modify the session object
-    async session({ session, token }) {
+      //Modify the session object
+      async session({ session, token }) {
+
       // 1. Get user from the database
-      const user = await User.findOne({ email: session.user.email });
+      const user = await User.findOne({ email: session.user.email })
+      
       // 2. Assign user id to the session
       session.user.id = user._id.toString();
+
       // 4. Assign username to the session
-      session.user.username = token.username;
+      session.user.username = token?.username
+
       // 4. Assign avatar to the session
       session.user.avatar = user?.avatar;
-      // 5. Return session
+
+      // console.log(session)
+    
       return session;
     },
   },

@@ -155,7 +155,7 @@ const LoginForm = () => {
 
        <Button
          className="w-full text-md text-blue-100 bg-gradient-to-r from-slate-950  via-[#102546] to-slate-950 py-6 mt-2 flex justify-start"
-         onClick={() => signIn("facebook", { email })}
+         onClick={() => signIn("facebook", { callbackUrl: "/" })}
        >
          <IconBrandFacebook className="text-blue-100 mr-2" /> Login with
          Facebook
@@ -163,7 +163,7 @@ const LoginForm = () => {
 
        <Button
          className="w-full text-md text-blue-100  bg-gradient-to-r from-slate-950  via-[#102546] to-slate-950 py-6 flex justify-start mt-2"
-         onClick={() => signIn("google", { email })}
+         onClick={() => signIn("google", { callbackUrl: "/" })}
        >
          <IconBrandGoogle className="text-blue-100 mr-2" />
          Login with Google

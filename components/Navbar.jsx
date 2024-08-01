@@ -1,7 +1,7 @@
 "use client"
 import React,{useState, useEffect} from 'react'
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter} from 'next/navigation';
 import logo from "@/assets/images/ellielogo.png";
 import logo2 from "@/assets/images/ellielogo3.png";
 import profileDefault from "@/assets/images/profile.png";
@@ -13,20 +13,21 @@ import scroll from '@/utils/scroll';
    
 const Navbar = () => {
 
-  const {data:session} = useSession()
-  const profileImage =
-    session?.user?.avatar[0] || session?.user?.image || profileDefault;
+  const {data:session, status} = useSession()
+  const profileImage = session?.user?.image || session?.user?.avatar[0];
+
+  const pathname = usePathname();
+  const router = useRouter()
 
   const scrolled = scroll();
 
-const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
 
-const [color, setColor] = useState("")
-const [buttonColor, setButtonColor] = useState("")
+  const [color, setColor] = useState("")
+  const [buttonColor, setButtonColor] = useState("")
 // const [providers, setProviders] = useState(null)
 
-const pathname = usePathname()
 
 // useEffect(() => {
 //   const setAuthProviders = async() => {

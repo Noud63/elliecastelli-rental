@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { CircleX } from "lucide-react";
 import { CircleCheckBig } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const RegistrationForm = () => {
 
@@ -18,6 +19,8 @@ const RegistrationForm = () => {
   const [error, setError] = useState(false)
   const [success, setSuccess] = useState(false)
   const [message, setMessage] = useState("")
+
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +45,9 @@ const RegistrationForm = () => {
         setSuccess(true)
         setTimeout(() => {
           setSuccess(false);
+          router.push("/signIn");
         }, 5000);
+        
       } else if (res.status === 409 || res.status === 400) {
         const dataObj = await res.json();
         console.log(dataObj.message);

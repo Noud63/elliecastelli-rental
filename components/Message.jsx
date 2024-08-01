@@ -11,8 +11,6 @@ const [ isDeleted, setIsDeleted] = useState(false)
 
  const { unreadCount, setUnreadCount } = useGlobalContext();
 
- console.log(message)
-
 const handleReadClick = async () => {
      try {
          const res = await fetch(`/api/messages/${message._id}`, {
@@ -57,6 +55,8 @@ if(isDeleted){
   return null
 }
 
+console.log(message)
+
   return (
     <div className=" bg-blue-100/60 p-4 rounded-md shadow-md border-b-2 border-slate-500">
       {!isRead && (
@@ -89,7 +89,7 @@ if(isDeleted){
 
       <ul className="mt-4">
         <li>
-          <strong>Name:</strong> {message.username}
+          <strong>Name:</strong> {message.name}
         </li>
 
         <li>

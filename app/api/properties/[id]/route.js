@@ -50,7 +50,7 @@ export const DELETE = async (request, { params }) => {
     // extract public id's from image url in DB
     const publicIds = property.images.map((imageUrl) => {
       const parts = imageUrl.split("/");
-      return parts.at(-1).split(".").at(0);    // at(-1) = last item split at . returns id
+      return parts.at(-1).split(".").at(0);    // at(-1) = last item 'xxxxxxxxxxxx.jpg' split at . returns id
     });
 
     // Delete images from Cloudinary

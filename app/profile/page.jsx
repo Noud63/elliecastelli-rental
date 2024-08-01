@@ -9,43 +9,43 @@ import { toast } from "react-toastify";
 import { getInfo } from "@/utils/getUserInfo";
 
 const ProfilePage = () => {
-  const { data: session } = useSession();
-  const profileImage = session?.user?.avatar[0] || session?.user?.image || profileDefault;
+
+  const { data: session, status } = useSession();
+  const profileImage = session?.user?.image || session?.user?.avatar[0] ;
   // -->Commented out because of problem with session update<--
   // const profileName = session?.user?.name
   // const profileEmail = session?.user?.email
 
+  console.log(session)
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
-  const [avatar, setAvatar] = useState([]);
 
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      const fetchUserProperties = async (userId) => {
+        if (!userId) return;
 
-  console.log(session);
-
-  useEffect(() => {
-    const fetchUserProperties = async (userId) => {
-      if (!userId) return;
-
-      try {
-        const res = await fetch(`/api/properties/user/${userId}`);
-        if (res.status === 200) {
-          const data = await res.json();
-          setProperties(data);
+        try {
+          const res = await fetch(`/api/properties/user/${userId}`);
+          if (res.status === 200) {
+            const data = await res.json();
+            setProperties(data);
+          }
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setLoading(false);
         }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
+      };
+      // Fetch user properties when session is available
+      if (session?.user?.id) {
+        fetchUserProperties(session.user.id);
       }
-    };
-    // Fetch user properties when session is available
-    if (session?.user?.id) {
-      fetchUserProperties(session.user.id);
-    }
-  }, [session]);
+    }, [session]);
 
   useEffect(() => {
     const userData = async (id) => {
@@ -56,7 +56,6 @@ const ProfilePage = () => {
         setName(res.name);
         setEmail(res.email);
         setUserName(res.userName);
-        setAvatar(res.avatar);
       }
     };
     if (session?.user?.id) {
@@ -106,7 +105,7 @@ const ProfilePage = () => {
               <div className="mb-4 max-md:border-b border-dotted border-slate-800 max-md:pb-4 max-md:mb-2">
                 <Image
                   className="h-14 w-14 rounded-full mx-auto md:mx-0"
-                  src={profileImage}
+                  src={profileImage || profileDefault}
                   width={100}
                   height={100}
                   alt="User"
