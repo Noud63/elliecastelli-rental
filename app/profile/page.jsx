@@ -11,7 +11,7 @@ import { getInfo } from "@/utils/getUserInfo";
 const ProfilePage = () => {
 
   const { data: session, status } = useSession();
-  const profileImage = session?.user?.image || session?.user?.avatar[0] ;
+  const profileImage = session?.user?.avatar[0] ? session?.user?.avatar[0] : session?.user?.image;
   // -->Commented out because of problem with session update<--
   // const profileName = session?.user?.name
   // const profileEmail = session?.user?.email
@@ -199,3 +199,4 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+

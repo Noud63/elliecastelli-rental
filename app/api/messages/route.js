@@ -45,7 +45,7 @@ export const POST = async (request) => {
   try {
     await connectDB();
 
-    const { name, email, phone, message, property, recipient, propertyName } =
+    const { name, email, phone, message, property, recipient} =
       await request.json();
 
     const sessionUser = await getSessionUser();

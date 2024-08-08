@@ -36,7 +36,6 @@ const PropertyContactForm = ({ property }) => {
       });
 
       if (res.status === 200) {
-        toast.success("Message sent successfully");
         setWasSubmitted(true);
 
         setTimeout(()=> {
@@ -68,9 +67,9 @@ const PropertyContactForm = ({ property }) => {
       {!session ? (
         <div className="w-full flex justify-center pb-6">You must be logged in to send a message!</div>
       ) : wasSubmitted ? (
-        <p className="text-green-500 mb-4">
+        <div className="flex justify-center text-green-500 my-4 pb-6">
           Your message has been sent successfully
-        </p>
+        </div>
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="mb-4 px-4">

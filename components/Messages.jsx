@@ -28,6 +28,8 @@ const Messages = () => {
     getMessages();
   }, []);
 
+  console.log(messages)
+
   return loading ? (
     <Spinner loading={loading} />
   ) : (
@@ -63,3 +65,9 @@ const Messages = () => {
 };
 
 export default Messages;
+
+
+
+
+// 6697939e252f36580b464cc5
+  

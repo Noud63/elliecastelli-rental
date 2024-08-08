@@ -12,7 +12,6 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "../lib/db";
 
 export const authOptions = {
-  
   adapter: MongoDBAdapter(clientPromise),
 
   session: {
@@ -30,6 +29,7 @@ export const authOptions = {
         },
       },
       from: process.env.EMAIL_FROM,
+      maxAge: 60,
     }),
 
     GoogleProvider({
@@ -88,7 +88,6 @@ export const authOptions = {
           }
 
           return foundUser;
-          
         } catch (error) {
           console.log(error);
         }
@@ -100,14 +99,16 @@ export const authOptions = {
   callbacks: {
     // Invoked on successful signin
     async signIn({ user, profile, account }) {
-
       // console.log(profile)
       // console.log(user)
-      // console.log(account)
-      
+      // console.log("SignIn_with_email:", { user });
+
       // 1. Connect to database
-       await connectDB();
-    
+      await connectDB();
+
+      if (!user.emailVerified) {
+      }
+
       if (account.provider === "google" || account.provider === "facebook") {
         // 2. Check if user exists
         const userExists = await User.findOne({ email: profile.email });
@@ -144,31 +145,31 @@ export const authOptions = {
       return true;
     },
 
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
       if (user) {
         // token.name = user.name;
         token.username = user.username;
       }
-         return token;
+      // console.log("Jwt_user:", { user });
+      return token;
     },
 
-      //Modify the session object
-      async session({ session, token }) {
-
+    //Modify the session object
+    async session({ session, token }) {
       // 1. Get user from the database
-      const user = await User.findOne({ email: session.user.email })
-      
+      const user = await User.findOne({ email: session.user.email });
+
       // 2. Assign user id to the session
       session.user.id = user._id.toString();
 
       // 4. Assign username to the session
-      session.user.username = token?.username
+      session.user.username = token.username;
 
       // 4. Assign avatar to the session
-      session.user.avatar = user?.avatar;
+      session.user.avatar = user.avatar;
 
       // console.log(session)
-    
+
       return session;
     },
   },
