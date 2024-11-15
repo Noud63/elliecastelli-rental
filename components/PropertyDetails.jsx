@@ -7,12 +7,13 @@ import {
   FaCheck,
   FaMapMarker,
 } from "react-icons/fa";
+import Map from "./Map";
 
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 
-const Map = dynamic(() => import("@/components/map"), {
-  ssr: false,
-});
+// const Map = dynamic(() => import("@/components/map"), {
+//   ssr: false,
+// });
 
 
 const PropertyDetails = ({ property }) => {
