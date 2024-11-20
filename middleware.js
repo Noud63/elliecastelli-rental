@@ -25,7 +25,9 @@ export async function middleware(request) {
   // console.log("Token:", {token});
   for (const route of protectedRoutes) {
     if (!token && request.nextUrl.pathname === route) {
-      return NextResponse.redirect("http://localhost:3000/signIn");
+      return NextResponse.redirect(
+        "https://elliecastelli-rental.vercel.app//signIn"
+      );
     }
   }
 }

@@ -24,6 +24,7 @@ const Properties = () => {
         }
 
         const data = await res.json()  // data is an object
+        console.log(data.properties)
         setProperties(data.properties)
         setTotalItems(data.total)
        } catch (error) {

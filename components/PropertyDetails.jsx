@@ -8,7 +8,6 @@ import {
   FaMapMarker,
 } from "react-icons/fa";
 import Map from "./Map";
-
 // import dynamic from "next/dynamic";
 
 // const Map = dynamic(() => import("@/components/map"), {

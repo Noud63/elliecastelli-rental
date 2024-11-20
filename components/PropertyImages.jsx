@@ -13,6 +13,8 @@ const PropertyImages = ({images}) => {
     padding: { top: 20, bottom: 40, left: 50, right: 50 },
   };
 
+  console.log(images);
+
   return (
     <Gallery options={options}>
       <section className="pb-20 flex justify-center mx-6">

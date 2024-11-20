@@ -4,9 +4,11 @@ const scroll = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
+    if (typeof window !== "undefined") {
     const offset = window.scrollY;
     offset > 30 ? setScrolled(true) : setScrolled(false);
-  };
+  }
+}
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
