@@ -101,7 +101,7 @@ export const authOptions = {
     async signIn({ user, profile, account }) {
       // console.log(profile)
       // console.log(user)
-      // console.log("SignIn_with_email:", { user });
+      console.log("SignIn_with_email:", { user });
 
       // 1. Connect to database
       await connectDB();
@@ -146,11 +146,12 @@ export const authOptions = {
     },
 
     async jwt({ token, user, account }) {
+      console.log("Token:", token);
       if (user) {
         // token.name = user.name;
         token.username = user.username;
       }
-      // console.log("Jwt_user:", { user });
+      console.log("Jwt_user:", user);
       return token;
     },
 
@@ -161,14 +162,17 @@ export const authOptions = {
 
       // 2. Assign user id to the session
       session.user.id = user._id.toString();
+      console.log("TokenId:", session.user.id);
 
       // 4. Assign username to the session
       session.user.username = token.username;
+      console.log("Username:", session.user.username);
+      console.log("Token:", token);
 
       // 4. Assign avatar to the session
       session.user.avatar = user.avatar;
 
-      // console.log(session)
+    console.log("Session:", session)
 
       return session;
     },
