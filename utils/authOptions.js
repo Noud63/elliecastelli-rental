@@ -151,7 +151,7 @@ export const authOptions = {
         // token.name = user.name;
         token.username = user.username;
       }
-      console.log("Jwt_user:", user);
+   
       return token;
     },
 
