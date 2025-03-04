@@ -63,8 +63,8 @@ const LoginForm = () => {
  }
 
  return (
-   <div className="w-full mx-auto mt-40 px-4">
-     <div className="signInBox bg-blue-200/20 w-full flex flex-col max-w-[400px] p-4 rounded-lg my-40 pb-12 mx-auto">
+   <div className="w-full mx-auto mt-32 px-4 max-xxsm:mt-28">
+     <div className="signInBox bg-blue-200/20 w-full flex flex-col max-w-[400px] p-4 rounded-lg pb-12 mx-auto">
        <div className="w-full text-xl text-blue-950 font-bold mb-4 flex justify-center border-b-2 border-dotted border-slate-900 pb-4">
          Login
        </div>
@@ -130,12 +130,12 @@ const LoginForm = () => {
            <span className="text-blue-100">Login</span>
          </Button>
 
-         <div className="w-full mt-2 flex items-center gap-1 text-blue-950 font-semibold">
+         <div className="w-full mt-2 flex items-center gap-1 text-blue-950 font-semibold max-xxsm:text-sm">
            Don't have an account? <ArrowRight size={16} />
            <Link href="/register">Register</Link>
          </div>
 
-         <div className="w-full mt-2 flex items-center gap-1 text-blue-950 font-semibold">
+         <div className="w-full mt-2 flex items-center gap-1 text-blue-950 font-semibold max-xxsm:text-sm">
            Forgot your password? <ArrowRight size={16} className="ml-1" />
            <Link href="/resetpassword">Reset password</Link>
          </div>

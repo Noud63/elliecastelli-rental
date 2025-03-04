@@ -68,7 +68,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className="w-full mx-auto mt-40 px-4">
+    <div className="w-full min-h-screen mx-auto mt-36 mb-20 px-4 max-xxsm:mt-28">
       <div className="signInBox p-6 rounded-lg shadow-md w-full max-w-[600px] mx-auto  bg-blue-200/20">
         <div className="flex justify-center text-xl text-blue-950 font-bold mb-4 border-b-2 border-dotted border-slate-900 pb-4">
           Register

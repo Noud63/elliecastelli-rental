@@ -38,6 +38,8 @@ module.exports = {
         "70/30": "70% 28%",
       },
       screens: {
+        xxsm:"400px",
+        xsm:"500px",
         xlg: "1050px",
         propBox: "1380px",
         xxlg: "1150px",

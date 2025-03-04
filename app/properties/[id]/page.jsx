@@ -55,18 +55,25 @@ const PropertyPage = () => {
     <>
       {loading && <Spinner loading={loading} />}
       {!loading && property && (
-        <>
-          <div className="w-full max-w-[1350px] flex flex-row justify-between m-auto py-3 px-6 bg-gradient-to-r from-slate-950  via-[#0c1d38] to-slate-950 mt-28 text-blue-50 items-center rounded-t-xl">
-            <div className="flex flex-row items-center">
-              # {property.type}, {property.location.city}
-            </div>
+        <div>
+          <section className="mx-6">
+            <div className="w-full max-w-[1350px] mx-auto flex flex-row justify-between py-3 px-6 bg-gradient-to-r from-slate-950  via-[#0c1d38] to-slate-950 mt-28 text-blue-50 items-center rounded-t-xl">
+              <div className="flex flex-row items-center">
+                # {property.type}, {property.location.city}
+              </div>
 
-            <div className="w-8">
-              <Image src={logo} width={0} height={0} size="100vw" alt="logo" />
+              <div className="w-8">
+                <Image
+                  src={logo}
+                  width={0}
+                  height={0}
+                  size="100vw"
+                  alt="logo"
+                />
+              </div>
             </div>
-          </div>
-          <PropertyHeaderImage image={property.images[0]} />
-          <section>
+            <PropertyHeaderImage image={property.images[0]} />
+
             <div className="w-full max-w-[1350px] m-auto py-4 pl-6 bg-gradient-to-r from-slate-950  via-[#0c1d38] to-slate-950 rounded-b-xl">
               <Link
                 href="/properties"
@@ -94,7 +101,7 @@ const PropertyPage = () => {
             </div>
           </section>
           <PropertyImages images={property.images} />
-        </>
+        </div>
       )}
     </>
   );
